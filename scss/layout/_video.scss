@@ -1,4 +1,8 @@
 // Stili per il contenitore del video player custom
+#video {
+    overflow: clip;
+}
+
 .video-player-container {
     position: relative;
     width: 100%;
