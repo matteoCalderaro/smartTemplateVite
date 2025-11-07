@@ -27,7 +27,7 @@ body,
 ///  PADDING VERTICALE TRA SEZIONI (MOBILE)
 ////////////////////////////////////////////////
 @include media-queries.media-down(variables.$breakpoint-md) {
-    #applicazioni{
+    #voiceToInsights{
         padding-bottom: 1rem !important;
     }
     #founder-message,
@@ -37,7 +37,7 @@ body,
     }
 }
 @include media-queries.media-down(variables.$breakpoint-lg) {
-    #applicazioni{
+    #voiceToInsights{
         padding-bottom: 2rem ;
     }
     #founder-message,
