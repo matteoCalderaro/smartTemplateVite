@@ -1,0 +1,30 @@
+/*
+ * Stili tipografici di base
+ * -------------------------------------------------------------------------- */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+// Classe per aumentare la dimensione del font del lead
+.lead-custom-size {
+    font-size: 1.4rem;
+}
+
+// Effetto ombra per il testo
+.text-shadow-effect {
+    text-shadow: 0 0 10px rgba(var(--bismart-gold-rgb), 0.3), 0 0 20px rgba(var(--bismart-gold-rgb), 0.2);
+}

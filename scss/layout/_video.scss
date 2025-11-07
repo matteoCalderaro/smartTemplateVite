@@ -1,0 +1,70 @@
+// Stili per il contenitore del video player custom
+.video-player-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; // Assicura che gli angoli arrotondati del video vengano rispettati
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+    }
+}
+
+// Stile per il pulsante di play/pausa sovrapposto
+.video-play-button {
+    position: absolute;
+    bottom: 30px; // Spostato in basso
+    right: 30px;  // Spostato a destra
+    z-index: 10;
+    background-color: var(--bismart-blue);
+    border: 2px solid var(--bismart-blue);
+    color: white;
+    width: 60px;   // Diametro ridotto
+    height: 60px;  // Diametro ridotto
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem; // Dimensione icona ridotta
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: var(--bismart-blue);
+        transform: scale(1.1); // Rimosso translate
+    }
+
+    .bi-pause-fill {
+        // Nascondi l'icona di pausa di default
+        display: none;
+    }
+}
+
+// Quando il video è in play, mostra l'icona di pausa e nascondi quella di play
+.video-player-container.is-playing {
+    .video-play-button {
+        // Opzionale: nascondi il pulsante durante la riproduzione
+        // opacity: 0;
+
+        .bi-play-fill {
+            display: none;
+        }
+        .bi-pause-fill {
+            display: block;
+        }
+    }
+}
+
+.video--hidden {
+    display: none !important;
+}
+
+.animate__slideOutDown,
+.animate__slideInUp {
+    animation-duration: 0.5s;
+}

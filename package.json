@@ -1,0 +1,33 @@
+{
+  "name": "landing",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "npx vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matteoCalderaro/smartTemplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matteoCalderaro/smartTemplate/issues"
+  },
+  "homepage": "https://github.com/matteoCalderaro/smartTemplate#readme",
+  "description": "",
+  "devDependencies": {
+    "sass": "^1.93.3",
+    "vite": "^7.1.12"
+  },
+  "dependencies": {
+    "@form-validation/bundle": "^2.4.0",
+    "@form-validation/plugin-bootstrap5": "^2.4.0",
+    "@form-validation/plugin-message": "^2.4.0",
+    "@form-validation/plugin-submit-button": "^2.4.0",
+    "@form-validation/plugin-trigger": "^2.4.0",
+    "sweetalert2": "^11.26.3"
+  }
+}

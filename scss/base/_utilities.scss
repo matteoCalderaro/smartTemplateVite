@@ -1,0 +1,78 @@
+@use '../base/variables';
+@use '../base/media-queries';
+
+//////////////////////
+///  COLORI SFONDO SEZIONI
+///////////////////
+body,
+#navbar,
+//#dettaglio
+#hero
+//#video
+// #applicazioni,
+// #founder-message,
+// #form 
+{
+    background-color: var(--bismart-blue);
+}
+#form {
+    background: linear-gradient(to bottom, #010336 0%, #4a5f9f 45%, #4a5f9f 55%, #010336 100%);
+}
+
+//////////////////////////////////////////////
+///  PADDING VERTICALE TRA SEZIONI (MOBILE)
+////////////////////////////////////////////////
+@include media-queries.media-down(variables.$breakpoint-md) {
+    #applicazioni{
+        padding-bottom: 1rem !important;
+    }
+    #founder-message,
+    #form  {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+}
+@include media-queries.media-down(variables.$breakpoint-lg) {
+    #applicazioni{
+        padding-bottom: 2rem ;
+    }
+    #founder-message,
+    #form  {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+// Contenuto principale della pagina
+.main-content {
+    position: relative;
+}
+
+.container-offset {
+    margin-top: -60px;
+}
+
+
+// Genera classi per margin-top, margin-bottom, padding-top, padding-bottom
+@each $key, $value in variables.$spacers {
+  .mt-#{$key} {
+    margin-top: $value;
+  }
+  .mb-#{$key} {
+    margin-bottom: $value;
+  }
+  .my-#{$key} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+  .pt-#{$key} {
+    padding-top: $value;
+  }
+  .pb-#{$key} {
+    padding-bottom: $value;
+  }
+  .py-#{$key} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+}

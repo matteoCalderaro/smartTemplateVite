@@ -1,0 +1,45 @@
+@use "sass:color";
+@use '../base/variables';
+
+#video-controlli {
+    height: 300px;
+    margin-top: -23px;
+    z-index: 100;
+    background: linear-gradient(to bottom, color.scale(variables.$bismart-dark-grey-blue, $lightness: 5%) 0, variables.$bismart-blue 50px, variables.$bismart-blue 100%);
+    background: linear-gradient(to bottom, rgb(40 42 85) 0, #010336 40px, #010336 100%);
+}
+
+.video-controls-bar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 9999px; // Pill shape
+    border: 1px solid rgba(var(--color-white-rgb), 0.2);
+    gap: 0.5rem;
+    margin-top: 20px;
+}
+
+.video-controls-bar__button {
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px; // Pill shape
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+
+    &--active,
+    &:hover {
+        background-color: rgba(var(--color-white-rgb), 0.1);
+        color: var(--bismart-gold-light);
+    }
+}
+
+.video-text {
+    font-size: 1.2rem;
+    color: var(--color-white);
+    margin-top: 17px;
+    text-align: center;
+}

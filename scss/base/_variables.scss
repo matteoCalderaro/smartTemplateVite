@@ -1,0 +1,58 @@
+/*
+ * Variabili CSS e classi di utilità per i colori
+ * -------------------------------------------------------------------------- */
+
+:root {
+    // Colori principali del brand
+    --bismart-blue: #010336;
+    --bismart-gold: #c59247;
+    --bismart-gold-gradient:  linear-gradient(45deg, var(--bismart-gold), #ffffff);
+    --bismart-gold-gradient-to-bottom:  linear-gradient(to bottom, var(--bismart-gold), #ffffff);
+    --color-white: #ffffff;
+
+    // Valori RGB per l'uso con rgba()
+    --bismart-blue-rgb: 1, 3, 54;
+    --bismart-gold-rgb: 197, 146, 71;
+    --color-white-rgb: 255, 255, 255;
+
+    --bismart-dark-grey-blue: #2a4e69;
+    --bismart-gold-hover: #d19f5a;
+    --bismart-gold-light: #e0b86a;
+    --bismart-gold-light-hover: #f8d27c;
+}
+
+// Variabili Sass
+$bismart-blue: #010336;
+$bismart-dark-grey-blue: #2a4e69;
+
+
+/* 
+ * Classi di utilità per i colori.
+ * Queste classi vengono utilizzate per applicare i colori definiti nelle variabili CSS.
+*/
+.color-bg-primary { background-color: var(--bismart-blue); }
+.color-bg-white { background-color: var(--color-white); }
+.color-bg-card { background: var(--color-white); }
+.color-border-card { border: 2px solid var(--bismart-gold); }
+
+.color-text-primary { color: var(--bismart-blue); }
+.color-text-secondary { color: #6c757d; }
+.color-text-gold { color: var(--bismart-gold); }
+.color-text-gold-light { color: var(--bismart-gold-light); }
+
+.color-btn-border { border-color: var(--bismart-gold) !important; }
+
+// Breakpoints Bootstrap (mappatura manuale)
+$breakpoint-sm: 576px;
+$breakpoint-md: 769px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// Scala di spaziatura estesa per utility classes
+$spacers: (
+  6: 4.5rem,
+  7: 6rem,
+  8: 8rem
+);
+

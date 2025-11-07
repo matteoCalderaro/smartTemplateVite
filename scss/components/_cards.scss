@@ -1,0 +1,70 @@
+/*
+ * Stili per le card delle applicazioni
+ * -------------------------------------------------------------------------- */
+
+.card {
+    // Contenitore esterno con bordo e sfondo semi-trasparente
+    border: 1px solid rgba(var(--color-white-rgb), 0.8); // Bordo bianco
+    padding: 1rem; // Spazio per l'effetto cornice
+    background: rgba(var(--color-white-rgb), 0.1); // Sfondo con 10% di opacità
+    border-radius: 1.5rem;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+
+    // Effetto "glow" esterno
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background: radial-gradient(
+            circle at top left,
+            rgba(var(--color-white-rgb), 1), // bianco
+            transparent 60%
+        );
+        filter: blur(30px);
+        opacity: 0.5;
+        transition: opacity 0.3s ease, filter 0.3s ease;
+    }
+
+    &:hover::before {
+        opacity: 1;
+        filter: blur(20px);
+    }
+
+    &.card--video-no-hover {
+        &:hover::before {
+            opacity: 0.5; // Riporta all'opacità di default
+            filter: blur(30px); // Riporta al blur di default
+        }
+    }
+}
+
+.card__base {
+    // Contenuto effettivo della card
+    background: rgba(var(--bismart-blue-rgb), 0.7);
+    border-radius: 1rem;
+    height: 100%;
+    backdrop-filter: blur(40px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(var(--bismart-blue-rgb), 0.1);
+
+    &:hover {
+        box-shadow: 0 12px 24px rgba(var(--bismart-blue-rgb), 0.2);
+    }
+}
+
+.card__icon {
+    font-size: 3.5rem;
+}
+
+.card__description {
+    font-size: 1.1rem;
+}
+

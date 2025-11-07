@@ -1,0 +1,49 @@
+@use '../base/variables';
+@use '../base/media-queries';
+
+#founder-message {
+    @include media-queries.media-down(variables.$breakpoint-md) {
+        .founder-message__text {
+            text-align: center;
+        }
+    }
+}
+
+.founder-message__img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid var(--bismart-gold);
+}
+
+.founder-message__quote {
+    // Contenitore della citazione
+
+    &--first-word,
+    &--last-word {
+        position: relative; // Imposta il posizionamento relativo per gli apici
+    }
+
+    &--first-word::before {
+        content: '“';
+        position: absolute;
+        left: -28px;
+        top: -9px;
+        font-size: 4rem;
+        line-height: 1;
+        color: var(--bismart-gold-light);
+        font-family: 'Georgia', serif;
+    }
+
+    &--last-word::after {
+        content: '”';
+        position: absolute;
+        right: -29px;
+        bottom: -35px;
+        font-size: 4rem;
+        line-height: 1;
+        color: var(--bismart-gold-light);
+        font-family: 'Georgia', serif;
+    }
+}
