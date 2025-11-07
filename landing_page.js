@@ -328,7 +328,7 @@ const initVideo = () => {
 
         // Aggiorna UI on play (per il video attualmente attivo)
         video1.addEventListener('play', () => {
-            video1.playbackRate = 2;
+            video1.playbackRate = 4;
             videoContainer.classList.add('is-playing');
         });
 
