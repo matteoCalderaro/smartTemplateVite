@@ -39,6 +39,10 @@
     }
 
     &.card--video-no-hover {
+        &::before {
+            transform: translate(20px, 20px);
+        }
+        position: static;
         &:hover::before {
             opacity: 0.5; // Riporta all'opacità di default
             filter: blur(30px); // Riporta al blur di default

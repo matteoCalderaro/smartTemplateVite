@@ -1,10 +1,25 @@
+@use '../base/variables';
+@use '../base/media-queries';
+
 // Stili per il contenitore del video player custom
 #video {
     overflow: clip;
+
+    // Default styles for desktop (>= 576px)
+    & > .container {
+        position: relative; // Moved from inline style in index.html
+    }
+
+    @include media-queries.media-down(variables.$breakpoint-sm) {
+        position: relative; // #video acquires position: relative below sm breakpoint
+        & > .container {
+            position: static; // .container loses position: relative below sm breakpoint
+        }
+    }
 }
 
 .video-player-container {
-    position: relative;
+    //position: relative;
     width: 100%;
     height: 100%;
     overflow: hidden; // Assicura che gli angoli arrotondati del video vengano rispettati
@@ -34,8 +49,8 @@
 // Stile per il pulsante di play/pausa sovrapposto
 .video-play-button {
     position: absolute;
-    bottom: 30px; // Spostato in basso
-    right: 30px;  // Spostato a destra
+    bottom: 64px; // Spostato in basso
+    right: 47px;  // Spostato a destra
     z-index: 10;
     background-color: var(--bismart-blue);
     border: 2px solid var(--bismart-blue);
@@ -49,6 +64,11 @@
     font-size: 1.8rem; // Dimensione icona ridotta
     cursor: pointer;
     transition: all 0.3s ease;
+
+    @include media-queries.media-down(variables.$breakpoint-sm) {
+        bottom: 70px;
+        right: 16px;
+    }
 
     &:hover {
         background-color: var(--bismart-blue);
