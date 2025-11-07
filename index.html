@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiSmart - La Suite di Applicazioni Intelligenti</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>.is-loading { visibility: hidden; }</style>
+  <script type="module" crossorigin src="./assets/main-CjPnCZGJ.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-DP7vSW5h.css">
+</head>
+<body class="is-loading" data-page="home">
+    
+    <nav id="navbar" class="navbar">
+        <div class="container py-1">
+            <a class="d-flex align-items-center me-auto gap-3 text-decoration-none" href="#">
+                <img src="media/logo_trasparente.png" alt="BiSmart Logo">
+                <h1 class="fs-3 fw-bold text-white mb-0 ">bismart.ai</h1>
+            </a>
+            <div class="d-flex align-items-center gap-3 d-none">
+                <a href="#funzionalita" class="nav-link color-text-gold-light">Funzionalità</a>
+                <a href="#prezzi" class="nav-link color-text-gold-light">Prezzi</a>
+                <a href="#documentazione" class="nav-link color-text-gold-light">Documentazione</a>
+                <a href="demo.html" class="btn btn-outline-secondary color-text-gold-light fw-semibold py-2 px-4 rounded-4 transition duration-300 color-btn-border">Accedi</a>
+            </div>
+        </div>
+    </nav>
+    
+   
+    <header id="hero" class="text-center">
+        <div class="container">
+            <div class="hero-side-image hero-side-image--left">
+                <div class="hero-animated-wrapper">
+                    <div class="hero-cloud hero-cloud--sx">
+                        <div class="cloud-background"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-side-image hero-side-image--right">
+                <div class="hero-animated-wrapper">
+                    <div class="hero-cloud hero-cloud--dx">
+                        <div class="cloud-background"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="copy-container">
+                <h1 class="display-3 fw-bolder mb-3 text-white text-shadow-effect">Dissolvi la complessità fai volare il business!</h1>
+                <p class="color-text-gold-light mx-auto mb-4 lead-custom-size">
+                    Trasforma la nebbia dei dati in decisioni strategiche con BiSmart!
+                </p>
+                <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
+                    <a href="#form" class="hero-button fw-semibold py-3 px-5 rounded-4" data-scroll-to>
+                        <span class="hero-button__content">Prova subito BISMART!</span>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- <main class="main-content"> -->
+
+        
+        
+        <section id="video" class="container-offset">
+            <div class="container" style="width: 1000px;">
+                <div class="card card--video-no-hover">
+                    
+                    <div class="video-player-container">
+                        <video id="myVideo" src="https://res.cloudinary.com/dpockyqnm/video/upload/v1762481354/video_1_pp215g.mp4" preload="metadata" muted loop playsinline class="animate__animated"></video>
+                        <video id="myVideo2" src="https://res.cloudinary.com/dpockyqnm/video/upload/v1762481891/video_2_my67z9.mp4" preload="metadata" muted loop playsinline class="video--hidden animate__animated"></video>
+                        <button id="playPauseBtn" class="video-play-button">
+                            <i class="bi bi-play-fill"></i>
+                        </button>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+
+        <section id="video-controlli" class="text-center">
+            <div class="video-controls-bar">
+                <button id="btn-video-1" class="video-controls-bar__button video-controls-bar__button--active">Bottone 1</button>
+                <button id="btn-video-2" class="video-controls-bar__button">Bottone 2</button>
+            </div>
+            <p id="text-video-1" class="animate__animated video-text">Testo placeholder per video uno.</p>
+            <p id="text-video-2" class="animate__animated video--hidden video-text">Testo placeholder per video due.</p>
+        </section>
+        
+        <section id="applicazioni" class="container pb-6">
+            <!-- <div class="container"> -->
+                <div class="row g-4 justify-content-center">
+                    <!-- Card per 7 applicazioni -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
+                                <div class="card__body">
+                                    <span class="card__icon mb-4 color-text-gold"><i class="bi bi-mic-fill"></i></span>
+                                    <h3 class="fs-4 fw-bold mb-2 color-text-gold">Voice to Insights</h3>
+                                    <p class="text-white card__description">Trasforma le tue conversazioni in insight strategici per decisioni rapide!</p>
+                                </div>
+                                <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
+                                <div class="card__body">
+                                    <span class="card__icon mb-4 color-text-gold"><i class="bi bi-whatsapp"></i></span>
+                                    <h3 class="fs-4 fw-bold mb-2 color-text-gold">Waq</h3>
+                                    <p class="text-white card__description">Offri assistenza clienti immediata 24/7 via WhatsApp, riducendo il carico del tuo team!</p>
+                                </div>
+                                <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
+                                <div class="card__body">
+                                    <span class="card__icon mb-4 color-text-gold"><i class="bi bi-currency-euro"></i></span>
+                                    <h3 class="fs-4 fw-bold mb-2 color-text-gold">Smart Pricing</h3>
+                                    <p class="text-white card__description">Ottimizza i prezzi in tempo reale con l'AI, massimizzando margini e competitività!</p>
+                                </div>
+                                <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
+                                <div class="card__body">
+                                    <span class="card__icon mb-4 color-text-gold"><i class="bi bi-person-check-fill"></i></span>
+                                    <h3 class="fs-4 fw-bold mb-2 color-text-gold">Stay on</h3>
+                                    <p class="text-white card__description">Prevedi l'abbandono dei clienti e attiva strategie di fidelizzazione mirate per aumentare la retention!</p>
+                                </div>
+                                <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
+                                <div class="card__body">
+                                    <span class="card__icon mb-4 color-text-gold"><i class="bi bi-chat-heart-fill"></i></span>
+                                    <h3 class="fs-4 fw-bold mb-2 color-text-gold">Sentiment</h3>
+                                    <p class="text-white card__description">Monitora la reputazione del tuo brand analizzando il sentiment di clienti e utenti su recensioni e social!</p>
+                                </div>
+                                <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
+                                <div class="card__body">
+                                    <span class="card__icon mb-4 color-text-gold"><i class="bi bi-cloud-download"></i></span>
+                                    <h3 class="fs-4 fw-bold mb-2 color-text-gold">Sales Predict</h3>
+                                    <p class="text-white card__description">Anticipa i trend di vendita con previsioni accurate, ottimizzando pianificazione e strategie commerciali!</p>
+                                </div>
+                                <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="card">
+                            <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
+                                <div class="card__body">
+                                    <span class="card__icon mb-4 color-text-gold"><i class="bi bi-broadcast"></i></span>
+                                    <h3 class="fs-4 fw-bold mb-2 color-text-gold">Wap</h3>
+                                    <p class="text-white card__description">Automatizza l'invio di report e documenti via WhatsApp, comunicando dati e informazioni in tempo reale!</p>
+                                </div>
+                                <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- </div> -->
+        </section>
+        
+        <section id="form" class="py-6">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card rounded-5">
+                            <div class="form__wrapper p-4">
+                                <h2 class="fw-bolder mb-4 color-text-primary">Richiedi la Tua Consulenza Gratuita</h2>
+                                <form id="form-contatti">                                        
+                                    
+                                    <div id="data" >
+                                        <h5 class="mb-3 color-text-primary">Dove Possiamo Contattarti?</h5>
+                                        <div class="fv-row">
+                                            <div class="form-floating">
+                                                <input id="titleId" type="text" class="form-control" placeholder="Nome" name="name"
+                                                value="" />
+                                                <label for="titleId">Nome</label>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="fv-row mt-3">
+                                            <div class="form-floating">
+                                                <input id="surnameId" type="text" class="form-control" placeholder="Cognome" name="cognome"
+                                                value="" />
+                                                <label for="surnameId">Cognome</label>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="fv-row my-3">
+                                            <div class="form-floating">
+                                                <input id="emailId" type="email" class="form-control" placeholder="Email" name="email"
+                                                value="" />
+                                                <label for="emailId">Email</label>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <h5 class="mb-3 color-text-primary">Consenso Privacy</h5>
+                                        <div class="fv-row form-check form-check-privacy">
+                                            <input class="form-check-input" type="checkbox" value="" id="privacy" name="privacy" >
+                                            <label class="form-check-label" for="privacy">
+                                                Dichiaro di aver letto l'informativa sulla privacy e acconsento al trattamento dei miei dati personali.
+                                            </label>
+                                            <div class="invalid-feedback"></div>
+                                        </div>
+                                        <button type="button" class="btn cta-btn mt-5" id="submit">
+                                            <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+                                            <span class="button-text">Invia</span>
+                                        </button>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="founder-message" class="py-6">
+            <div class="container">
+                <div class="card">
+                    <div class="card__base p-4 p-md-5">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-12 col-md-3 text-center mb-4 mb-md-0">
+                                <img src="media/davide.jpg" alt="Davide, Founder di BiSmart" class="img-fluid founder-message__img mx-auto d-block">
+                            </div>
+                            <div class="col-12 col-md-9 founder-message__text text-white">
+                                <h3 class="fw-bolder mb-3 color-text-gold-light">Dalla complessità alla chiarezza: la mia visione per Voi...</h3>
+                                <blockquote class="founder-message__quote"><span style="width: 20px; display: inline-block;"></span><span class="founder-message__quote--first-word">Ho</span> creato BiSmart per un motivo semplice: trasformare la nebbia dei dati che rallenta le aziende in chiarezza per agire. La nostra missione è darvi la visione per far volare il business, con decisioni più rapide e <span class="founder-message__quote--last-word">intelligenti.</span></blockquote>
+                                <div class="mt-4">
+                                    <p class="fw-semibold mb-1">Con visione, per il vostro successo,</p>
+                                    <p class="fw-bold mb-0">Davide Massari</p>
+                                    <p class="mb-0"><small>Founder di BiSmart</small></p>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="use-cases" class="use-cases d-none">
+            <div class="container text-center mb-5">
+                <h2 class="display-4 fw-bolder mb-3">Casi d'Uso Integrati</h2>
+                <p class="lead color-text-secondary mx-auto max-w-60rem">
+                    Scopri come le applicazioni BiSmart lavorano in sinergia per ottimizzare i tuoi processi aziendali.
+                </p>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="video-tabs color-bg-card color-border-card p-3 rounded-4 mb-4">
+                            <!-- Segnaposto per contenuto video/immagine -->
+                            <div id="video-content-1" class="video-tabs__content active">
+                                <!-- <img src="https://via.placeholder.com/700x400/007bff/ffffff?text=Video+Caso+d'Uso+1" alt="Caso d'Uso 1" class="img-fluid rounded-3"> -->
+                                <p class="color-text-secondary mt-3">Descrizione del caso d'uso 1: Come Voice to Insights e Waq migliorano la comunicazione.</p>
+                            </div>
+                            <div id="video-content-2" class="video-tabs__content">
+                                <!-- <img src="https://via.placeholder.com/700x400/28a745/ffffff?text=Video+Caso+d'Uso+2" alt="Caso d'Uso 2" class="img-fluid rounded-3"> -->
+                                <p class="color-text-secondary mt-3">Descrizione del caso d'uso 2: Ottimizzazione dei prezzi con Smart Pricing e Sales Predict.</p>
+                            </div>
+                            <div id="video-content-3" class="video-tabs__content">
+                                <!-- <img src="https://via.placeholder.com/700x400/ffc107/ffffff?text=Video+Caso+d'Uso+3" alt="Caso d'Uso 3" class="img-fluid rounded-3"> -->
+                                <p class="color-text-secondary mt-3">Descrizione del caso d'uso 3: Analisi del sentiment e fidelizzazione clienti con Sentiment e Stay on.</p>
+                            </div>
+                        </div>
+                        <div class="tabs-container d-flex justify-content-center flex-wrap gap-2">
+                            <button class="video-tabs__button btn btn-outline-secondary active" data-target="video-content-1">Comunicazione Integrata</button>
+                            <button class="video-tabs__button btn btn-outline-secondary" data-target="video-content-2">Strategie di Vendita</button>
+                            <button class="video-tabs__button btn btn-outline-secondary" data-target="video-content-3">Customer Experience</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="suite" class="py-5 bg-light d-none">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h2 class="display-5 fw-bolder mb-3">Un Ecosistema Integrato</h2>
+                        <p class="lead color-text-secondary">La nostra suite non è solo una raccolta di strumenti, ma un sistema intelligente in cui i dati fluiscono da un'app all'altra, arricchendo ogni processo e fornendo insight che non potresti ottenere da strumenti isolati.</p>
+                        <a href="demo.html" class="btn btn-primary color-bg-primary-btn fw-semibold py-3 px-5 rounded-4">Richiedi una Demo della Suite</a>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <!-- Segnaposto per un'immagine o un video -->
+                        <p class="color-text-secondary">[Placeholder per video/immagine che mostra il flusso di dati]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+    <!-- </main> -->
+    
+    
+    
+    <footer id="footer" class="color-bg-white py-3 mt-5">        
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="align-items-center align-items-md-start d-flex flex-column mb-3 mb-md-0 gap-1">
+                <p class="mb-0 color-text-secondary">&copy; 2025 BiNetwork srl</p>
+                <p class="mb-0 color-text-secondary">P.IVA 02238260224</p>
+                <p class="mb-0 color-text-secondary">Sede legale: Via Monache 6 - 38062 Arco (TN)</p>
+            </div>
+            <div class="align-items-center align-items-md-start d-flex flex-column mb-3 mb-md-0 gap-1">
+                <p class="mb-0 color-text-secondary"><i class="bi bi-telephone-fill me-2"></i><a href="tel:+390292100118" class="color-text-secondary fw-semibold text-decoration-none">+39 0292100118</a></p>
+                <p class="mb-0 color-text-secondary"><i class="bi bi-globe me-2"></i><a href="https://www.binetwork.it" target="_blank" class="color-text-secondary fw-semibold text-decoration-none">binetwork.it</a></p>
+                <p class="mb-0 color-text-secondary"><i class="bi bi-envelope-fill me-2"></i><a href="mailto:info@binetwork.it" class="color-text-secondary fw-semibold text-decoration-none">info@binetwork.it</a></p>
+            </div>
+            <div class="d-flex gap-3">
+                <a href="https://www.linkedin.com/company/bi-network-srl" target="_blank"  class="footer__social-icon"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="footer__social-icon"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="footer__social-icon"><i class="bi bi-facebook"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Privacy Policy Modal -->
+    <div class="modal fade" id="privacyPolicyModal" tabindex="-1" aria-labelledby="privacyPolicyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyPolicyModalLabel">Informativa sulla Privacy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Facsimile Privacy Policy Text -->
+                    <h6>1. Titolare del Trattamento</h6>
+                    <p>BiNetwork srl, con sede legale in Via Monache 6 – 38062 Arco (TN), P.IVA 02238260224, è il Titolare del trattamento dei Suo dati personali.</p>
+                    
+                    <h6>2. Dati Raccolti</h6>
+                    <p>Raccogliamo i seguenti dati personali tramite il form di contatto: nome, cognome, indirizzo email. Questi dati sono forniti volontariamente dall'utente.</p>
+                    
+                    <h6>3. Finalità del Trattamento</h6>
+                    <p>I Suoi dati personali sono trattati esclusivamente per le seguenti finalità:</p>
+                    <ul>
+                        <li>Rispondere alle Sue richieste di informazioni o consulenza.</li>
+                        <li>Fornire i servizi richiesti.</li>
+                    </ul>
+                    
+                    <h6>4. Base Giuridica del Trattamento</h6>
+                    <p>Il trattamento dei Suoi dati personali si basa sul Suo consenso esplicito, manifestato tramite la spunta della checkbox nel form di contatto.</p>
+                    
+                    <h6>5. Modalità del Trattamento</h6>
+                    <p>Il trattamento dei dati avviene mediante strumenti manuali, informatici e telematici con logiche strettamente correlate alle finalità sopra indicate e, comunque, in modo da garantire la sicurezza e la riservatezza dei dati stessi.</p>
+                    
+                    <h6>6. Periodo di Conservazione dei Dati</h6>
+                    <p>I Suoi dati personali saranno conservati per il tempo strettamente necessario al perseguimento delle finalità per le quali sono stati raccolti e, comunque, non oltre 24 mesi dalla raccolta, salvo diversi obblighi di legge.</p>
+                    
+                    <h6>7. Destinatari dei Dati</h6>
+                    <p>I Suoi dati personali potranno essere comunicati a soggetti terzi (es. fornitori di servizi tecnici, consulenti) solo se strettamente necessario per l'esecuzione dei servizi richiesti o per adempiere ad obblighi di legge. Tali soggetti saranno nominati Responsabili del Trattamento.</p>
+                    
+                    <h6>8. Diritti dell'Interessato</h6>
+                    <p>In ogni momento, Lei ha il diritto di ottenere la conferma dell'esistenza o meno di dati personali che La riguardano, di conoscerne il contenuto e l'origine, verificarne l'esattezza o chiederne l'integrazione o l'aggiornamento, oppure la rettificazione. Ha il diritto di chiedere la cancellazione, la trasformazione in forma anonima o il blocco dei dati trattati in violazione di legge, nonché di opporsi in ogni caso, per motivi legittimi, al loro trattamento. Per esercitare tali diritti, può contattare il Titolare del Trattamento all'indirizzo info@binetwork.it.</p>
+                    
+                    <h6>9. Modifiche all'Informativa</h6>
+                    <p>La presente Informativa sulla Privacy potrà subire modifiche nel tempo. La invitiamo a consultare periodicamente questa pagina per prendere visione degli aggiornamenti.</p>
+                    <!-- End Facsimile Privacy Policy Text -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
