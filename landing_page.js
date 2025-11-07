@@ -243,35 +243,35 @@ const initVideo = () => {
         video2.pause();
 
         // Aggiungi la classe di uscita Animate.css al video e testo da nascondere
-        videoToHide.classList.add('video-scale-out-animation'); // MODIFIED
-        if (textToHide) textToHide.classList.add('animate__slideOutDown'); // UNCHANGED
+        videoToHide.classList.add('video-scale-out-animation');
+        if (textToHide) textToHide.classList.add('animate__fadeOut'); // CHANGED
 
         // Usa Promise.all per attendere la fine di entrambe le animazioni
         Promise.all([
             new Promise(resolve => videoToHide.addEventListener('animationend', resolve, { once: true })),
             textToHide ? new Promise(resolve => textToHide.addEventListener('animationend', resolve, { once: true })) : Promise.resolve()
         ]).then(() => {
-            videoToHide.classList.remove('video-scale-out-animation'); // MODIFIED
+            videoToHide.classList.remove('video-scale-out-animation');
             videoToHide.classList.add('video--hidden');
             if (textToHide) {
-                textToHide.classList.remove('animate__slideOutDown');
+                textToHide.classList.remove('animate__fadeOut'); // CHANGED
                 textToHide.classList.add('video--hidden');
             }
 
             // Prepara il video e testo da mostrare per l'animazione di ingresso
             videoToShow.classList.remove('video--hidden');
-            videoToShow.classList.add('video-scale-in-animation'); // MODIFIED
+            videoToShow.classList.add('video-scale-in-animation');
             if (textToShow) {
                 textToShow.classList.remove('video--hidden');
-                textToShow.classList.add('animate__slideInUp'); // UNCHANGED
+                textToShow.classList.add('animate__fadeIn'); // CHANGED
             }
 
             Promise.all([
                 new Promise(resolve => videoToShow.addEventListener('animationend', resolve, { once: true })),
                 textToShow ? new Promise(resolve => textToShow.addEventListener('animationend', resolve, { once: true })) : Promise.resolve()
             ]).then(() => {
-                videoToShow.classList.remove('video-scale-in-animation'); // MODIFIED
-                if (textToShow) textToShow.classList.remove('animate__slideInUp');
+                videoToShow.classList.remove('video-scale-in-animation');
+                if (textToShow) textToShow.classList.remove('animate__fadeIn'); // CHANGED
             });
 
             // Attiva il pulsante corretto
