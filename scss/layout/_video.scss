@@ -13,6 +13,18 @@
         object-fit: cover;
         border-radius: inherit;
     }
+
+    #myVideo, #myVideo2 {
+        transform: scale(1.2);
+    }
+
+    #myVideo {
+        transform-origin: bottom right;
+    }
+
+    #myVideo2 {
+        transform-origin: top left;
+    }
 }
 
 // Stile per il pulsante di play/pausa sovrapposto
