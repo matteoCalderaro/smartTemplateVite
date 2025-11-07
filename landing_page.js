@@ -230,6 +230,10 @@ const initVideo = () => {
 
     // Funzione helper per mostrare/nascondere video e attivare/disattivare pulsanti
     const showVideo = (videoToShow, videoToHide, buttonToActivate, buttonToDeactivate) => {
+        // Disable the button that was just clicked to prevent double-clicks
+        buttonToActivate.disabled = true;
+        buttonToDeactivate.disabled = false;
+
         // Get corresponding text elements
         const textToShow = document.getElementById(`text-${videoToShow.id === 'myVideo' ? 'video-1' : 'video-2'}`);
         const textToHide = document.getElementById(`text-${videoToHide.id === 'myVideo' ? 'video-1' : 'video-2'}`);
@@ -288,6 +292,7 @@ const initVideo = () => {
         video1.classList.remove('video-initial-position'); // Video 1 parte già in posizione finale
         video2.classList.add('video--hidden');
         btnVideo1.classList.add('video-controls-bar__button--active');
+        btnVideo1.disabled = true; // Disable the initially active button
 
     
 
