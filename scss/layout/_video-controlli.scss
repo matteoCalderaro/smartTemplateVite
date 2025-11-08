@@ -2,7 +2,6 @@
 @use '../base/variables';
 
 #video-controlli {
-    height: 300px;
     margin-top: -23px;
     z-index: 100;
     background: var(--bismart-blue-gradient-to-bottom);
@@ -17,7 +16,7 @@
     border-radius: 9999px; // Pill shape
     border: 1px solid rgba(var(--color-white-rgb), 0.6);
     gap: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 40px;
 }
 
 .video-controls-bar__button {
@@ -40,8 +39,9 @@
 }
 
 .video-text {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     /* color: var(--color-white); Color is now handled by utility classes */
     margin-top: 17px;
     text-align: center;
+    font-weight: 500;
 }

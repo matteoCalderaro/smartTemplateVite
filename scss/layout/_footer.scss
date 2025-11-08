@@ -6,19 +6,12 @@
     border-top: 1px solid #555555;
 }
 
-
-
-// .footer__social-icon:hover i {
-//     color: var(--bismart-gold);
-// }
-
 #footer p, #footer i, #footer a {
     color: red;
-    color: var(--bismart-gold) !important
+    color: var(--color-text-secondary) !important
 }
 
 .footer__social-icon i {
     font-size: 1.5rem;
-    color: var(--bismart-gold) !important
-    //transition: color 0.3s ease;
+    color: var(--color-text-secondary) !important
 }

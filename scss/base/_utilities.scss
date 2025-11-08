@@ -24,26 +24,17 @@ body,
 }
 
 //////////////////////////////////////////////
-///  PADDING VERTICALE TRA SEZIONI (MOBILE)
+///  SPAZIATURA VERTICALE SEZIONI
 ////////////////////////////////////////////////
-@include media-queries.media-down(variables.$breakpoint-md) {
-    #voiceToInsights{
-        padding-bottom: 1rem !important;
-    }
-    #founder-message,
-    #form  {
-        padding-top: 1rem !important;
-        padding-bottom: 1rem !important;
-    }
-}
-@include media-queries.media-down(variables.$breakpoint-lg) {
-    #voiceToInsights{
-        padding-bottom: 2rem ;
-    }
-    #founder-message,
-    #form  {
-        padding-top: 2rem;
+.section-padding {
+    padding-bottom: 4.5rem;
+
+    @include media-queries.media-down(variables.$breakpoint-lg) {
         padding-bottom: 2rem;
+    }
+
+    @include media-queries.media-down(variables.$breakpoint-md) {
+        padding-bottom: 1.5rem;
     }
 }
 
@@ -56,30 +47,6 @@ body,
     margin-top: -60px;
 }
 
-
-// Genera classi per margin-top, margin-bottom, padding-top, padding-bottom
-@each $key, $value in variables.$spacers {
-  .mt-#{$key} {
-    margin-top: $value;
-  }
-  .mb-#{$key} {
-    margin-bottom: $value;
-  }
-  .my-#{$key} {
-    margin-top: $value;
-    margin-bottom: $value;
-  }
-  .pt-#{$key} {
-    padding-top: $value;
-  }
-  .pb-#{$key} {
-    padding-bottom: $value;
-  }
-    .py-#{$key} {
-      padding-top: $value;
-      padding-bottom: $value;
-    }
-  }
   
 //////////////////////
 ///  CUSTOM CONTAINER WIDTH

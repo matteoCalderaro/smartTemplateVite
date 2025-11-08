@@ -20,6 +20,8 @@
     --bismart-gold-hover: #d19f5a;
     --bismart-gold-light: #e0b86a;
     --bismart-gold-light-hover: #f8d27c;
+
+    --color-text-secondary: #6c757d; 
 }
 
 // Variabili Sass
@@ -49,11 +51,4 @@ $breakpoint-md: 769px;
 $breakpoint-lg: 992px;
 $breakpoint-xl: 1200px;
 $breakpoint-xxl: 1400px;
-
-// Scala di spaziatura estesa per utility classes
-$spacers: (
-  6: 4.5rem,
-  7: 6rem,
-  8: 8rem
-);
 
