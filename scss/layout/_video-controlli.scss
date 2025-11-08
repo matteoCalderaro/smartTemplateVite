@@ -5,17 +5,17 @@
     height: 300px;
     margin-top: -23px;
     z-index: 100;
-    background: linear-gradient(to bottom, color.scale(variables.$bismart-dark-grey-blue, $lightness: 5%) 0, variables.$bismart-blue 50px, variables.$bismart-blue 100%);
-    background: linear-gradient(to bottom, rgb(40 42 85) 0, #010336 40px, #010336 100%);
+    background: var(--bismart-blue-gradient-to-bottom);
 }
 
 .video-controls-bar {
+    background: var(--bismart-blue-gradient-to-bottom);
     display: inline-flex; /* Changed from inline-flex */
     align-items: center;
     justify-content: center;
     padding: 0.5rem;
     border-radius: 9999px; // Pill shape
-    border: 1px solid rgba(var(--color-white-rgb), 0.2);
+    border: 1px solid rgba(var(--color-white-rgb), 0.6);
     gap: 0.5rem;
     margin-top: 2rem;
 }
@@ -23,9 +23,9 @@
 .video-controls-bar__button {
     width: 8rem; /* Forced equal width */
     background-color: transparent;
-    border: 1px solid transparent;
+    border: 1px solid rgba(var(--color-white-rgb), 0.6);
     color: white;
-    padding: 0.75rem 1.5rem;
+    padding: 5px 10px;
     border-radius: 9999px; // Pill shape
     font-weight: 700;
     cursor: pointer;
