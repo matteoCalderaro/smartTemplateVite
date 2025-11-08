@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="icon" type="image/x-icon" href="media/favicon.ico">
     <style>.is-loading { visibility: hidden; }</style>
-  <script type="module" crossorigin src="./assets/main-DyOWvgnt.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-DbgWZJHL.css">
+  <script type="module" crossorigin src="./assets/main-CA4gjKWf.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-CPgj32Cv.css">
 </head>
 <body class="is-loading" data-page="home">
     
@@ -61,321 +61,242 @@
             </div>
         </div>
     </header>
+
+    <main id="main-content">
     
-    <section id="video" class="container-offset">
-        <div class="container">
-            <div class="card card--video-no-hover">
+        <section id="video" class="container-offset">
+            <div class="container">
+                <div class="card card--video-no-hover">
+                    
+                    <div class="video-player-container">
+                        
+                        <video id="voiceMobile" preload="metadata" muted playsinline class="animate__animated"></video>
+                        <video id="voiceDesktop" preload="metadata" muted playsinline class="animate__animated d-none"></video>
+                        <video id="insightsMobile" preload="metadata" muted playsinline class="video--hidden animate__animated"></video>
+                        <video id="insightsDesktop" preload="metadata" muted playsinline class="video--hidden animate__animated d-none"></video>
+                        
+                        <button id="playPauseBtn" class="video-play-button">
+                            <i class="bi bi-play-fill"></i>
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="video-controlli" class="text-center section-padding">
+            <div class="container">
+                <div class="video-controls-bar">
+                    <button id="btn-voice" class="video-controls-bar__button video-controls-bar__button--active">VOICE</button>
+                    <button id="btn-insights" class="video-controls-bar__button">INSIGHTS</button>
+                </div>
+                <p id="text-video-1" class="animate__animated video-text color-text-gold-light px-4">Trasforma le conversazioni in dati</p>
+                <p id="text-video-2" class="animate__animated video--hidden video-text color-text-gold-light px-4">Trasforma i dati in decisioni strategiche</p>
+            </div>
+        </section>
+        
+        <section id="voiceToInsights" class="section-padding">
+            <div class="container">
+                <!-- Titolo e Descrizione (fuori dalle card) -->
+                <div class="text-center text-white">
+                    <h2 class="fw-bolder mb-3 color-text-gold-light">Voice to Insights - Speech to Text</h2>
+                    <p class="lead mb-5 mx-auto" style="max-width: 800px;">Trasforma registrazioni (customer service, field agent, meeting, interviste) in testo strutturato, analizzandolo per topic, sentiment, urgenza e rilevanza. Integrabile via dashboard/API con CRM e tool aziendali.</p>
+                    <h2 class="fw-bolder mb-5 color-text-gold-light">I Vantaggi Principali</h2>
+                </div>
                 
-                                <div class="video-player-container">
-                
-                                    <video id="voiceMobile" preload="metadata" muted playsinline class="animate__animated"></video>
-                
-                                    <video id="voiceDesktop" preload="metadata" muted playsinline class="animate__animated d-none"></video>
-                
-                
-                
-                                    <video id="insightsMobile" preload="metadata" muted playsinline class="video--hidden animate__animated"></video>
-                
-                                    <video id="insightsDesktop" preload="metadata" muted playsinline class="video--hidden animate__animated d-none"></video>
-                
-                                    <button id="playPauseBtn" class="video-play-button">
-                
-                                        <i class="bi bi-play-fill"></i>
-                
+                <!-- Grid per i punti elenco (ora card) -->
+                <div class="cards-grid">
+                    <!-- Vantaggio 1 -->
+                    <div>
+                        <div class="card h-100">
+                            <div class="card__base p-4 text-center text-white h-100">
+                                <i class="bi bi-lightning-charge-fill fs-1 mb-3 d-block color-text-gold"></i>
+                                <h4 class="fw-bold mb-2 color-text-gold-light">Accesso Immediato</h4>
+                                <p class="mb-0">Accedi subito ai contenuti nascosti nelle conversazioni per non perdere nessuna opportunità!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vantaggio 2 -->
+                    <div>
+                        <div class="card h-100">
+                            <div class="card__base p-4 text-center text-white h-100">
+                                <i class="bi bi-robot fs-1 mb-3 d-block color-text-gold"></i>
+                                <h4 class="fw-bold mb-2 color-text-gold-light">Automazione Intelligente</h4>
+                                <p class="mb-0">Automatizza reportistica e classificazione delle interazioni per risparmiare tempo prezioso!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vantaggio 3 -->
+                    <div>
+                        <div class="card h-100">
+                            <div class="card__base p-4 text-center text-white h-100">
+                                <i class="bi bi-graph-up-arrow fs-1 mb-3 d-block color-text-gold"></i>
+                                <h4 class="fw-bold mb-2 color-text-gold-light">Migliora i Processi</h4>
+                                <p class="mb-0">Ottimizza la gestione del customer feedback e dei processi di vendita grazie a dati concreti!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Vantaggio 4 -->
+                    <div>
+                        <div class="card h-100">
+                            <div class="card__base p-4 text-center text-white h-100">
+                                <i class="bi bi-lightbulb-fill fs-1 mb-3 d-block color-text-gold"></i>
+                                <h4 class="fw-bold mb-2 color-text-gold-light">Decisioni Basate sui Dati</h4>
+                                <p class="mb-0">Prendi decisioni strategiche basate su insight reali e non su sensazioni!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="form" class="section-padding">
+            <div class="container">
+                <div class="">
+                    <div class="card rounded-5">
+                        <div class="form__wrapper p-4">
+                            <h2 class="fw-bolder mb-4 color-text-primary">Richiedi la Tua Consulenza Gratuita</h2>
+                            <form id="form-contatti">                                        
+                                
+                                <div id="data" >
+                                    <h5 class="mb-3 color-text-primary">Dove Possiamo Contattarti?</h5>
+                                    <div class="fv-row">
+                                        <div class="form-floating">
+                                            <input id="titleId" type="text" class="form-control" placeholder="Nome" name="name"
+                                            value="" />
+                                            <label for="titleId">Nome</label>
+                                            <div class="invalid-feedback"></div>
+                                        </div>
+                                    </div>
+                                    <div class="fv-row mt-3">
+                                        <div class="form-floating">
+                                            <input id="surnameId" type="text" class="form-control" placeholder="Cognome" name="cognome"
+                                            value="" />
+                                            <label for="surnameId">Cognome</label>
+                                            <div class="invalid-feedback"></div>
+                                        </div>
+                                    </div>
+                                    <div class="fv-row my-3">
+                                        <div class="form-floating">
+                                            <input id="emailId" type="email" class="form-control" placeholder="Email" name="email"
+                                            value="" />
+                                            <label for="emailId">Email</label>
+                                            <div class="invalid-feedback"></div>
+                                        </div>
+                                    </div>
+                                    <h5 class="mb-3 color-text-primary">Consenso Privacy</h5>
+                                    <div class="fv-row form-check form-check-privacy">
+                                        <input class="form-check-input" type="checkbox" value="" id="privacy" name="privacy" >
+                                        <label class="form-check-label" for="privacy">
+                                            Dichiaro di aver letto <a href="#" class="privacy-link">l'informativa sulla privacy</a> e acconsento al trattamento dei miei dati personali.
+                                        </label>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                    <button type="button" class="btn cta-btn mt-5" id="submit">
+                                        <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+                                        <span class="button-text">Invia</span>
                                     </button>
-                
                                 </div>
-                
-            </div>
-        </div>
-    </section>
-    
-    <section id="video-controlli" class="text-center">
-        <div class="video-controls-bar">
-            <button id="btn-voice" class="video-controls-bar__button video-controls-bar__button--active">VOICE</button>
-            <button id="btn-insights" class="video-controls-bar__button">INSIGHTS</button>
-        </div>
-        <p id="text-video-1" class="animate__animated video-text color-text-gold-light px-4">Cattura ogni parola: trasforma le conversazioni in dati</p>
-        <p id="text-video-2" class="animate__animated video--hidden video-text color-text-gold-light px-4">Analizza e scopri: trasforma i dati in decisioni strategiche</p>
-    </section>
-    
-    <section id="voiceToInsights" class="py-6">
-        <div class="container">
-            <!-- Titolo e Descrizione (fuori dalle card) -->
-            <div class="text-center text-white">
-                <h2 class="fw-bolder mb-3 color-text-gold-light">Voice to Insights - Speech to Text</h2>
-                <p class="lead mb-5 mx-auto" style="max-width: 800px;">Trasforma registrazioni (customer service, field agent, meeting, interviste) in testo strutturato, analizzandolo per topic, sentiment, urgenza e rilevanza. Integrabile via dashboard/API con CRM e tool aziendali.</p>
-                <h2 class="fw-bolder mb-5 color-text-gold-light">I Vantaggi Principali</h2>
-            </div>
-            
-            <!-- Grid per i punti elenco (ora card) -->
-            <div class="row g-4">
-                <!-- Vantaggio 1 -->
-                <div class="col-12 col-md-6">
-                    <div class="card h-100">
-                        <div class="card__base p-4 text-center text-white h-100">
-                            <i class="bi bi-lightning-charge-fill fs-1 mb-3 d-block color-text-gold"></i>
-                            <h4 class="fw-bold mb-2 color-text-gold-light">Accesso Immediato</h4>
-                            <p class="mb-0">Accedi subito ai contenuti nascosti nelle conversazioni per non perdere nessuna opportunità.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Vantaggio 2 -->
-                <div class="col-12 col-md-6">
-                    <div class="card h-100">
-                        <div class="card__base p-4 text-center text-white h-100">
-                            <i class="bi bi-robot fs-1 mb-3 d-block color-text-gold"></i>
-                            <h4 class="fw-bold mb-2 color-text-gold-light">Automazione Intelligente</h4>
-                            <p class="mb-0">Automatizza reportistica e classificazione delle interazioni per risparmiare tempo prezioso.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Vantaggio 3 -->
-                <div class="col-12 col-md-6">
-                    <div class="card h-100">
-                        <div class="card__base p-4 text-center text-white h-100">
-                            <i class="bi bi-graph-up-arrow fs-1 mb-3 d-block color-text-gold"></i>
-                            <h4 class="fw-bold mb-2 color-text-gold-light">Migliora i Processi</h4>
-                            <p class="mb-0">Ottimizza la gestione del customer feedback e dei processi di vendita grazie a dati concreti.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Vantaggio 4 -->
-                <div class="col-12 col-md-6">
-                    <div class="card h-100">
-                        <div class="card__base p-4 text-center text-white h-100">
-                            <i class="bi bi-lightbulb-fill fs-1 mb-3 d-block color-text-gold"></i>
-                            <h4 class="fw-bold mb-2 color-text-gold-light">Decisioni Basate sui Dati</h4>
-                            <p class="mb-0">Prendi decisioni strategiche basate su insight reali e non su sensazioni.</p>
+                                
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    
-    <section id="form" class="py-6">
-        <div class="container">
-            <div class="">
-                <div class="card rounded-5">
-                    <div class="form__wrapper p-4">
-                        <h2 class="fw-bolder mb-4 color-text-primary">Richiedi la Tua Consulenza Gratuita</h2>
-                        <form id="form-contatti">                                        
-                            
-                            <div id="data" >
-                                <h5 class="mb-3 color-text-primary">Dove Possiamo Contattarti?</h5>
-                                <div class="fv-row">
-                                    <div class="form-floating">
-                                        <input id="titleId" type="text" class="form-control" placeholder="Nome" name="name"
-                                        value="" />
-                                        <label for="titleId">Nome</label>
-                                        <div class="invalid-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="fv-row mt-3">
-                                    <div class="form-floating">
-                                        <input id="surnameId" type="text" class="form-control" placeholder="Cognome" name="cognome"
-                                        value="" />
-                                        <label for="surnameId">Cognome</label>
-                                        <div class="invalid-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="fv-row my-3">
-                                    <div class="form-floating">
-                                        <input id="emailId" type="email" class="form-control" placeholder="Email" name="email"
-                                        value="" />
-                                        <label for="emailId">Email</label>
-                                        <div class="invalid-feedback"></div>
-                                    </div>
-                                </div>
-                                <h5 class="mb-3 color-text-primary">Consenso Privacy</h5>
-                                <div class="fv-row form-check form-check-privacy">
-                                    <input class="form-check-input" type="checkbox" value="" id="privacy" name="privacy" >
-                                    <label class="form-check-label" for="privacy">
-                                        Dichiaro di aver letto <a href="#" class="privacy-link">l'informativa sulla privacy</a> e acconsento al trattamento dei miei dati personali.
-                                    </label>
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                                <button type="button" class="btn cta-btn mt-5" id="submit">
-                                    <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
-                                    <span class="button-text">Invia</span>
-                                </button>
+        </section>
+        
+        <section id="founder-message" class="section-padding">
+            <div class="container">
+                <div class="card">
+                    <div class="card__base p-4 p-md-5">
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-12 col-md-3 text-center mb-4 mb-md-0">
+                                <img src="media/davide.jpg" alt="Davide, Founder di BiSmart" class="img-fluid founder-message__img mx-auto d-block">
                             </div>
-                            
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="founder-message" class="py-6">
-        <div class="container">
-            <div class="card">
-                <div class="card__base p-4 p-md-5">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-12 col-md-3 text-center mb-4 mb-md-0">
-                            <img src="media/davide.jpg" alt="Davide, Founder di BiSmart" class="img-fluid founder-message__img mx-auto d-block">
-                        </div>
-                        <div class="col-12 col-md-9 founder-message__text text-white">
-                            <h3 class="fw-bolder mb-3 color-text-gold-light">Dalla complessità alla chiarezza: la mia visione per Voi...</h3>
-                            <blockquote class="founder-message__quote"><span style="width: 20px; display: inline-block;"></span><span class="founder-message__quote--first-word">Ho</span> creato BiSmart per un motivo semplice: trasformare la nebbia dei dati che rallenta le aziende in chiarezza per agire. La nostra missione è darvi la visione per far volare il business, con decisioni più rapide e <span class="founder-message__quote--last-word">intelligenti.</span></blockquote>
-                            <div class="mt-4">
-                                <p class="fw-semibold mb-1">Con visione, per il vostro successo,</p>
-                                <p class="fw-bold mb-0">Davide Massari</p>
-                                <p class="mb-0"><small>Founder di BiSmart</small></p>
-                            </div>                                
+                            <div class="col-12 col-md-9 founder-message__text text-white">
+                                <h3 class="fw-bolder mb-3 color-text-gold-light">Dalla complessità alla chiarezza: la mia visione per Voi...</h3>
+                                <blockquote class="founder-message__quote"><span style="width: 20px; display: inline-block;"></span><span class="founder-message__quote--first-word">Ho</span> creato BiSmart per un motivo semplice: trasformare la nebbia dei dati che rallenta le aziende in chiarezza per agire. La nostra missione è darvi la visione per far volare il business, con decisioni più rapide e <span class="founder-message__quote--last-word">intelligenti.</span></blockquote>
+                                <div class="mt-4">
+                                    <p class="fw-semibold mb-1">Con visione, per il vostro successo,</p>
+                                    <p class="fw-bold mb-0">Davide Massari</p>
+                                    <p class="mb-0"><small>Founder di BiSmart</small></p>
+                                </div>                                
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+        
+        <div class="container mb-3 text-center fs-5">
+            <span class="color-text-gold-light">Scopri le altre applicazioni della suite BiSmart</span>
         </div>
-    </section>
-    
-    <section id="use-cases" class="use-cases d-none">
-        <div class="container text-center mb-5">
-            <h2 class="display-4 fw-bolder mb-3">Casi d'Uso Integrati</h2>
-            <p class="lead color-text-secondary mx-auto max-w-60rem">
-                Scopri come le applicazioni BiSmart lavorano in sinergia per ottimizzare i tuoi processi aziendali.
-            </p>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="video-tabs color-bg-card color-border-card p-3 rounded-4 mb-4">
-                        <!-- Segnaposto per contenuto video/immagine -->
-                        <div id="video-content-1" class="video-tabs__content active">
-                            <!-- <img src="https://via.placeholder.com/700x400/007bff/ffffff?text=Video+Caso+d'Uso+1" alt="Caso d'Uso 1" class="img-fluid rounded-3"> -->
-                            <p class="color-text-secondary mt-3">Descrizione del caso d'uso 1: Come Voice to Insights e Waq migliorano la comunicazione.</p>
-                        </div>
-                        <div id="video-content-2" class="video-tabs__content">
-                            <!-- <img src="https://via.placeholder.com/700x400/28a745/ffffff?text=Video+Caso+d'Uso+2" alt="Caso d'Uso 2" class="img-fluid rounded-3"> -->
-                            <p class="color-text-secondary mt-3">Descrizione del caso d'uso 2: Ottimizzazione dei prezzi con Smart Pricing e Sales Predict.</p>
-                        </div>
-                        <div id="video-content-3" class="video-tabs__content">
-                            <!-- <img src="https://via.placeholder.com/700x400/ffc107/ffffff?text=Video+Caso+d'Uso+3" alt="Caso d'Uso 3" class="img-fluid rounded-3"> -->
-                            <p class="color-text-secondary mt-3">Descrizione del caso d'uso 3: Analisi del sentiment e fidelizzazione clienti con Sentiment e Stay on.</p>
-                        </div>
+        <section id="suite-marquee" class="section-padding">
+            <div class="marquee">
+                <div class="marquee__content">
+                    <div class="marquee__item">
+                        <i class="bi bi-mic-fill"></i>
+                        <span>Voice to Insights</span>
                     </div>
-                    <div class="tabs-container d-flex justify-content-center flex-wrap gap-2">
-                        <button class="video-tabs__button btn btn-outline-secondary active" data-target="video-content-1">Comunicazione Integrata</button>
-                        <button class="video-tabs__button btn btn-outline-secondary" data-target="video-content-2">Strategie di Vendita</button>
-                        <button class="video-tabs__button btn btn-outline-secondary" data-target="video-content-3">Customer Experience</button>
+                    <div class="marquee__item">
+                        <i class="bi bi-whatsapp"></i>
+                        <span>WAQ</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-currency-euro"></i>
+                        <span>SmartPricing</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-person-check-fill"></i>
+                        <span>StayOn</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-chat-heart-fill"></i>
+                        <span>Sentiment</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-cloud-download"></i>
+                        <span>Sales Predict</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-broadcast"></i>
+                        <span>WAP</span>
+                    </div>
+                    <!-- Duplicated content for seamless loop -->
+                    <div class="marquee__item">
+                        <i class="bi bi-mic-fill"></i>
+                        <span>Voice to Insights</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-whatsapp"></i>
+                        <span>WAQ</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-currency-euro"></i>
+                        <span>SmartPricing</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-person-check-fill"></i>
+                        <span>StayOn</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-chat-heart-fill"></i>
+                        <span>Sentiment</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-cloud-download"></i>
+                        <span>Sales Predict</span>
+                    </div>
+                    <div class="marquee__item">
+                        <i class="bi bi-broadcast"></i>
+                        <span>WAP</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
     
-    <section id="suite" class="py-5 bg-light d-none">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <h2 class="display-5 fw-bolder mb-3">Un Ecosistema Integrato</h2>
-                    <p class="lead color-text-secondary">La nostra suite non è solo una raccolta di strumenti, ma un sistema intelligente in cui i dati fluiscono da un'app all'altra, arricchendo ogni processo e fornendo insight che non potresti ottenere da strumenti isolati.</p>
-                    <a href="demo.html" class="btn btn-primary color-bg-primary-btn fw-semibold py-3 px-5 rounded-4">Richiedi una Demo della Suite</a>
-                </div>
-                <div class="col-md-6 text-center">
-                    <!-- Segnaposto per un'immagine o un video -->
-                    <p class="color-text-secondary">[Placeholder per video/immagine che mostra il flusso di dati]</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="applicazioni" class="container pb-6 d-none">
-        <!-- <div class="container"> -->
-            <div class="row g-4 justify-content-center">
-                <!-- Card per 7 applicazioni -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
-                            <div class="card__body">
-                                <span class="card__icon mb-4 color-text-gold"><i class="bi bi-mic-fill"></i></span>
-                                <h3 class="fs-4 fw-bold mb-2 color-text-gold">Voice to Insights</h3>
-                                <p class="text-white card__description">Trasforma le tue conversazioni in insight strategici per decisioni rapide!</p>
-                            </div>
-                            <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
-                            <div class="card__body">
-                                <span class="card__icon mb-4 color-text-gold"><i class="bi bi-whatsapp"></i></span>
-                                <h3 class="fs-4 fw-bold mb-2 color-text-gold">Waq</h3>
-                                <p class="text-white card__description">Offri assistenza clienti immediata 24/7 via WhatsApp, riducendo il carico del tuo team!</p>
-                            </div>
-                            <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
-                            <div class="card__body">
-                                <span class="card__icon mb-4 color-text-gold"><i class="bi bi-currency-euro"></i></span>
-                                <h3 class="fs-4 fw-bold mb-2 color-text-gold">Smart Pricing</h3>
-                                <p class="text-white card__description">Ottimizza i prezzi in tempo reale con l'AI, massimizzando margini e competitività!</p>
-                            </div>
-                            <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
-                            <div class="card__body">
-                                <span class="card__icon mb-4 color-text-gold"><i class="bi bi-person-check-fill"></i></span>
-                                <h3 class="fs-4 fw-bold mb-2 color-text-gold">Stay on</h3>
-                                <p class="text-white card__description">Prevedi l'abbandono dei clienti e attiva strategie di fidelizzazione mirate per aumentare la retention!</p>
-                            </div>
-                            <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
-                            <div class="card__body">
-                                <span class="card__icon mb-4 color-text-gold"><i class="bi bi-chat-heart-fill"></i></span>
-                                <h3 class="fs-4 fw-bold mb-2 color-text-gold">Sentiment</h3>
-                                <p class="text-white card__description">Monitora la reputazione del tuo brand analizzando il sentiment di clienti e utenti su recensioni e social!</p>
-                            </div>
-                            <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
-                            <div class="card__body">
-                                <span class="card__icon mb-4 color-text-gold"><i class="bi bi-cloud-download"></i></span>
-                                <h3 class="fs-4 fw-bold mb-2 color-text-gold">Sales Predict</h3>
-                                <p class="text-white card__description">Anticipa i trend di vendita con previsioni accurate, ottimizzando pianificazione e strategie commerciali!</p>
-                            </div>
-                            <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card__base text-center h-100 d-flex flex-column justify-content-between p-4">
-                            <div class="card__body">
-                                <span class="card__icon mb-4 color-text-gold"><i class="bi bi-broadcast"></i></span>
-                                <h3 class="fs-4 fw-bold mb-2 color-text-gold">Wap</h3>
-                                <p class="text-white card__description">Automatizza l'invio di report e documenti via WhatsApp, comunicando dati e informazioni in tempo reale!</p>
-                            </div>
-                            <!-- <a href="#" class="btn btn-link color-text-primary fw-semibold">Scopri di più</a> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <!-- </div> -->
-    </section>
-    
-    <footer id="footer" class="color-bg-white py-3 mt-5">        
+    <footer id="footer" class="color-bg-white py-3">        
         <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
             <div class="align-items-center align-items-md-start d-flex flex-column mb-3 mb-md-0 gap-1">
                 <p class="mb-0 ">&copy; 2025 BiNetwork srl</p>
