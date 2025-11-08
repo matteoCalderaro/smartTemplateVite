@@ -34,35 +34,41 @@
         object-fit: cover;
         border-radius: inherit;
     }
+    @include media-queries.media-down(variables.$breakpoint-sm) {
+        video {
+            margin-top: -17px;
+        }
+    }
 }
 
 // Stile per il pulsante di play/pausa sovrapposto
 .video-play-button {
     position: absolute;
-    bottom: 64px; // Spostato in basso
+    bottom: 34px; // Spostato in basso
     right: 47px;  // Spostato a destra
-    z-index: 10;
-    background-color: var(--bismart-blue);
-    border: 2px solid var(--bismart-blue);
+    background-color: var(--bismart-gold);
+    border: 2px solid var(--bismart-gold);
     color: white;
-    width: 60px;   // Diametro ridotto
-    height: 60px;  // Diametro ridotto
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem; // Dimensione icona ridotta
+    font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
 
     @include media-queries.media-down(variables.$breakpoint-sm) {
-        bottom: 70px;
-        right: 16px;
+        bottom: 41px;
+        right: 28px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
     }
 
     &:hover {
-        background-color: var(--bismart-blue);
-        transform: scale(1.1); // Rimosso translate
+        background-color: var(--bismart-gold-hover);
     }
 
     .bi-pause-fill {

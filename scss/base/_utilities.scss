@@ -81,21 +81,22 @@ body,
     }
   }
   
-  //////////////////////
-  ///  CUSTOM CONTAINER WIDTH
-  ///////////////////
+//////////////////////
+///  CUSTOM CONTAINER WIDTH
+///////////////////
 #video .container {
     width: 1000px;
 }  
-  #voiceToInsights .container,
-  #form .container,
-  #founder-message .container {
-      max-width: 1000px;
-  }
+#voiceToInsights .container,
+#form .container,
+#founder-message .container {
+    max-width: 1000px;
+}
 
-  @include media-queries.media-down(variables.$breakpoint-sm) {
+@include media-queries.media-down(variables.$breakpoint-sm) {
     #video .container {
-      width: 100%;
+      width: 500px;
+      margin-left: 10px;
   }
 }
   

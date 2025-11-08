@@ -218,13 +218,20 @@ const initPrivacyModal = () => {
 };
 
 const initVideo = () => {
+    // 1. --- SETUP & CONFIGURATION ---
     const videoContainer = document.querySelector('.video-player-container');
+    const voiceMobile = document.getElementById('voiceMobile');
+    const voiceDesktop = document.getElementById('voiceDesktop');
+    const insightsMobile = document.getElementById('insightsMobile');
+    const insightsDesktop = document.getElementById('insightsDesktop');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const btnVideo1 = document.getElementById('btn-voice');
+    const btnVideo2 = document.getElementById('btn-insights');
 
-    // Flag per la modalità di sviluppo/produzione
+    // Exit if essential elements are missing
+    if (!voiceMobile || !voiceDesktop || !insightsMobile || !insightsDesktop || !playPauseBtn || !videoContainer || !btnVideo1 || !btnVideo2) return;
+
     const isDevelopment = false; // Imposta a 'true' per sviluppo, 'false' per produzione
-
-    // --- Video Sources Configuration ---
-    // Production URLs (Cloudinary)
     const videoSourcesProd = {
         voice: {
             mobile: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608766/voice_mob_zpzqmw.mp4",
@@ -235,86 +242,92 @@ const initVideo = () => {
             desktop: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608749/insights_desk_r4gp16.mp4"
         }
     };
-
-    // Development URLs (Local)
     const videoSourcesDev = {
         voice: {
             mobile: "/media/video/mobile/voice.mp4",
             desktop: "/media/video/desktop/voice.mp4"
         },
         insights: {
-            mobile: "/media/video/mobile/insights.mp4", // Using desktop version as placeholder
+            mobile: "/media/video/mobile/insights.mp4",
             desktop: "/media/video/desktop/insights.mp4"
         }
     };
-
-    // Select sources based on the isDevelopment flag
     const videoSources = isDevelopment ? videoSourcesDev : videoSourcesProd;
-    // --- End of Configuration ---
-    
-    // Get all video elements
-    const voiceMobile = document.getElementById('voiceMobile');
-    const voiceDesktop = document.getElementById('voiceDesktop');
-    const insightsMobile = document.getElementById('insightsMobile');
-    const insightsDesktop = document.getElementById('insightsDesktop');
 
-    const playPauseBtn = document.getElementById('playPauseBtn');
-
-    const btnVideo1 = document.getElementById('btn-voice');
-    const btnVideo2 = document.getElementById('btn-insights');
-
-    if (!voiceMobile || !voiceDesktop || !insightsMobile || !insightsDesktop || !playPauseBtn || !videoContainer || !btnVideo1 || !btnVideo2) return;
-
-    // Set sources for all videos from the config object
+    // Assign sources
     voiceMobile.src = videoSources.voice.mobile;
     voiceDesktop.src = videoSources.voice.desktop;
     insightsMobile.src = videoSources.insights.mobile;
     insightsDesktop.src = videoSources.insights.desktop;
 
-    const isMobile = window.innerWidth < 576; // Using Bootstrap's 'sm' breakpoint
-
+    // State variables
     let activeVideo1, activeVideo2;
 
-    if (isMobile) {
-        activeVideo1 = voiceMobile;
-        activeVideo2 = insightsMobile;
-        voiceDesktop.classList.add('d-none'); // Ensure desktop is hidden
-        insightsDesktop.classList.add('d-none');
-        voiceMobile.classList.remove('d-none'); // Ensure mobile is visible
-        insightsMobile.classList.remove('d-none');
-    } else {
-        activeVideo1 = voiceDesktop;
-        activeVideo2 = insightsDesktop;
-        voiceMobile.classList.add('d-none'); // Ensure mobile is hidden
-        insightsMobile.classList.add('d-none');
-        voiceDesktop.classList.remove('d-none'); // Ensure desktop is visible
-        insightsDesktop.classList.remove('d-none');
-    }
+    // 2. --- UTILITY FUNCTIONS ---
+    const debounce = (func, wait) => {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    };
+    const isMobile = () => window.innerWidth < 576;
 
-    // Ensure the initially hidden video (activeVideo2) has its src set
-    // and is hidden with video--hidden class
-    activeVideo2.classList.add('video--hidden');
+    // 3. --- CORE LOGIC ---
 
+    // Updates which videos are active and visible based on screen size and current theme
+    const updateVideoVisibility = () => {
+        const wasOnInsights = btnVideo2.classList.contains('video-controls-bar__button--active');
+        [voiceMobile, voiceDesktop, insightsMobile, insightsDesktop].forEach(v => v.pause());
 
-    // Funzione helper per mostrare/nascondere video e attivare/disattivare pulsanti
+        if (isMobile()) {
+            activeVideo1 = voiceMobile;
+            activeVideo2 = insightsMobile;
+            voiceDesktop.classList.add('d-none');
+            insightsDesktop.classList.add('d-none');
+            voiceMobile.classList.remove('d-none');
+            insightsMobile.classList.remove('d-none');
+        } else {
+            activeVideo1 = voiceDesktop;
+            activeVideo2 = insightsDesktop;
+            voiceMobile.classList.add('d-none');
+            insightsMobile.classList.add('d-none');
+            voiceDesktop.classList.remove('d-none');
+            insightsDesktop.classList.remove('d-none');
+        }
+
+        if (wasOnInsights) {
+            activeVideo1.classList.add('video--hidden');
+            activeVideo2.classList.remove('video--hidden');
+        } else {
+            activeVideo1.classList.remove('video--hidden');
+            activeVideo2.classList.add('video--hidden');
+        }
+    };
+
+    // Handles the animated transition between video themes
     const showVideo = (videoToShow, videoToHide, buttonToActivate, buttonToDeactivate) => {
-        // Disable the button that was just clicked to prevent double-clicks
+        // --- IMMEDIATE FEEDBACK ---
         buttonToActivate.disabled = true;
         buttonToDeactivate.disabled = false;
+        btnVideo1.classList.remove('video-controls-bar__button--active');
+        btnVideo2.classList.remove('video-controls-bar__button--active');
+        buttonToActivate.classList.add('video-controls-bar__button--active');
+        // --- END IMMEDIATE FEEDBACK ---
 
-        // Get corresponding text elements
-        const textToShow = document.getElementById(`text-${videoToShow.id.includes('myVideo2') ? 'video-2' : 'video-1'}`);
-        const textToHide = document.getElementById(`text-${videoToHide.id.includes('myVideo2') ? 'video-2' : 'video-1'}`);
+        const textToShow = document.getElementById(`text-${videoToShow.id.toLowerCase().includes('insights') ? 'video-2' : 'video-1'}`);
+        const textToHide = document.getElementById(`text-${videoToHide.id.toLowerCase().includes('insights') ? 'video-2' : 'video-1'}`);
 
-        // Pausa entrambi i video prima di cambiare
         activeVideo1.pause();
         activeVideo2.pause();
 
-        // Aggiungi la classe di uscita Animate.css al video e testo da nascondere
         videoToHide.classList.add('animate__fadeOut');
         if (textToHide) textToHide.classList.add('animate__fadeOut');
 
-        // Usa Promise.all per attendere la fine di entrambe le animazioni
         Promise.all([
             new Promise(resolve => videoToHide.addEventListener('animationend', resolve, { once: true })),
             textToHide ? new Promise(resolve => textToHide.addEventListener('animationend', resolve, { once: true })) : Promise.resolve()
@@ -326,7 +339,6 @@ const initVideo = () => {
                 textToHide.classList.add('video--hidden');
             }
 
-            // Prepara il video e testo da mostrare per l'animazione di ingresso
             videoToShow.classList.remove('video--hidden');
             videoToShow.classList.add('animate__fadeIn');
             if (textToShow) {
@@ -342,35 +354,24 @@ const initVideo = () => {
                 if (textToShow) textToShow.classList.remove('animate__fadeIn');
             });
 
-            // Attiva il pulsante corretto
-            btnVideo1.classList.remove('video-controls-bar__button--active');
-            btnVideo2.classList.remove('video-controls-bar__button--active');
-            buttonToActivate.classList.add('video-controls-bar__button--active');
-
-            videoToShow.currentTime = 0; // Resetta il video all'inizio
+            videoToShow.currentTime = 0;
         });
     };
 
-    // Imposta lo stato iniziale: activeVideo1 visibile, activeVideo2 nascosto
-    activeVideo1.classList.remove('video--hidden');
-    activeVideo2.classList.add('video--hidden');
-    btnVideo1.classList.add('video-controls-bar__button--active');
-    btnVideo1.disabled = true;
+    // 4. --- EVENT HANDLERS & INITIALIZATION ---
 
-    // Event listener per Bottone 1
     btnVideo1.addEventListener('click', () => {
+        if (!activeVideo1.classList.contains('video--hidden')) return;
         showVideo(activeVideo1, activeVideo2, btnVideo1, btnVideo2);
     });
 
-    // Event listener per Bottone 2
     btnVideo2.addEventListener('click', () => {
+        if (!activeVideo2.classList.contains('video--hidden')) return;
         showVideo(activeVideo2, activeVideo1, btnVideo2, btnVideo1);
     });
 
-    // Logica esistente per il pulsante play/pausa (controlla il video attualmente attivo)
     playPauseBtn.addEventListener('click', () => {
         const currentActiveVideo = activeVideo1.classList.contains('video--hidden') ? activeVideo2 : activeVideo1;
-
         if (currentActiveVideo.paused) {
             currentActiveVideo.play();
         } else {
@@ -378,30 +379,26 @@ const initVideo = () => {
         }
     });
 
-    // Aggiungi l'icona di pausa al pulsante play/pausa esistente
+    [voiceMobile, voiceDesktop, insightsMobile, insightsDesktop].forEach(video => {
+        video.addEventListener('play', () => {
+            video.playbackRate = 1;
+            videoContainer.classList.add('is-playing');
+        });
+        video.addEventListener('pause', () => {
+            videoContainer.classList.remove('is-playing');
+        });
+    });
+    
     const pauseIcon = document.createElement('i');
     pauseIcon.className = 'bi bi-pause-fill';
     playPauseBtn.appendChild(pauseIcon);
 
-    // Aggiorna UI on play (per il video attualmente attivo)
-    activeVideo1.addEventListener('play', () => {
-        activeVideo1.playbackRate = 1;
-        videoContainer.classList.add('is-playing');
-    });
+    window.addEventListener('resize', debounce(updateVideoVisibility, 200));
 
-    activeVideo2.addEventListener('play', () => {
-        activeVideo2.playbackRate = 1;
-        videoContainer.classList.add('is-playing');
-    });
-
-    // Aggiorna UI on pause (per il video attualmente attivo)
-    activeVideo1.addEventListener('pause', () => {
-        videoContainer.classList.remove('is-playing');
-    });
-
-    activeVideo2.addEventListener('pause', () => {
-        videoContainer.classList.remove('is-playing');
-    });
+    // Initial state setup
+    updateVideoVisibility();
+    btnVideo1.classList.add('video-controls-bar__button--active');
+    btnVideo1.disabled = true;
 };
 
 
