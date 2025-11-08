@@ -75,8 +75,27 @@ body,
   .pb-#{$key} {
     padding-bottom: $value;
   }
-  .py-#{$key} {
-    padding-top: $value;
-    padding-bottom: $value;
+    .py-#{$key} {
+      padding-top: $value;
+      padding-bottom: $value;
+    }
+  }
+  
+  //////////////////////
+  ///  CUSTOM CONTAINER WIDTH
+  ///////////////////
+#video .container {
+    width: 1000px;
+}  
+  #voiceToInsights .container,
+  #form .container,
+  #founder-message .container {
+      max-width: 1000px;
+  }
+
+  @include media-queries.media-down(variables.$breakpoint-sm) {
+    #video .container {
+      width: 100%;
   }
 }
+  

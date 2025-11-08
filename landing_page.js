@@ -219,14 +219,48 @@ const initPrivacyModal = () => {
 
 const initVideo = () => {
     const videoContainer = document.querySelector('.video-player-container');
-    const video1 = document.getElementById('myVideo'); // Rinomino per chiarezza
-    const video2 = document.getElementById('myVideo2'); // Nuovo video
-    const playPauseBtn = document.getElementById('playPauseBtn'); // Pulsante play/pausa esistente
+    
+    // Get all video elements
+    const myVideoMobile = document.getElementById('myVideoMobile');
+    const myVideoDesktop = document.getElementById('myVideoDesktop');
+    const myVideo2Mobile = document.getElementById('myVideo2Mobile');
+    const myVideo2Desktop = document.getElementById('myVideo2Desktop');
 
-    const btnVideo1 = document.getElementById('btn-video-1'); // Nuovo pulsante 1
-    const btnVideo2 = document.getElementById('btn-video-2'); // Nuovo pulsante 2
+    const playPauseBtn = document.getElementById('playPauseBtn');
 
-    if (!video1 || !video2 || !playPauseBtn || !videoContainer || !btnVideo1 || !btnVideo2) return;
+    const btnVideo1 = document.getElementById('btn-video-1');
+    const btnVideo2 = document.getElementById('btn-video-2');
+
+    if (!myVideoMobile || !myVideoDesktop || !myVideo2Mobile || !myVideo2Desktop || !playPauseBtn || !videoContainer || !btnVideo1 || !btnVideo2) return;
+
+    const isMobile = window.innerWidth < 576; // Using Bootstrap's 'sm' breakpoint
+
+    let activeVideo1, activeVideo2;
+
+    if (isMobile) {
+        activeVideo1 = myVideoMobile;
+        activeVideo2 = myVideo2Mobile;
+        myVideoDesktop.classList.add('d-none'); // Ensure desktop is hidden
+        myVideo2Desktop.classList.add('d-none');
+        myVideoMobile.classList.remove('d-none'); // Ensure mobile is visible
+        myVideo2Mobile.classList.remove('d-none');
+    } else {
+        activeVideo1 = myVideoDesktop;
+        activeVideo2 = myVideo2Desktop;
+        myVideoMobile.classList.add('d-none'); // Ensure mobile is hidden
+        myVideo2Mobile.classList.add('d-none');
+        myVideoDesktop.classList.remove('d-none'); // Ensure desktop is visible
+        myVideo2Desktop.classList.remove('d-none');
+    }
+
+    // Set initial src for active videos
+    activeVideo1.src = isMobile ? activeVideo1.dataset.srcMobile : activeVideo1.dataset.srcDesktop;
+    activeVideo2.src = isMobile ? activeVideo2.dataset.srcMobile : activeVideo2.dataset.srcDesktop;
+
+    // Ensure the initially hidden video (activeVideo2) has its src set
+    // and is hidden with video--hidden class
+    activeVideo2.classList.add('video--hidden');
+
 
     // Funzione helper per mostrare/nascondere video e attivare/disattivare pulsanti
     const showVideo = (videoToShow, videoToHide, buttonToActivate, buttonToDeactivate) => {
@@ -235,43 +269,43 @@ const initVideo = () => {
         buttonToDeactivate.disabled = false;
 
         // Get corresponding text elements
-        const textToShow = document.getElementById(`text-${videoToShow.id === 'myVideo' ? 'video-1' : 'video-2'}`);
-        const textToHide = document.getElementById(`text-${videoToHide.id === 'myVideo' ? 'video-1' : 'video-2'}`);
+        const textToShow = document.getElementById(`text-${videoToShow.id.includes('myVideo2') ? 'video-2' : 'video-1'}`);
+        const textToHide = document.getElementById(`text-${videoToHide.id.includes('myVideo2') ? 'video-2' : 'video-1'}`);
 
         // Pausa entrambi i video prima di cambiare
-        video1.pause();
-        video2.pause();
+        activeVideo1.pause();
+        activeVideo2.pause();
 
         // Aggiungi la classe di uscita Animate.css al video e testo da nascondere
-        videoToHide.classList.add('video-scale-out-animation');
-        if (textToHide) textToHide.classList.add('animate__fadeOut'); // CHANGED
+        videoToHide.classList.add('animate__fadeOut');
+        if (textToHide) textToHide.classList.add('animate__fadeOut');
 
         // Usa Promise.all per attendere la fine di entrambe le animazioni
         Promise.all([
             new Promise(resolve => videoToHide.addEventListener('animationend', resolve, { once: true })),
             textToHide ? new Promise(resolve => textToHide.addEventListener('animationend', resolve, { once: true })) : Promise.resolve()
         ]).then(() => {
-            videoToHide.classList.remove('video-scale-out-animation');
+            videoToHide.classList.remove('animate__fadeOut');
             videoToHide.classList.add('video--hidden');
             if (textToHide) {
-                textToHide.classList.remove('animate__fadeOut'); // CHANGED
+                textToHide.classList.remove('animate__fadeOut');
                 textToHide.classList.add('video--hidden');
             }
 
             // Prepara il video e testo da mostrare per l'animazione di ingresso
             videoToShow.classList.remove('video--hidden');
-            videoToShow.classList.add('video-scale-in-animation');
+            videoToShow.classList.add('animate__fadeIn');
             if (textToShow) {
                 textToShow.classList.remove('video--hidden');
-                textToShow.classList.add('animate__fadeIn'); // CHANGED
+                textToShow.classList.add('animate__fadeIn');
             }
 
             Promise.all([
                 new Promise(resolve => videoToShow.addEventListener('animationend', resolve, { once: true })),
                 textToShow ? new Promise(resolve => textToShow.addEventListener('animationend', resolve, { once: true })) : Promise.resolve()
             ]).then(() => {
-                videoToShow.classList.remove('video-scale-in-animation');
-                if (textToShow) textToShow.classList.remove('animate__fadeIn'); // CHANGED
+                videoToShow.classList.remove('animate__fadeIn');
+                if (textToShow) textToShow.classList.remove('animate__fadeIn');
             });
 
             // Attiva il pulsante corretto
@@ -279,81 +313,62 @@ const initVideo = () => {
             btnVideo2.classList.remove('video-controls-bar__button--active');
             buttonToActivate.classList.add('video-controls-bar__button--active');
 
-            // Avvia il video da mostrare
-            // videoToShow.play(); // Rimosso per non avviare automaticamente
             videoToShow.currentTime = 0; // Resetta il video all'inizio
         });
     };
 
-        // Imposta lo stato iniziale: video1 visibile, video2 nascosto
+    // Imposta lo stato iniziale: activeVideo1 visibile, activeVideo2 nascosto
+    activeVideo1.classList.remove('video--hidden');
+    activeVideo2.classList.add('video--hidden');
+    btnVideo1.classList.add('video-controls-bar__button--active');
+    btnVideo1.disabled = true;
 
-        // Rimuovi la classe di posizione iniziale dal video visibile
+    // Event listener per Bottone 1
+    btnVideo1.addEventListener('click', () => {
+        showVideo(activeVideo1, activeVideo2, btnVideo1, btnVideo2);
+    });
 
-        video1.classList.remove('video-initial-position'); // Video 1 parte già in posizione finale
-        video2.classList.add('video--hidden');
-        btnVideo1.classList.add('video-controls-bar__button--active');
-        btnVideo1.disabled = true; // Disable the initially active button
+    // Event listener per Bottone 2
+    btnVideo2.addEventListener('click', () => {
+        showVideo(activeVideo2, activeVideo1, btnVideo2, btnVideo1);
+    });
 
-    
+    // Logica esistente per il pulsante play/pausa (controlla il video attualmente attivo)
+    playPauseBtn.addEventListener('click', () => {
+        const currentActiveVideo = activeVideo1.classList.contains('video--hidden') ? activeVideo2 : activeVideo1;
 
-        // Event listener per Bottone 1
-        btnVideo1.addEventListener('click', () => {
-            showVideo(video1, video2, btnVideo1, btnVideo2);
-        });
+        if (currentActiveVideo.paused) {
+            currentActiveVideo.play();
+        } else {
+            currentActiveVideo.pause();
+        }
+    });
 
-    
+    // Aggiungi l'icona di pausa al pulsante play/pausa esistente
+    const pauseIcon = document.createElement('i');
+    pauseIcon.className = 'bi bi-pause-fill';
+    playPauseBtn.appendChild(pauseIcon);
 
-        // Event listener per Bottone 2
-        btnVideo2.addEventListener('click', () => {
-            showVideo(video2, video1, btnVideo2, btnVideo1);
-        });
+    // Aggiorna UI on play (per il video attualmente attivo)
+    activeVideo1.addEventListener('play', () => {
+        activeVideo1.playbackRate = 1;
+        videoContainer.classList.add('is-playing');
+    });
 
-    
+    activeVideo2.addEventListener('play', () => {
+        activeVideo2.playbackRate = 2;
+        videoContainer.classList.add('is-playing');
+    });
 
-        // Logica esistente per il pulsante play/pausa (controlla il video attualmente attivo)
-        playPauseBtn.addEventListener('click', () => {
-            const activeVideo = video1.classList.contains('video--hidden') ? video2 : video1;
+    // Aggiorna UI on pause (per il video attualmente attivo)
+    activeVideo1.addEventListener('pause', () => {
+        videoContainer.classList.remove('is-playing');
+    });
 
-            if (activeVideo.paused) {
-                activeVideo.play();
-            }
-            else {
-                activeVideo.pause();
-            }
-
-        });
-
-    
-
-        // Aggiungi l'icona di pausa al pulsante play/pausa esistente
-        const pauseIcon = document.createElement('i');
-        pauseIcon.className = 'bi bi-pause-fill';
-        playPauseBtn.appendChild(pauseIcon);
-
-
-        // Aggiorna UI on play (per il video attualmente attivo)
-        video1.addEventListener('play', () => {
-            video1.playbackRate = 1;
-            videoContainer.classList.add('is-playing');
-        });
-
-        video2.addEventListener('play', () => {
-            video2.playbackRate = 2;
-            videoContainer.classList.add('is-playing');
-        });
-    
-
-        // Aggiorna UI on pause (per il video attualmente attivo)
-
-        video1.addEventListener('pause', () => {
-            videoContainer.classList.remove('is-playing');
-        });
-
-        video2.addEventListener('pause', () => {
-            videoContainer.classList.remove('is-playing');
-        });
-
-    };
+    activeVideo2.addEventListener('pause', () => {
+        videoContainer.classList.remove('is-playing');
+    });
+};
 
 
 // =========================================================================
