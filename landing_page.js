@@ -221,7 +221,7 @@ const initVideo = () => {
     const videoContainer = document.querySelector('.video-player-container');
 
     // Flag per la modalità di sviluppo/produzione
-    const isDevelopment = true; // Imposta a 'true' per sviluppo, 'false' per produzione
+    const isDevelopment = false; // Imposta a 'true' per sviluppo, 'false' per produzione
 
     // --- Video Sources Configuration ---
     // Production URLs (Cloudinary)
