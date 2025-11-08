@@ -59,4 +59,17 @@ body,
         margin-left: 10px;
     }
 }  
+
+//////////////////////
+///  testo dinamico in video-controlli
+/// titolo slideshow prima del footer
+///////////////////
+
+.custom-text {
+    font-size: 1.2rem !important ; /* Default font size */
+
+    @include media-queries.media-down(variables.$breakpoint-sm) {
+        font-size: 1.2rem !important; /* Reduced font size for smaller screens */
+    }
+}
   

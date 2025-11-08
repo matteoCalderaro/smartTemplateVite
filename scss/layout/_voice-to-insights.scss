@@ -76,7 +76,6 @@
         .description {
             font-size: 1.5rem !important; // Reduced font size for the lead paragraph
             font-weight: 600 !important;
-            max-width: 800px; // Added max-width from inline style
             margin-left: auto; // Added from mx-auto
             margin-right: auto; // Added from mx-auto
             @include media-queries.media-down(variables.$breakpoint-md) {

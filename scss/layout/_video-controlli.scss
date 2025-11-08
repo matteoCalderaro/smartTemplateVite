@@ -40,10 +40,3 @@
     }
 }
 
-.video-text {
-    font-size: 1.2rem !important ; /* Default font size */
-
-    @include media-queries.media-down(variables.$breakpoint-sm) {
-        font-size: 1.2rem !important; /* Reduced font size for smaller screens */
-    }
-}
