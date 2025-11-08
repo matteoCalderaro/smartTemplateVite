@@ -219,43 +219,77 @@ const initPrivacyModal = () => {
 
 const initVideo = () => {
     const videoContainer = document.querySelector('.video-player-container');
+
+    // Flag per la modalità di sviluppo/produzione
+    const isDevelopment = true; // Imposta a 'true' per sviluppo, 'false' per produzione
+
+    // --- Video Sources Configuration ---
+    // Production URLs (Cloudinary)
+    const videoSourcesProd = {
+        voice: {
+            mobile: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608766/voice_mob_zpzqmw.mp4",
+            desktop: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608735/voice_desk_mv1mv7.mp4"
+        },
+        insights: {
+            mobile: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608783/insights_mob_nakb1s.mp4",
+            desktop: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608749/insights_desk_r4gp16.mp4"
+        }
+    };
+
+    // Development URLs (Local)
+    const videoSourcesDev = {
+        voice: {
+            mobile: "/media/video/mobile/voice.mp4",
+            desktop: "/media/video/desktop/voice.mp4"
+        },
+        insights: {
+            mobile: "/media/video/mobile/insights.mp4", // Using desktop version as placeholder
+            desktop: "/media/video/desktop/insights.mp4"
+        }
+    };
+
+    // Select sources based on the isDevelopment flag
+    const videoSources = isDevelopment ? videoSourcesDev : videoSourcesProd;
+    // --- End of Configuration ---
     
     // Get all video elements
-    const myVideoMobile = document.getElementById('myVideoMobile');
-    const myVideoDesktop = document.getElementById('myVideoDesktop');
-    const myVideo2Mobile = document.getElementById('myVideo2Mobile');
-    const myVideo2Desktop = document.getElementById('myVideo2Desktop');
+    const voiceMobile = document.getElementById('voiceMobile');
+    const voiceDesktop = document.getElementById('voiceDesktop');
+    const insightsMobile = document.getElementById('insightsMobile');
+    const insightsDesktop = document.getElementById('insightsDesktop');
 
     const playPauseBtn = document.getElementById('playPauseBtn');
 
-    const btnVideo1 = document.getElementById('btn-video-1');
-    const btnVideo2 = document.getElementById('btn-video-2');
+    const btnVideo1 = document.getElementById('btn-voice');
+    const btnVideo2 = document.getElementById('btn-insights');
 
-    if (!myVideoMobile || !myVideoDesktop || !myVideo2Mobile || !myVideo2Desktop || !playPauseBtn || !videoContainer || !btnVideo1 || !btnVideo2) return;
+    if (!voiceMobile || !voiceDesktop || !insightsMobile || !insightsDesktop || !playPauseBtn || !videoContainer || !btnVideo1 || !btnVideo2) return;
+
+    // Set sources for all videos from the config object
+    voiceMobile.src = videoSources.voice.mobile;
+    voiceDesktop.src = videoSources.voice.desktop;
+    insightsMobile.src = videoSources.insights.mobile;
+    insightsDesktop.src = videoSources.insights.desktop;
 
     const isMobile = window.innerWidth < 576; // Using Bootstrap's 'sm' breakpoint
 
     let activeVideo1, activeVideo2;
 
     if (isMobile) {
-        activeVideo1 = myVideoMobile;
-        activeVideo2 = myVideo2Mobile;
-        myVideoDesktop.classList.add('d-none'); // Ensure desktop is hidden
-        myVideo2Desktop.classList.add('d-none');
-        myVideoMobile.classList.remove('d-none'); // Ensure mobile is visible
-        myVideo2Mobile.classList.remove('d-none');
+        activeVideo1 = voiceMobile;
+        activeVideo2 = insightsMobile;
+        voiceDesktop.classList.add('d-none'); // Ensure desktop is hidden
+        insightsDesktop.classList.add('d-none');
+        voiceMobile.classList.remove('d-none'); // Ensure mobile is visible
+        insightsMobile.classList.remove('d-none');
     } else {
-        activeVideo1 = myVideoDesktop;
-        activeVideo2 = myVideo2Desktop;
-        myVideoMobile.classList.add('d-none'); // Ensure mobile is hidden
-        myVideo2Mobile.classList.add('d-none');
-        myVideoDesktop.classList.remove('d-none'); // Ensure desktop is visible
-        myVideo2Desktop.classList.remove('d-none');
+        activeVideo1 = voiceDesktop;
+        activeVideo2 = insightsDesktop;
+        voiceMobile.classList.add('d-none'); // Ensure mobile is hidden
+        insightsMobile.classList.add('d-none');
+        voiceDesktop.classList.remove('d-none'); // Ensure desktop is visible
+        insightsDesktop.classList.remove('d-none');
     }
-
-    // Set initial src for active videos
-    activeVideo1.src = isMobile ? activeVideo1.dataset.srcMobile : activeVideo1.dataset.srcDesktop;
-    activeVideo2.src = isMobile ? activeVideo2.dataset.srcMobile : activeVideo2.dataset.srcDesktop;
 
     // Ensure the initially hidden video (activeVideo2) has its src set
     // and is hidden with video--hidden class
@@ -356,7 +390,7 @@ const initVideo = () => {
     });
 
     activeVideo2.addEventListener('play', () => {
-        activeVideo2.playbackRate = 2;
+        activeVideo2.playbackRate = 1;
         videoContainer.classList.add('is-playing');
     });
 

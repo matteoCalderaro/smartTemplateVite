@@ -65,16 +65,25 @@
         <div class="container">
             <div class="card card--video-no-hover">
                 
-                <div class="video-player-container">
-                    <video id="myVideoMobile" data-src-mobile="https://res.cloudinary.com/dpockyqnm/video/upload/v1762555010/video_1_mobile_cs8okh.mp4" data-src-desktop="https://res.cloudinary.com/dpockyqnm/video/upload/v1762514922/video_1_pp215g.mp4" preload="metadata" muted loop playsinline class="animate__animated"></video>
-                    <video id="myVideoDesktop" data-src-mobile="https://res.cloudinary.com/dpockyqnm/video/upload/v1762555010/video_1_mobile_cs8okh.mp4" data-src-desktop="https://res.cloudinary.com/dpockyqnm/video/upload/v1762514922/video_1_pp215g.mp4" preload="metadata" muted loop playsinline class="animate__animated d-none"></video>
-
-                    <video id="myVideo2Mobile" data-src-mobile="https://res.cloudinary.com/dpockyqnm/video/upload/v1762555023/video_2_mobile_etnp8n.mp4" data-src-desktop="https://res.cloudinary.com/dpockyqnm/video/upload/v1762514922/video_1_pp215g.mp4" preload="metadata" muted loop playsinline class="video--hidden animate__animated"></video>
-                    <video id="myVideo2Desktop" data-src-mobile="https://res.cloudinary.com/dpockyqnm/video/upload/v1762555023/video_2_mobile_etnp8n.mp4" data-src-desktop="https://res.cloudinary.com/dpockyqnm/video/upload/v1762481891/video_2_my67z9.mp4" preload="metadata" muted loop playsinline class="video--hidden animate__animated d-none"></video>
-                    <button id="playPauseBtn" class="video-play-button">
-                        <i class="bi bi-play-fill"></i>
-                    </button>
-                </div>
+                                <div class="video-player-container">
+                
+                                    <video id="voiceMobile" preload="metadata" muted playsinline class="animate__animated"></video>
+                
+                                    <video id="voiceDesktop" preload="metadata" muted playsinline class="animate__animated d-none"></video>
+                
+                
+                
+                                    <video id="insightsMobile" preload="metadata" muted playsinline class="video--hidden animate__animated"></video>
+                
+                                    <video id="insightsDesktop" preload="metadata" muted playsinline class="video--hidden animate__animated d-none"></video>
+                
+                                    <button id="playPauseBtn" class="video-play-button">
+                
+                                        <i class="bi bi-play-fill"></i>
+                
+                                    </button>
+                
+                                </div>
                 
             </div>
         </div>
@@ -82,8 +91,8 @@
     
     <section id="video-controlli" class="text-center">
         <div class="video-controls-bar">
-            <button id="btn-video-1" class="video-controls-bar__button video-controls-bar__button--active">VOICE</button>
-            <button id="btn-video-2" class="video-controls-bar__button">INSIGHTS</button>
+            <button id="btn-voice" class="video-controls-bar__button video-controls-bar__button--active">VOICE</button>
+            <button id="btn-insights" class="video-controls-bar__button">INSIGHTS</button>
         </div>
         <p id="text-video-1" class="animate__animated video-text color-text-gold-light px-4">Cattura ogni parola: trasforma le conversazioni in dati</p>
         <p id="text-video-2" class="animate__animated video--hidden video-text color-text-gold-light px-4">Analizza e scopri: trasforma i dati in decisioni strategiche</p>
