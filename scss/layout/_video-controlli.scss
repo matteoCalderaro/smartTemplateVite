@@ -2,8 +2,9 @@
 @use '../base/variables';
 
 #video-controlli {
+    position: relative;
     margin-top: -23px;
-    z-index: 100;
+    z-index: 3;
     background: var(--bismart-blue-gradient-to-bottom);
 }
 

@@ -7,11 +7,11 @@
 }
 
 #footer p, #footer i, #footer a {
-    color: red;
+    font-size: 14px;
     color: var(--color-text-secondary) !important
 }
 
 .footer__social-icon i {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     color: var(--color-text-secondary) !important
 }

@@ -17,6 +17,13 @@ body {
     flex-direction: column;
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
+    background-color: var(--bismart-blue);
+}
+
+#main-content {
+    position: relative;
+    z-index: 2;
+    background-color: var(--bismart-blue);
 }
 
 // Classe per aumentare la dimensione del font del lead

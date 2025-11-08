@@ -78,7 +78,7 @@
 
 		.hero-cloud {
 			mask-image: url('/media/cloud_dx.webp');
-			width: 660px;
+			width: 600px;
 
 			@include media-queries.media-down(variables.$breakpoint-xxl) {
 				width: 400px;

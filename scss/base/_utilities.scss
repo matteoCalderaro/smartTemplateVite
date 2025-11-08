@@ -9,12 +9,7 @@
 
 body,
 #navbar,
-//#dettaglio
 #hero,
-//#video
-// #applicazioni,
-// #founder-message,
-// #form 
 #footer
 {
     background-color: var(--bismart-blue);
@@ -27,10 +22,10 @@ body,
 ///  SPAZIATURA VERTICALE SEZIONI
 ////////////////////////////////////////////////
 .section-padding {
-    padding-bottom: 4.5rem;
+    padding-bottom: 8.5rem;
 
     @include media-queries.media-down(variables.$breakpoint-lg) {
-        padding-bottom: 2rem;
+        padding-bottom: 4rem;
     }
 
     @include media-queries.media-down(variables.$breakpoint-md) {
@@ -47,23 +42,21 @@ body,
     margin-top: -60px;
 }
 
+
   
 //////////////////////
 ///  CUSTOM CONTAINER WIDTH
 ///////////////////
-#video .container {
-    width: 1000px;
-}  
-#voiceToInsights .container,
-#form .container,
-#founder-message .container {
+
+.container:not(#video .container) {
     max-width: 1000px;
 }
+#video .container {
+    width: 1000px;
 
-@include media-queries.media-down(variables.$breakpoint-sm) {
-    #video .container {
-      width: 500px;
-      margin-left: 10px;
-  }
-}
+    @include media-queries.media-down(variables.$breakpoint-sm) {
+        width: 500px;
+        margin-left: 10px;
+    }
+}  
   
