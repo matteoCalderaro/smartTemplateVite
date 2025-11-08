@@ -21,7 +21,7 @@ body,
 //////////////////////////////////////////////
 ///  SPAZIATURA VERTICALE SEZIONI
 ////////////////////////////////////////////////
-.section-padding {
+.section-padding-bottom {
     padding-bottom: 8.5rem;
 
     @include media-queries.media-down(variables.$breakpoint-lg) {

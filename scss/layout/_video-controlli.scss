@@ -1,5 +1,6 @@
 @use "sass:color";
 @use '../base/variables';
+@use '../base/media-queries';
 
 #video-controlli {
     position: relative;
@@ -40,9 +41,9 @@
 }
 
 .video-text {
-    font-size: 1.5rem;
-    /* color: var(--color-white); Color is now handled by utility classes */
-    margin-top: 17px;
-    text-align: center;
-    font-weight: 500;
+    font-size: 1.2rem !important ; /* Default font size */
+
+    @include media-queries.media-down(variables.$breakpoint-sm) {
+        font-size: 1.2rem !important; /* Reduced font size for smaller screens */
+    }
 }

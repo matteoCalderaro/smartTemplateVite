@@ -1,17 +1,86 @@
 // Stili per la sezione Voice to Insights
+@use '../base/media-queries';
+@use '../base/variables';
 
 #voiceToInsights {
+    
     .cards-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 281px);
         gap: 1.5rem;
 
-        @media (max-width: 768px) {
+        @include media-queries.media-down(variables.$breakpoint-md) {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(4, 281px);
             .bi {
                 font-size: 35px !important;
+            }
+        }
+    }
+    .text-wrapper {
+        text-align: center;
+        color: var(--color-white); // Added from text-white
+        margin-top: 6rem;
+        margin-bottom: 7rem;
+        @include media-queries.media-down(variables.$breakpoint-md) {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+        }
+
+
+        .title {
+            display: flex; // Make it a flex container
+            align-items: center; // Vertically align items
+            justify-content: center; // Center content horizontally
+            gap: 0.5rem; // Space between icon and text
+
+            i {
+                font-size: 0.8em; // Adjust icon size relative to text
+                color: var(--bismart-gold); // Color the icon
+            }
+
+            font-size: 3rem !important; // Reduced font size for the main heading
+            font-weight: bolder !important; // Added from fw-bolder
+            color: var(--bismart-gold-light) !important; // Added from color-text-gold-light
+            margin-bottom: 0.5rem; // Adjusted margin for title
+            
+            @include media-queries.media-down(variables.$breakpoint-md) {
+                font-size: 2rem !important;
+                margin-bottom: 0;
+            }
+        }
+
+        .subtitle {
+            display: flex; // Make it a flex container
+            align-items: center; // Vertically align items
+            justify-content: center; // Center content horizontally
+            gap: 0.5rem; // Space between icon and text
+
+            i {
+                font-size: 0.8em; // Adjust icon size relative to text
+                color: var(--bismart-gold); // Color the icon
+            }
+
+            font-size: 2.2rem !important; // Slightly reduced font size
+            font-weight: 600 !important; // Reduced font weight
+            color: var(--bismart-gold-light) !important;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(var(--bismart-gold-rgb), 0.3), 0 0 20px rgba(var(--bismart-gold-rgb), 0.2); // Added text-shadow
+            
+            @include media-queries.media-down(variables.$breakpoint-md) {
+                font-size: 1.6rem !important;
+            }
+        }
+
+        .description {
+            font-size: 1.5rem !important; // Reduced font size for the lead paragraph
+            font-weight: 600 !important;
+            max-width: 800px; // Added max-width from inline style
+            margin-left: auto; // Added from mx-auto
+            margin-right: auto; // Added from mx-auto
+            @include media-queries.media-down(variables.$breakpoint-md) {
+                font-size: 1.2rem !important;
             }
         }
     }
