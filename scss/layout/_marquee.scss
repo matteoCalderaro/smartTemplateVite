@@ -4,7 +4,9 @@
     background-color: var(--bismart-blue); // Base color
     background-image: linear-gradient(to right, 
         var(--bismart-blue) 0%, 
-        rgba(255, 255, 255, 0.15) 50%, 
+        rgba(255, 255, 255, 0.1) 30%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        rgba(255, 255, 255, 0.1) 70%, 
         var(--bismart-blue) 100%
     );
     overflow: hidden; // Crucial for the marquee effect
