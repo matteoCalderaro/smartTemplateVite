@@ -36,7 +36,7 @@
     }
     @include media-queries.media-down(variables.$breakpoint-sm) {
         video {
-            margin-top: -17px;
+            height: 430px;
         }
     }
 }

@@ -40,7 +40,8 @@
 
     &.card--video-no-hover {
         &::before {
-            transform: translate(20px, 20px);
+            transform: translate(10px, 20px);
+            background: radial-gradient(circle at bottom left, rgba(var(--color-white-rgb), 1), transparent 25%);
         }
         position: static;
         &:hover::before {
