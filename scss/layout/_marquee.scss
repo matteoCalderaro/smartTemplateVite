@@ -4,7 +4,7 @@
     background-color: var(--bismart-blue); // Base color
     background-image: linear-gradient(to right, 
         var(--bismart-blue) 0%, 
-        rgba(255, 255, 255, 0.05) 50%, 
+        rgba(255, 255, 255, 0.15) 50%, 
         var(--bismart-blue) 100%
     );
     overflow: hidden; // Crucial for the marquee effect
@@ -26,6 +26,7 @@
     animation: marquee-scroll 30s linear infinite;
     animation-play-state: running;
     will-change: transform; // Hint for browser optimization
+    transform: translateZ(0); // Force hardware acceleration
 }
 
 .marquee__item {
