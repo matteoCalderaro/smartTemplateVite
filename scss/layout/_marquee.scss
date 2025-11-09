@@ -1,4 +1,5 @@
 @use '../base/variables';
+@use '../base/media-queries';
 
 #suite-marquee {
     background-color: var(--bismart-blue); // Base color
@@ -9,6 +10,16 @@
         rgba(255, 255, 255, 0.1) 70%, 
         var(--bismart-blue) 100%
     );
+
+    @include media-queries.media-down(variables.$breakpoint-md)  {
+        background-image: linear-gradient(to right, 
+            var(--bismart-blue) 0%, 
+            rgba(255, 255, 255, 0.1) 20%, 
+            rgba(255, 255, 255, 0.25) 50%, 
+            rgba(255, 255, 255, 0.1) 80%, 
+            var(--bismart-blue) 100%
+        );
+    }
     overflow: hidden; // Crucial for the marquee effect
     white-space: nowrap; // Keep content in a single line
     position: relative;
