@@ -37,7 +37,7 @@
 
             i {
                 font-size: 0.8em; // Adjust icon size relative to text
-                color: var(--bismart-gold); // Color the icon
+                color: var(--bismart-gold-light); // Changed icon color to gold-light
             }
 
             font-size: 3rem !important; // Reduced font size for the main heading
@@ -48,28 +48,6 @@
             @include media-queries.media-down(variables.$breakpoint-md) {
                 font-size: 2rem !important;
                 margin-bottom: 1.5rem; // Adjusted margin for mobile
-            }
-        }
-
-        .subtitle {
-            display: flex; // Make it a flex container
-            align-items: center; // Vertically align items
-            justify-content: center; // Center content horizontally
-            gap: 0.5rem; // Space between icon and text
-
-            i {
-                font-size: 0.8em; // Adjust icon size relative to text
-                color: var(--bismart-gold); // Color the icon
-            }
-
-            font-size: 2.2rem !important; // Slightly reduced font size
-            font-weight: 600 !important; // Reduced font weight
-            color: var(--bismart-gold-light) !important;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(var(--bismart-gold-rgb), 0.3), 0 0 20px rgba(var(--bismart-gold-rgb), 0.2); // Added text-shadow
-            
-            @include media-queries.media-down(variables.$breakpoint-md) {
-                font-size: 1.6rem !important;
             }
         }
 
