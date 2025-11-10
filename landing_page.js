@@ -218,6 +218,34 @@ const initPrivacyModal = () => {
     }
 };
 
+const initScrollToTop = () => {
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    const triggerElement = document.getElementById('voice-to-insights-copy');
+
+    if (!scrollToTopBtn || !triggerElement) {
+        return;
+    }
+
+    const updateButtonVisibility = () => {
+        const triggerElementRect = triggerElement.getBoundingClientRect();
+        if (triggerElementRect.bottom < 0) {
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    };
+
+    window.addEventListener('scroll', updateButtonVisibility);
+    updateButtonVisibility(); // Check initial state on load
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+};
+
 const initVideo = () => {
     // 1. --- SETUP & CONFIGURATION ---
     const videoContainer = document.querySelector('.video-player-container');
@@ -413,6 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initClickToScroll();
         initForm();
         initPrivacyModal();
+        initScrollToTop();
         initVideo();
     }
     // Example for another page:

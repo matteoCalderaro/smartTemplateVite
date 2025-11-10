@@ -1,0 +1,48 @@
+@use '../base/media-queries';
+@use '../base/variables';
+
+.scroll-to-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+
+    // Stili visivi copiati da .video-play-button
+    background-color: var(--bismart-gold);
+    border: 2px solid var(--bismart-gold);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    // Media query per dimensioni più piccole
+    @include media-queries.media-down(variables.$breakpoint-sm) {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    // Nascondi su desktop
+    @include media-queries.media-up(variables.$breakpoint-md) {
+        display: none;
+    }
+
+    &:hover {
+        background-color: var(--bismart-gold-hover);
+    }
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
