@@ -181,6 +181,7 @@ const initForm = () => {
                     name: form.querySelector('[name="name"]').value,
                     cognome: form.querySelector('[name="cognome"]').value,
                     email: form.querySelector('[name="email"]').value,
+                    notes: form.querySelector('[name="notes"]').value,
                 };
                 
                 setTimeout(() => {
