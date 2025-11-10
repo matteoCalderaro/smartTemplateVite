@@ -42,12 +42,12 @@
 
             font-size: 3rem !important; // Reduced font size for the main heading
             font-weight: bolder !important; // Added from fw-bolder
-            color: var(--bismart-gold-light) !important; // Added from color-text-gold-light
-            margin-bottom: 0.5rem; // Adjusted margin for title
+            color: var(--bismart-gold-light) !important; // Changed to gold-light for uniformity
+            margin-bottom: 1.5rem; // Adjusted margin for title
             
             @include media-queries.media-down(variables.$breakpoint-md) {
                 font-size: 2rem !important;
-                margin-bottom: 0;
+                margin-bottom: 1.5rem; // Adjusted margin for mobile
             }
         }
 
@@ -81,6 +81,10 @@
             @include media-queries.media-down(variables.$breakpoint-md) {
                 font-size: 1.2rem !important;
             }
+        }
+
+        .description + .description {
+            margin-top: 1.5rem;
         }
     }
 }

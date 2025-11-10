@@ -48,7 +48,7 @@ body,
 ///  CUSTOM CONTAINER WIDTH
 ///////////////////
 
-.container:not(#video .container) {
+.container:not(#video .container):not(#hero .container) {
     max-width: 1000px;
 }
 #video .container {
