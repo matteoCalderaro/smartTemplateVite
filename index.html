@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="icon" type="image/x-icon" href="media/favicon.ico">
     <style>.is-loading { visibility: hidden; }</style>
-  <script type="module" crossorigin src="./assets/main-BvQB-Xk0.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/main-CcuO15Ne.css">
+  <script type="module" crossorigin src="./assets/main-Dk5AHsKR.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/main-CWa-iS6E.css">
 </head>
 <body class="is-loading" data-page="home">
     
@@ -48,15 +48,26 @@
                 </div>
             </div>
             <div class="copy-container">
-                <h1 class="display-3 fw-bolder mb-3 text-white text-shadow-effect">Decisioni rapide basate sulla Tua voce!</h1>
-                <p class="color-text-gold-light mx-auto mb-4 lead-custom-size">
-                    Con <span class="fw-bold">Voice To Insights</span> smetti di perdere gli insights nascosti nel caos delle conversazioni!
-                </p>
-                <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
-                    <a href="#form" class="hero-button fw-semibold py-3 px-5 rounded-4" data-scroll-to>
-                        <span class="hero-button__content">Prova subito!</span>
+                <div class="brand d-flex align-items-center justify-content-center gap-2 color-text-gold-light">
+                    <i class="bi bi-mic-fill"></i> 
+                    <span class="brand__text">Voice To Insights</span>
+                </div>
+                <div class="payhoff text-shadow-effect text-white">Trasforma le conversazioni in testo strutturato: ideale per customer service, field agent, meeting, interviste...</div>                
+                <div class="decription color-text-gold-light">
+                    <div class="">
+                        Analizza le informazioni per topic, sentiment, urgenza e rilevanza
+                    </div>
+                    <div class="">
+                        Aiuta l'utente nel fornire dettagli completi
+                    </div>
+                    <div class="">
+                        Integrabile via dashboard/API con CRM e tool aziendali
+                    </div>
+                </div>
+                <div class="button d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
+                    <a href="#form" class="hero-button fw-semibold rounded-4" data-scroll-to>
+                        <span class="hero-button__content">Contattaci per una demo!</span>
                     </a>
-                    
                 </div>
             </div>
         </div>
@@ -77,8 +88,7 @@
                         
                         <button id="playPauseBtn" class="video-play-button">
                             <i class="bi bi-play-fill"></i>
-                        </button>
-                        
+                        </button>                        
                     </div>
                 </div>
             </div>
@@ -90,26 +100,16 @@
                     <button id="btn-voice" class="video-controls-bar__button video-controls-bar__button--active">VOICE</button>
                     <button id="btn-insights" class="video-controls-bar__button">INSIGHTS</button>
                 </div>
-                <p id="text-video-1" class="animate__animated color-text-gold-light mt-3 mb-0 custom-text">Trasforma le conversazioni in dati</p>
-                <p id="text-video-2" class="animate__animated video--hidden color-text-gold-light mt-3 mb-0 custom-text">Trasforma i dati in decisioni strategiche</p>
+                <p id="text-video-1" class="animate__animated color-text-gold-light mt-3 mb-0 custom-text">Automatizza la raccolta di informazioni usando la voce degli utenti</p>
+                <p id="text-video-2" class="animate__animated video--hidden color-text-gold-light mt-3 mb-0 custom-text">Trasforma l'audio in informazioni strategiche strutturate da sincronizzare in azienda</p>
             </div>
         </section>
         
-        
-        
-        
         <section id="voiceToInsights" class="section-padding-bottom">
-
-            <div id="voice-to-insights-copy" class="text-wrapper container">
-                <div class="title"><i class="bi bi-mic-fill"></i> Voice To Insights</div>
-                <div class="description">Trasforma registrazioni in testo strutturato, analizzandolo per topic, sentiment, urgenza e rilevanza.</div>
-                <div class="sources description">Ideale per customer service, field agent, meeting e interviste.</div>
-                <div class="integration description">Integrabile via dashboard/API con CRM e tool aziendali.</div>
-            </div>
-            
+                        
             <div id="voice-to-insights-strenghts" class="container">
                 <!-- Titolo e Descrizione (fuori dalle card) -->
-                <div class="text-center text-white  mb-5 ">
+                <div class="mb-3 mb-md-4 text-center text-white">
                     <h2 class="fw-bold color-text-gold-light">Quattro motivi per non poterne più fare a meno!</h2>
                 </div>
                 
@@ -164,11 +164,11 @@
                 <div class="">
                     <div class="card rounded-5">
                         <div class="form__wrapper p-4">
-                            <h2 class="fw-bolder mb-4 color-text-primary">Richiedi la Tua Consulenza Gratuita</h2>
+                            <h2 class="fw-bolder mb-4 color-text-primary">Prenota la tua demo gratuita!</h2>
                             <form id="form-contatti">                                        
                                 
                                 <div id="data" >
-                                    <h5 class="mb-3 color-text-primary">Dove Possiamo Contattarti?</h5>
+                                    <h5 class="mb-3 color-text-primary">Dove possiamo contattarti?</h5>
                                     <div class="fv-row">
                                         <div class="form-floating">
                                             <input id="titleId" type="text" class="form-control" placeholder="Nome" name="name"
@@ -189,7 +189,7 @@
                                         <div class="form-floating">
                                             <input id="emailId" type="email" class="form-control" placeholder="Email" name="email"
                                             value="" />
-                                            <label for="emailId">Email*</label>
+                                            <label for="emailId">Email aziendale*</label>
                                             <div class="invalid-feedback"></div>
                                         </div>
                                     </div>
@@ -199,7 +199,7 @@
                                             <label for="notesId">Note (opzionale)</label>
                                         </div>
                                     </div>
-                                    <h5 class="mb-3 color-text-primary">Consenso Privacy</h5>
+                                    <h5 class="mb-3 color-text-primary">Consenso privacy</h5>
                                     <div class="fv-row form-check form-check-privacy">
                                         <input class="form-check-input" type="checkbox" value="" id="privacy" name="privacy" >
                                         <label class="form-check-label" for="privacy">
@@ -316,7 +316,8 @@
             <div class="align-items-center align-items-md-start d-flex flex-column mb-3 mb-md-0 gap-1">
                 <p class="mb-0 ">&copy; 2025 BiNetwork srl</p>
                 <p class="mb-0 ">P.IVA 02238260224</p>
-                <p class="mb-0 ">Sede legale: Via Monache 6 - 38062 Arco (TN)</p>
+                <p class="mb-0 d-none">Sede legale: Via Monache 6 - 38062 Arco (TN)</p>
+                <p class="mb-0 "><i class="bi bi-geo-alt-fill me-2"></i>TRENTO - MILANO - FIRENZE</p>
             </div>
             <div class="align-items-center align-items-md-start d-flex flex-column mb-3 mb-md-0 gap-1">
                 <p class="mb-0 "><i class="bi bi-telephone-fill me-2"></i><a href="tel:+390292100118" class=" fw-semibold text-decoration-none">+39 0292100118</a></p>
@@ -325,8 +326,8 @@
             </div>
             <div class="d-flex gap-3">
                 <a href="https://www.linkedin.com/company/bi-network-srl" target="_blank"  class="footer__social-icon"><i class="bi bi-linkedin"></i></a>
-                <a href="#" class="footer__social-icon"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="footer__social-icon"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/binetwork_srl/" class="footer__social-icon"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.facebook.com/BINETWORK.IT/" class="footer__social-icon"><i class="bi bi-facebook"></i></a>
             </div>
         </div>
     </footer>
@@ -335,7 +336,7 @@
     <button id="scrollToTopBtn" class="scroll-to-top-button">
         <i class="bi bi-arrow-up"></i>
     </button>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Privacy Policy Modal -->
@@ -349,10 +350,16 @@
                 <div class="modal-body">
                     <!-- Facsimile Privacy Policy Text -->
                     <h6>1. Titolare del Trattamento</h6>
-                    <p>BiNetwork srl, con sede legale in Via Monache 6 – 38062 Arco (TN), P.IVA 02238260224, è il Titolare del trattamento dei Suo dati personali.</p>
+                    <p>BiNetwork srl, con sede legale in Via Monache 6 – 38062 Arco (TN), P.IVA 02238260224, è il Titolare del trattamento dei Suoi dati personali.</p>
                     
                     <h6>2. Dati Raccolti</h6>
-                    <p>Raccogliamo i seguenti dati personali tramite il form di contatto: nome, cognome, indirizzo email. Questi dati sono forniti volontariamente dall'utente.</p>
+                    <p>Raccogliamo i seguenti dati personali tramite il form di contatto:
+                        <ul>
+                            <li><b>Dati obbligatori:</b> nome, cognome, indirizzo email, numero di telefono.</li>
+                            <li><b>Dati opzionali:</b> note.</li>
+                        </ul>
+                        Questi dati sono forniti volontariamente dall'utente.
+                    </p>
                     
                     <h6>3. Finalità del Trattamento</h6>
                     <p>I Suoi dati personali sono trattati esclusivamente per le seguenti finalità:</p>
@@ -376,7 +383,10 @@
                     <h6>8. Diritti dell'Interessato</h6>
                     <p>In ogni momento, Lei ha il diritto di ottenere la conferma dell'esistenza o meno di dati personali che La riguardano, di conoscerne il contenuto e l'origine, verificarne l'esattezza o chiederne l'integrazione o l'aggiornamento, oppure la rettificazione. Ha il diritto di chiedere la cancellazione, la trasformazione in forma anonima o il blocco dei dati trattati in violazione di legge, nonché di opporsi in ogni caso, per motivi legittimi, al loro trattamento. Per esercitare tali diritti, può contattare il Titolare del Trattamento all'indirizzo info@binetwork.it.</p>
                     
-                    <h6>9. Modifiche all'Informativa</h6>
+                    <h6>9. Cookie Policy</h6>
+                    <p>Questo sito non utilizza cookie tecnici, di profilazione o di terze parti. La navigazione è completamente anonima e non viene effettuato alcun tipo di tracciamento.</p>
+                    
+                    <h6>10. Modifiche all'Informativa</h6>
                     <p>La presente Informativa sulla Privacy potrà subire modifiche nel tempo. La invitiamo a consultare periodicamente questa pagina per prendere visione degli aggiornamenti.</p>
                     <!-- End Facsimile Privacy Policy Text -->
                 </div>
