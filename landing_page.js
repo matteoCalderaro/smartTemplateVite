@@ -5,6 +5,7 @@ import { Message } from '@form-validation/plugin-message';
 import '@form-validation/core/lib/styles/index.min.css';
 import '@form-validation/plugin-bootstrap5/lib/styles/index.min.css';
 import Swal from 'sweetalert2'; // Importa SweetAlert2
+import IMask from 'imask';
 
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
@@ -120,6 +121,13 @@ const initClickToScroll = () => {
 const initForm = () => {
     const form = document.getElementById('form-contatti');
     if (!form) return;
+
+    const phoneInput = form.querySelector('[name="phone"]');
+    if (phoneInput) {
+        const phoneMask = IMask(phoneInput, {
+            mask: /^[0-9\s+()-]*$/
+        });
+    }
     
     const submitButton = document.getElementById("submit");
     if (!submitButton) return;
@@ -146,6 +154,11 @@ const initForm = () => {
                 validators: {
                     notEmpty: { message: "L'email è obbligatoria" },
                     emailAddress: { message: "L'email non è valida" }
+                }
+            },
+            'phone': {
+                validators: {
+                    notEmpty: { message: "Il numero di telefono è obbligatorio" }
                 }
             },
             'privacy': { validators: { notEmpty: { message: "Devi accettare l'informativa sulla privacy" } } }
@@ -181,6 +194,7 @@ const initForm = () => {
                     name: form.querySelector('[name="name"]').value,
                     cognome: form.querySelector('[name="cognome"]').value,
                     email: form.querySelector('[name="email"]').value,
+                    phone: form.querySelector('[name="phone"]').value,
                     notes: form.querySelector('[name="notes"]').value,
                 };
                 
