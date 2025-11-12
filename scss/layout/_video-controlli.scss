@@ -7,7 +7,12 @@
     margin-top: -23px;
     z-index: 3;
     background: var(--bismart-blue-gradient-to-bottom);
+    padding-bottom: 5.5rem;
+    @include media-queries.media-down(variables.$breakpoint-md) {
+        padding-bottom: 2.5rem;
+    }
 }
+
 
 .video-controls-bar {
     //background: var(--bismart-blue-gradient-to-bottom);

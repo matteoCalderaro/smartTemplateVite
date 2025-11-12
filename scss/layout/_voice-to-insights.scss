@@ -18,51 +18,5 @@
             }
         }
     }
-    .text-wrapper {
-        text-align: center;
-        color: var(--color-white); // Added from text-white
-        margin-top: 6rem;
-        margin-bottom: 7rem;
-        @include media-queries.media-down(variables.$breakpoint-md) {
-            margin-top: 4rem;
-            margin-bottom: 4rem;
-        }
 
-
-        .title {
-            display: flex; // Make it a flex container
-            align-items: center; // Vertically align items
-            justify-content: center; // Center content horizontally
-            gap: 0.5rem; // Space between icon and text
-
-            i {
-                font-size: 0.8em; // Adjust icon size relative to text
-                color: var(--bismart-gold-light); // Changed icon color to gold-light
-            }
-
-            font-size: 3rem !important; // Reduced font size for the main heading
-            font-weight: bolder !important; // Added from fw-bolder
-            color: var(--bismart-gold-light) !important; // Changed to gold-light for uniformity
-            margin-bottom: 1.5rem; // Adjusted margin for title
-            
-            @include media-queries.media-down(variables.$breakpoint-md) {
-                font-size: 2rem !important;
-                margin-bottom: 1.5rem; // Adjusted margin for mobile
-            }
-        }
-
-        .description {
-            font-size: 1.5rem !important; // Reduced font size for the lead paragraph
-            font-weight: 600 !important;
-            margin-left: auto; // Added from mx-auto
-            margin-right: auto; // Added from mx-auto
-            @include media-queries.media-down(variables.$breakpoint-md) {
-                font-size: 1.2rem !important;
-            }
-        }
-
-        .description + .description {
-            margin-top: 1.5rem;
-        }
-    }
 }

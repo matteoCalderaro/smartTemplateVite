@@ -15,10 +15,62 @@
         justify-content: center;
         align-items: center;
     }
-    .copy-container{
-        max-width: 60%;
-        @include media-queries.media-down(variables.$breakpoint-md) {
-            max-width: 100%;
+}
+
+.copy-container{
+    max-width: 70%;
+   
+    .brand {
+		font-size: 64px;
+        font-weight: 700;
+        flex-wrap: nowrap;
+
+        .brand__text {
+            white-space: nowrap;
+        }
+    }
+
+    .payhoff {
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 55px;
+    }
+
+    .decription {
+        font-size: 20px;
+		font-weight: 500;
+    }
+
+	.brand, .payhoff, .decription {
+		margin-bottom: 25px;
+	}
+	@include media-queries.media-down(variables.$breakpoint-xxl) {
+		.brand, .payhoff, .decription {
+			margin-bottom: 20px;
+		}
+	}
+	@include media-queries.media-down(variables.$breakpoint-xl) {
+		.brand {
+            font-size: 45px;
+        }
+		.payhoff {
+			font-size: 30px;
+			line-height: 40px;
+        }
+	}
+
+	@include media-queries.media-down(variables.$breakpoint-lg) {
+		max-width: 100%;
+	}
+	@include media-queries.media-down(variables.$breakpoint-md) {       
+		.brand {
+			font-size: 35px;
+		}
+		.payhoff {
+			font-size: 25px;
+		}
+        .decription {
+            font-size: 18px;
         }
     }
 }
@@ -48,9 +100,6 @@
 			width: 512px;
 
 			@include media-queries.media-down(variables.$breakpoint-xxl) {
-				width: 400px;
-			}
-			@include media-queries.media-down(variables.$breakpoint-xl) {
 				width: 312px;
 			}
 			@include media-queries.media-down(variables.$breakpoint-md) {
@@ -59,16 +108,14 @@
 		}
 
 		@include media-queries.media-down(variables.$breakpoint-xxl) {
-			top: 7%;
-			left: 0rem;
-		}
-		@include media-queries.media-down(variables.$breakpoint-xl) {
-			top: 4%;
-			left: -3rem;
+			display: block;
+			left: 4rem;
+			top: 1%;
 		}
 		@include media-queries.media-down(variables.$breakpoint-md) {
+			display: block;
 			left: 4rem;
-			top: 5%;
+			top: 1%;
 		}
 	}
 
@@ -81,18 +128,10 @@
 			width: 600px;
 
 			@include media-queries.media-down(variables.$breakpoint-xxl) {
-				width: 400px;
-			}
-			@include media-queries.media-down(variables.$breakpoint-xl) {
 				width: 312px;
 			}
 		}
-
 		@include media-queries.media-down(variables.$breakpoint-xxl) {
-			top: 6%;
-			right: -5rem;
-		}
-		@include media-queries.media-down(variables.$breakpoint-xl) {
 			top: 0%;
 			right: -3rem;
 		}
