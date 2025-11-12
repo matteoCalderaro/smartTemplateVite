@@ -198,20 +198,37 @@ const initForm = () => {
                     notes: form.querySelector('[name="notes"]').value,
                 };
                 
-                setTimeout(() => {
-                    const simulateSuccess = (formData.email !== 'error@error.com');
-                    if (simulateSuccess) {
+                fetch('/Voice2Insight/SendEmail', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+                .then(response => response.json()) // Tenta sempre di parsare il JSON
+                .then(data => {
+                    if (data.success) {
                         window.location.href = 'thank-you.html';
                     } else {
                         Swal.fire({
                             icon: 'error',
                             title: 'Errore nell\'invio!',
-                            text: 'Si è verificato un problema durante l\'invio della richiesta. Riprova più tardi.',
+                            text: data.message || 'Si è verificato un problema durante l\'invio della richiesta.',
                             confirmButtonText: 'Ok'
                         });
                         hideSpinner();
                     }
-                }, 2000);
+                })
+                .catch(error => { // Gestisce errori di rete E errori di parsing JSON
+                    console.error('Errore:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Errore!',
+                        text: 'Si è verificato un problema. Controlla la tua connessione e riprova.',
+                        confirmButtonText: 'Ok'
+                    });
+                    hideSpinner();
+                });
             }
         });
     });
