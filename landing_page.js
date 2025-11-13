@@ -208,7 +208,7 @@ const initForm = () => {
                 .then(response => response.json()) // Tenta sempre di parsare il JSON
                 .then(data => {
                     if (data.success) {
-                        window.location.href = 'thank-you.html';
+                        window.location.href = 'thank-you';
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -291,25 +291,27 @@ const initVideo = () => {
     // Exit if essential elements are missing
     if (!voiceMobile || !voiceDesktop || !insightsMobile || !insightsDesktop || !playPauseBtn || !videoContainer || !btnVideo1 || !btnVideo2) return;
 
-    const isDevelopment = false; // Imposta a 'true' per sviluppo, 'false' per produzione
+    const isDevelopment = false; // Imposta a 'false' per cloudinary, 'true' per asset
     const videoSourcesProd = {
         voice: {
             mobile: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608766/voice_mob_zpzqmw.mp4",
-            desktop: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608735/voice_desk_mv1mv7.mp4"
+            // desktop: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608735/voice_desk_mv1mv7.mp4" // zoommato
+            desktop: "https://res.cloudinary.com/dpockyqnm/video/upload/v1763019479/voice_desk_full_size_x8h1tg.mp4"
         },
         insights: {
             mobile: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608783/insights_mob_nakb1s.mp4",
-            desktop: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608749/insights_desk_r4gp16.mp4"
+            // desktop: "https://res.cloudinary.com/dpockyqnm/video/upload/v1762608749/insights_desk_r4gp16.mp4" // zoommato
+            desktop: "https://res.cloudinary.com/dpockyqnm/video/upload/v1763019020/insights_desk_full_size_t3czep.mp4"
         }
     };
     const videoSourcesDev = {
         voice: {
-            mobile: "/media/video/mobile/voice.mp4",
-            desktop: "/media/video/desktop/voice.mp4"
+            mobile: "/media/video/mobile/voice_mob.mp4",
+            desktop: "/media/video/desktop/voice_desk.mp4"
         },
         insights: {
-            mobile: "/media/video/mobile/insights.mp4",
-            desktop: "/media/video/desktop/insights.mp4"
+            mobile: "/media/video/mobile/insights_mob.mp4",
+            desktop: "/media/video/desktop/insights_desk.mp4"
         }
     };
     const videoSources = isDevelopment ? videoSourcesDev : videoSourcesProd;
@@ -471,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.body.dataset.page === 'home') {
         initClickToScroll();
         initForm();
-        initPrivacyModal();
+        //initPrivacyModal();
         initScrollToTop();
         initVideo();
     }
