@@ -1,0 +1,13 @@
+{
+  "outputDirectory": "out",
+  "rewrites": [
+    {
+      "source": "/:path((?!static|_next).*)",
+      "destination": "/:path.html"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
+    }
+  ]
+}
