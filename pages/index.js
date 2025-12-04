@@ -48,8 +48,8 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
 }
 
 export async function getStaticProps() {
-  // Find the 'voice-to-insights' application to populate the homepage
-  const homeApplication = applications.find(app => app.path === 'voice-to-insights');
+  // Find the 'home' application to populate the homepage
+  const homeApplication = applications.find(app => app.path === 'home');
 
   if (!homeApplication) {
     // Fallback or error handling if the main application is not found

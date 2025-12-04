@@ -1,5 +1,56 @@
 const applications = [
   {
+    path: 'home',
+    isHome: true,
+    name: 'Home Page Content', // Can be customized later
+    heroContent: {
+      brand: 'Home',
+      icon: 'bi bi-mic-fill',
+      payhoff: 'Trasforma registrazioni (customer service, field agent, meeting, interviste) in testo strutturato',
+      descriptions: [
+        'Analizza le informazioni per topic, sentiment, urgenza e rilevanza',
+        "Aiuta l\'utente nel fornire dettagli completi",
+        'Integrabile via dashboard/API con CRM e tool aziendali',
+      ],
+      buttonText: 'Contattaci per una demo!',
+    },
+    strengthsContent: {
+      title: "Quattro motivi per non poterne più fare a meno!",
+      cards: [
+        {
+          icon: "bi-lightning-charge-fill",
+          title: "Accesso Immediato",
+          description: "Accedi subito ai contenuti nascosti nelle conversazioni per non perdere nessuna opportunità!"
+        },
+        {
+          icon: "bi-robot",
+          title: "Automazione Intelligente",
+          description: "Automatizza reportistica e classificazione delle interazioni per risparmiare tempo prezioso!"
+        },
+        {
+          icon: "bi-graph-up-arrow",
+          title: "Migliora i Processi",
+          description: "Ottimizza la gestione del customer feedback e dei processi di vendita grazie a dati concreti!"
+        },
+        {
+          icon: "bi-lightbulb-fill",
+          title: "Decisioni Basate sui Dati",
+          description: "Prendi decisioni strategiche basate su insight reali e non su sensazioni!"
+        }
+      ]
+    },
+    videoPaths: {
+      voice: {
+        mobile: '/media/video/mobile/voice_mob.mp4',
+        desktop: '/media/video/desktop/voice_desk_full_size.mp4',
+      },
+      insights: {
+        mobile: '/media/video/mobile/insights_mob.mp4',
+        desktop: '/media/video/desktop/insights_desk_full_size.mp4',
+      },
+    },
+  },
+  {
     path: 'voice-to-insights',
     name: 'Voice 2 Insights',
     heroContent: {

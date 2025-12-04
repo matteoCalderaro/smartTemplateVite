@@ -33,9 +33,7 @@ const Navbar = ({ minimal = false }) => {
     <nav id="navbar" className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container py-1">
         <Link className="d-flex align-items-center me-auto gap-3 text-decoration-none" href="/"> {/* Removed onClick */}
-          <div style={{ width: '50px', height: '50px', position: 'relative' }}>
-            <Image src={router.basePath + "/media/logo_trasparente.png"} alt="BiSmart Logo" fill sizes="50px" />
-          </div>
+            <Image src={router.basePath + "/media/logo_trasparente.png"} alt="BiSmart Logo" width={62} height={50}/>
           <h1 className="fs-3 fw-bold text-white mb-0 ">bismart.ai</h1>
         </Link>
         {!minimal && (
@@ -47,7 +45,9 @@ const Navbar = ({ minimal = false }) => {
               menuVariant="dark" // For dark background
               className="btn btn-outline-secondary color-text-gold-light fw-semibold py-2 px-4 rounded-4" // Apply button styling here
             >
-              {applications.map((app) => (
+              {applications
+              .filter(app => !app.isHome) // Filter out the 'home' application
+              .map((app) => (
                 <NavDropdown.Item
                   as={Link}
                   href={`/${app.path}`}

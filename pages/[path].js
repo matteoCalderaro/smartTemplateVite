@@ -48,9 +48,11 @@ export default function ApplicationPage({ heroContent, strengthsContent, videoPa
 
 
 export async function getStaticPaths() {
-  const paths = applications.map((app) => ({
-    params: { path: app.path },
-  }));
+  const paths = applications
+    .filter(app => !app.isHome) // Exclude the home object from dynamic paths
+    .map((app) => ({
+      params: { path: app.path },
+    }));
 
   return { paths, fallback: false };
 }
