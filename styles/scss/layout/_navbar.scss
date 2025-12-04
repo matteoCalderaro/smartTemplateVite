@@ -31,6 +31,25 @@
     align-items: center ;
 }
 
+.btn-login {
+    border: 2px solid var(--bismart-gold);
+    //background-color: var(--bismart-gold);
+    color: var(--color-white);
+    border-color: var(--bismart-gold);
+    border-radius: 0.375rem; 
+    text-decoration: none;
+    padding: 4px 12px;
+    
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: var(--bismart-gold-hover);
+        border-color: var(--bismart-gold-hover);
+        color: var(--color-white);
+        text-decoration: none;
+    }
+}
+
 
 
 #applications-dropdown {

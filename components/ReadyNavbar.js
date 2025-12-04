@@ -69,8 +69,8 @@ const ReadyNavbar = () => {
 
             <Nav.Link href="#prezzi" onClick={(e) => scrollToSection(e, '#prezzi')} className="color-text-gold-light">Prezzi</Nav.Link>
             <Nav.Link href="#documentazione" onClick={(e) => scrollToSection(e, '#documentazione')} className="color-text-gold-light">Documentazione</Nav.Link>
-            <Link href="/demo.html" passHref>
-              <Nav.Link as="button" className="btn btn-outline-secondary color-text-gold-light fw-semibold py-2 px-4 rounded-4 transition duration-300 color-btn-border">Accedi</Nav.Link>
+            <Link href="/demo.html" passHref legacyBehavior>
+              <a className="btn-login">Accedi</a>
             </Link>
           </Nav>
         </BSNavbar.Collapse>
