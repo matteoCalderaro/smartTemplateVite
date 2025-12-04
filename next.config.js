@@ -7,4 +7,5 @@ const nextConfig = {
   //basePath: '/suite',
 };
 
+
 module.exports = nextConfig;
