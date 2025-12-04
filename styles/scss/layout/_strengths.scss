@@ -1,0 +1,41 @@
+// Stili per la sezione Voice to Insights
+@use '../base/media-queries';
+@use '../base/variables';
+
+#strengths {
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(281px, auto);
+        gap: 1.5rem;
+
+        // Rule to center the last item IF the total number of items is odd (in a 2-column grid)
+        & > div:nth-child(odd):last-child { // Correct selector for odd total count
+          grid-column: 1 / -1; // Make the wrapper div span full width
+
+          // Now, center the .card INSIDE this wrapper div and limit its width to one column's width
+          .card {
+            max-width: calc((100% - 1.5rem) / 2); // Width of one column adjusted for the gap
+            margin: 0 auto; // Center the card itself horizontally
+          }
+        }
+
+        @include media-queries.media-down(variables.$breakpoint-md) {
+            grid-template-columns: 1fr;
+            grid-auto-rows: minmax(281px, auto);
+            .bi {
+                font-size: 35px !important;
+            }
+            // On mobile (1 column grid), if there's an odd number of items, the last item
+            // will naturally be full width and centered in its column.
+            // The `grid-column: 1 / -1;` from above would become `grid-column: 1 / span 1;` effectively.
+            // We just need to ensure the card inside also takes full width.
+            & > div:nth-child(odd):last-child {
+              .card {
+                max-width: 100%; // Ensure it takes full width of the single column
+                margin: 0 auto;
+              }
+            }
+        }
+    }
+}

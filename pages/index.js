@@ -8,7 +8,6 @@ import SuiteCarousel from '../components/SuiteCarousel';
 import ScrollToTopButton from '../components/ScrollToTopButton';
 
 import HeroSection from '../components/HeroSection';
-import VideoPlayer from '../components/VideoPlayer';
 import Form from '../components/Form';
 import Footer from '../components/Footer';
 import Strengths from '../components/Strengths';
@@ -27,13 +26,9 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
         <style>{`.is-loading { visibility: hidden; }`}</style>
       </Head>
 
-
-
-
       <HeroSection content={heroContent} />
 
       <main id="main-content">
-        <VideoPlayer videos={videoPaths} />
         <Strengths content={strengthsContent} />
         <Form />
         <FounderMessage />

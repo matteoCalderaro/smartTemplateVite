@@ -4,8 +4,8 @@ const applications = [
     isHome: true,
     name: 'Home Page Content', // Can be customized later
     heroContent: {
-      brand: 'Home',
-      icon: 'bi bi-mic-fill',
+      brand: 'Bi Smart',
+      icon: '',
       payhoff: 'Trasforma registrazioni (customer service, field agent, meeting, interviste) in testo strutturato',
       descriptions: [
         'Analizza le informazioni per topic, sentiment, urgenza e rilevanza',
@@ -15,28 +15,44 @@ const applications = [
       buttonText: 'Contattaci per una demo!',
     },
     strengthsContent: {
-      title: "Quattro motivi per non poterne più fare a meno!",
+      title: "La suite di applicazioni intelligenti!",
       cards: [
         {
-          icon: "bi-lightning-charge-fill",
-          title: "Accesso Immediato",
-          description: "Accedi subito ai contenuti nascosti nelle conversazioni per non perdere nessuna opportunità!"
+          icon: "bi-mic-fill",
+          title: "Voice 2 Insights",
+          description: "Trasforma le tue conversazioni in insight strategici per decisioni rapide!"
         },
         {
-          icon: "bi-robot",
-          title: "Automazione Intelligente",
-          description: "Automatizza reportistica e classificazione delle interazioni per risparmiare tempo prezioso!"
+          icon: "bi-whatsapp",
+          title: "Waq",
+          description: "Offri assistenza clienti immediata 24/7 via WhatsApp, riducendo il carico del tuo team!"
         },
         {
-          icon: "bi-graph-up-arrow",
-          title: "Migliora i Processi",
-          description: "Ottimizza la gestione del customer feedback e dei processi di vendita grazie a dati concreti!"
+          icon: "bi-currency-euro",
+          title: "Smart Pricing",
+          description: "Ottimizza i prezzi in tempo reale con l'AI, massimizzando margini e competitività!"
         },
         {
-          icon: "bi-lightbulb-fill",
-          title: "Decisioni Basate sui Dati",
-          description: "Prendi decisioni strategiche basate su insight reali e non su sensazioni!"
+          icon: "bi-person-check-fill",
+          title: "Stay on",
+          description: "Prevedi l'abbandono dei clienti e attiva strategie di fidelizzazione mirate per aumentare la retention!"
+        },
+        {
+          icon: "bi-chat-heart-fill",
+          title: "Sentiment",
+          description: "Monitora la reputazione del tuo brand analizzando il sentiment di clienti e utenti su recensioni e social!"
+        },
+        {
+          icon: "bi-cloud-download",
+          title: "Sales Predict",
+          description: "Anticipa i trend di vendita con previsioni accurate, ottimizzando pianificazione e strategie commerciali!"
+        },
+        {
+          icon: "bi-broadcast",
+          title: "Wap",
+          description: "Automatizza l'invio di report e documenti via WhatsApp, comunicando dati e informazioni in tempo reale!"
         }
+
       ]
     },
     videoPaths: {

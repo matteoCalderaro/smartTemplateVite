@@ -11,14 +11,14 @@
 @use 'layout/video';
 @use 'layout/video-controlli';
 @use 'layout/marquee';
-@use 'layout/scroll-threshold';
+@use 'layout/strengths';
 
 // 3. Components
 @use 'components/buttons';
 @use 'components/cards';
 @use 'components/founder-message';
 @use 'components/form';
-@use 'components/scroll-to-top';
+@use 'components/scroll-button';
 
 // 4. Pages
 @use 'pages/thank-you';

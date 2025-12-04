@@ -1,34 +1,8 @@
 import React from 'react';
 
-const defaultContent = {
-  title: "Quattro motivi per non poterne più fare a meno!",
-  cards: [
-    {
-      icon: "bi-lightning-charge-fill",
-      title: "Accesso Immediato",
-      description: "Accedi subito ai contenuti nascosti nelle conversazioni per non perdere nessuna opportunità!"
-    },
-    {
-      icon: "bi-robot",
-      title: "Automazione Intelligente",
-      description: "Automatizza reportistica e classificazione delle interazioni per risparmiare tempo prezioso!"
-    },
-    {
-      icon: "bi-graph-up-arrow",
-      title: "Migliora i Processi",
-      description: "Ottimizza la gestione del customer feedback e dei processi di vendita grazie a dati concreti!"
-    },
-    {
-      icon: "bi-lightbulb-fill",
-      title: "Decisioni Basate sui Dati",
-      description: "Prendi decisioni strategiche basate su insight reali e non su sensazioni!"
-    }
-  ]
-};
-
-const Strengths = ({ content = defaultContent }) => {
+const Strengths = ({ content }) => {
   return (
-    <section className="scroll-threshold section-padding-bottom">
+    <section id="strengths" className="section-padding-bottom">
       <div className="container">
         <div className="mb-3 mb-md-4 text-center text-white">
           <h2 className="fw-bold color-text-gold-light">{content.title}</h2>

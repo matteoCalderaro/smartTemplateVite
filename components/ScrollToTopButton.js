@@ -6,7 +6,7 @@ const ScrollToTopButton = () => {
   useEffect(() => {
     const toggleVisibility = () => {
       // Assuming 'voiceToInsights' is the trigger element, as per original JS
-      const triggerElement = document.querySelector('.scroll-threshold');
+      const triggerElement = document.querySelector('#strengths');
       if (triggerElement) {
         const triggerElementRect = triggerElement.getBoundingClientRect();
         if (triggerElementRect.top < 0) {
