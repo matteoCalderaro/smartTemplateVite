@@ -29,6 +29,7 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
 
       <Navbar />
 
+
       <HeroSection content={heroContent} />
 
       <main id="main-content">
