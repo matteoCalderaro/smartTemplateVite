@@ -3,8 +3,15 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'animate.css'; // Import animate.css
 import '../styles/globals.scss';
 
+import ReadyNavbar from '../components/ReadyNavbar'; // Import the ReadyNavbar component
+
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <ReadyNavbar /> {/* Render the ReadyNavbar */}
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;

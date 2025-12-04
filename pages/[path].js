@@ -6,7 +6,7 @@ import applications from '../data/applications';
 // Import components used in index.js for consistent layout
 import SuiteCarousel from '../components/SuiteCarousel';
 import ScrollToTopButton from '../components/ScrollToTopButton';
-import Navbar from '../components/Navbar';
+
 import HeroSection from '../components/HeroSection';
 import Form from '../components/Form';
 import Footer from '../components/Footer';
@@ -27,7 +27,7 @@ export default function ApplicationPage({ heroContent, strengthsContent, videoPa
         <style>{`.is-loading { visibility: hidden; }`}</style>
       </Head>
 
-      <Navbar />
+
 
       <HeroSection content={heroContent} />
 

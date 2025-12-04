@@ -6,7 +6,7 @@ import applications from '../data/applications'; // Import data
 // Import components
 import SuiteCarousel from '../components/SuiteCarousel';
 import ScrollToTopButton from '../components/ScrollToTopButton';
-import Navbar from '../components/Navbar';
+
 import HeroSection from '../components/HeroSection';
 import VideoPlayer from '../components/VideoPlayer';
 import Form from '../components/Form';
@@ -27,7 +27,7 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
         <style>{`.is-loading { visibility: hidden; }`}</style>
       </Head>
 
-      <Navbar />
+
 
 
       <HeroSection content={heroContent} />

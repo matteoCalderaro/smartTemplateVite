@@ -32,9 +32,9 @@ const Navbar = ({ minimal = false }) => {
   return (
     <nav id="navbar" className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container py-1">
-        <Link className="d-flex align-items-center me-auto gap-3 text-decoration-none" href="/"> {/* Removed onClick */}
+        <Link className="d-flex" href="/"> {/* Removed onClick */}
             <Image src={router.basePath + "/media/logo_trasparente.png"} alt="BiSmart Logo" width={62} height={50}/>
-          <h1 className="fs-3 fw-bold text-white mb-0 ">bismart.ai</h1>
+            <h1 className="fs-3 fw-bold text-white mb-0 ">bismart.ai</h1>
         </Link>
         {!minimal && (
           <div className="d-flex align-items-center gap-3">
@@ -60,7 +60,6 @@ const Navbar = ({ minimal = false }) => {
             </NavDropdown>
 
             {/* Other existing links */}
-            <a href="#funzionalita" className="nav-link color-text-gold-light" onClick={(e) => scrollToSection(e, '#funzionalita')}>Funzionalità</a>
             <a href="#prezzi" className="nav-link color-text-gold-light" onClick={(e) => scrollToSection(e, '#prezzi')}>Prezzi</a>
             <a href="#documentazione" className="nav-link color-text-gold-light" onClick={(e) => scrollToSection(e, '#documentazione')}>Documentazione</a>
             <Link href="/demo.html" className="btn btn-outline-secondary color-text-gold-light fw-semibold py-2 px-4 rounded-4 transition duration-300 color-btn-border">Accedi</Link>
