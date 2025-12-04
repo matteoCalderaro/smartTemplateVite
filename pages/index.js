@@ -5,7 +5,7 @@ import applications from '../data/applications'; // Import data
 
 // Import components
 import SuiteCarousel from '../components/SuiteCarousel';
-import ScrollToTopButton from '../components/ScrollToTopButton';
+
 
 import HeroSection from '../components/HeroSection';
 import Form from '../components/Form';
@@ -37,7 +37,7 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
       </main>
 
       <Footer />
-      <ScrollToTopButton />
+
     </>
   );
 }

@@ -5,22 +5,10 @@ const ScrollToTopButton = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Assuming 'voiceToInsights' is the trigger element, as per original JS
-      const triggerElement = document.querySelector('#strengths');
-      if (triggerElement) {
-        const triggerElementRect = triggerElement.getBoundingClientRect();
-        if (triggerElementRect.top < 0) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
+      if (window.scrollY > 300) {
+        setIsVisible(true);
       } else {
-        // Fallback or default visibility logic if triggerElement is not found
-        if (window.scrollY > 300) { // Example fallback: show after scrolling 300px
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
+        setIsVisible(false);
       }
     };
 

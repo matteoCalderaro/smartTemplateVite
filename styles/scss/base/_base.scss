@@ -8,6 +8,8 @@ html, body {
     box-sizing: border-box;
 }
 
+
+
 *, *::before, *::after {
     box-sizing: inherit;
 }
@@ -34,4 +36,22 @@ body {
 // Effetto ombra per il testo
 .text-shadow-effect {
     text-shadow: 0 0 10px rgba(var(--bismart-gold-rgb), 0.3), 0 0 20px rgba(var(--bismart-gold-rgb), 0.2);
+}
+
+/* Page Transitions */
+.page-transition-enter {
+  opacity: 0;
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transition: opacity 1200ms ease-in-out;
+}
+.page-transition-exit {
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+}
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 1200ms ease-in-out;
 }

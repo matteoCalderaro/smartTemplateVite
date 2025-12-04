@@ -5,7 +5,7 @@ import applications from '../data/applications';
 
 // Import components used in index.js for consistent layout
 import SuiteCarousel from '../components/SuiteCarousel';
-import ScrollToTopButton from '../components/ScrollToTopButton';
+
 
 import HeroSection from '../components/HeroSection';
 import Form from '../components/Form';
@@ -34,14 +34,14 @@ export default function ApplicationPage({ heroContent, strengthsContent, videoPa
       <main id="main-content">
         <VideoPlayer videos={videoPaths} />
         <Strengths content={strengthsContent} />
-        <Form />
-        <FounderMessage />
+        {/* <Form /> */}
+        {/* <FounderMessage /> */}
         <SuiteTitle />
         <SuiteCarousel />
       </main>
 
       <Footer />
-      <ScrollToTopButton />
+
     </>
   );
 }

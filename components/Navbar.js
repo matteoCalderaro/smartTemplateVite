@@ -3,31 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Navbar as BSNavbar, Nav, NavDropdown, Container } from 'react-bootstrap'; // Renamed Navbar to BSNavbar to avoid conflict
 import { useRouter } from 'next/router';
-import useScrollToSection from '../hooks/useScrollToSection';
 import applications from '../data/applications';
 
-const SCROLL_THRESHOLD = 50;
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const scrollToSection = useScrollToSection();
   const router = useRouter();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > SCROLL_THRESHOLD) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <BSNavbar
@@ -67,8 +48,8 @@ const Navbar = () => {
                 ))}
             </NavDropdown>
 
-            <Nav.Link href="#prezzi" onClick={(e) => scrollToSection(e, '#prezzi')} className="color-text-gold-light">Prezzi</Nav.Link>
-            <Nav.Link href="#documentazione" onClick={(e) => scrollToSection(e, '#documentazione')} className="color-text-gold-light">Documentazione</Nav.Link>
+            <Nav.Link href="#prezzi" className="color-text-gold-light">Prezzi</Nav.Link>
+            <Nav.Link href="#documentazione" className="color-text-gold-light">Documentazione</Nav.Link>
             <Link href="/demo.html" passHref legacyBehavior>
               <a className="btn-login">Accedi</a>
             </Link>

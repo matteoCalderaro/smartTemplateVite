@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import useScrollToSection from '../hooks/useScrollToSection'; // Import the hook
 
 const FADE_SPEED = 1.5;
 const MAX_MOVE_AMOUNT = 300;
@@ -20,7 +19,6 @@ const HeroSection = ({ content = defaultContent }) => {
   const heroRef = useRef(null);
   const heroSideImageLeftRef = useRef(null);
   const heroSideImageRightRef = useRef(null);
-  const scrollToSection = useScrollToSection(); // Use the hook
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,7 +78,7 @@ const HeroSection = ({ content = defaultContent }) => {
             ))}
           </div>
           <div className="button d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
-            <a href="#form" className="hero-button fw-semibold rounded-4" data-scroll-to onClick={(e) => scrollToSection(e, '#form')}>
+            <a href="#form" className="hero-button fw-semibold rounded-4" data-scroll-to>
               <span className="hero-button__content">{content.buttonText}</span>
             </a>
           </div>
