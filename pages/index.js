@@ -29,7 +29,7 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
       <HeroSection content={heroContent} />
 
       <main id="main-content">
-        <Strengths content={strengthsContent} />
+        <Strengths content={strengthsContent} clickableCards={true} />
         <Form />
         <FounderMessage />
         <SuiteTitle />

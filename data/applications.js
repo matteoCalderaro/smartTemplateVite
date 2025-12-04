@@ -20,39 +20,45 @@ const applications = [
         {
           icon: "bi-mic-fill",
           title: "Voice 2 Insights",
-          description: "Trasforma le tue conversazioni in insight strategici per decisioni rapide!"
+          description: "Trasforma le tue conversazioni in insight strategici per decisioni rapide!",
+          path: "voice-to-insights" // Added path
         },
         {
           icon: "bi-whatsapp",
           title: "Waq",
-          description: "Offri assistenza clienti immediata 24/7 via WhatsApp, riducendo il carico del tuo team!"
+          description: "Offri assistenza clienti immediata 24/7 via WhatsApp, riducendo il carico del tuo team!",
+          path: "waq" // Added path
         },
         {
           icon: "bi-currency-euro",
           title: "Smart Pricing",
-          description: "Ottimizza i prezzi in tempo reale con l'AI, massimizzando margini e competitività!"
+          description: "Ottimizza i prezzi in tempo reale con l'AI, massimizzando margini e competitività!",
+          path: "smart-pricing" // Added path
         },
         {
           icon: "bi-person-check-fill",
           title: "Stay on",
-          description: "Prevedi l'abbandono dei clienti e attiva strategie di fidelizzazione mirate per aumentare la retention!"
+          description: "Prevedi l'abbandono dei clienti e attiva strategie di fidelizzazione mirate per aumentare la retention!",
+          path: "stay-on" // Added path
         },
         {
           icon: "bi-chat-heart-fill",
           title: "Sentiment",
-          description: "Monitora la reputazione del tuo brand analizzando il sentiment di clienti e utenti su recensioni e social!"
+          description: "Monitora la reputazione del tuo brand analizzando il sentiment di clienti e utenti su recensioni e social!",
+          path: "sentiment" // Added path
         },
         {
           icon: "bi-cloud-download",
           title: "Sales Predict",
-          description: "Anticipa i trend di vendita con previsioni accurate, ottimizzando pianificazione e strategie commerciali!"
+          description: "Anticipa i trend di vendita con previsioni accurate, ottimizzando pianificazione e strategie commerciali!",
+          path: "sales-predict" // Added path
         },
         {
           icon: "bi-broadcast",
           title: "Wap",
-          description: "Automatizza l'invio di report e documenti via WhatsApp, comunicando dati e informazioni in tempo reale!"
+          description: "Automatizza l'invio di report e documenti via WhatsApp, comunicando dati e informazioni in tempo reale!",
+          path: "wap" // Added path
         }
-
       ]
     },
     videoPaths: {
