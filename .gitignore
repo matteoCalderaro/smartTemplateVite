@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+.next/
+out/
+*.md
+!build_per_dotnet.md
+raw_video/

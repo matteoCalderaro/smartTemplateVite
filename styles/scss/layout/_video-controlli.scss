@@ -1,0 +1,47 @@
+@use "sass:color";
+@use '../base/variables';
+@use '../base/media-queries';
+
+#video-controlli {
+    position: relative;
+    margin-top: -23px;
+    z-index: 3;
+    background: var(--bismart-blue-gradient-to-bottom);
+    padding-bottom: 5.5rem;
+    @include media-queries.media-down(variables.$breakpoint-md) {
+        padding-bottom: 2.5rem;
+    }
+}
+
+
+.video-controls-bar {
+    //background: var(--bismart-blue-gradient-to-bottom);
+    display: inline-flex; /* Changed from inline-flex */
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 9999px; // Pill shape
+    border: 1px solid rgba(var(--color-white-rgb), 0.6);
+    gap: 0.5rem;
+    margin-top: 40px;
+}
+
+.video-controls-bar__button {
+    width: 8rem; /* Forced equal width */
+    background-color: transparent;
+    border: 1px solid rgba(var(--color-white-rgb), 0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 9999px; // Pill shape
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0s ease, border-color 0.3s ease; /* Instant background transition */
+
+    &--active,
+    &:hover {
+        background-color: white; /* Changed */
+        color: var(--bismart-blue); /* Changed */
+        transition-duration: 0.3s; /* Smooth background transition for active/hover */
+    }
+}
+

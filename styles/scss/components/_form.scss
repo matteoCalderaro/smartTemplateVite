@@ -1,0 +1,77 @@
+#form {
+    scroll-margin-top: 74px;
+}
+
+.form__wrapper {
+    background: var(--bismart-gold);
+    border-radius: 1rem;
+    height: 100%;  
+}
+
+.invalid-feedback {
+    color: var(--color-white);
+    display: block;
+}
+
+.privacy-link {
+    color: var(--bismart-blue);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.form-check-input {
+    width: 1.25em;
+    height: 1.25em;
+    margin-top: 0 !important;
+    margin-right: 0.5em;
+
+    &[type='checkbox']:checked {
+        background-color: var(--color-white);
+        border-color: var(--bismart-gold);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23c59247' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+    }
+
+    &:focus {
+        border-color: var(--bismart-gold);
+        box-shadow: 0 0 0 0.25rem rgba(var(--bismart-gold-rgb), 0.25);
+    }
+}
+
+.form-check-label {
+    cursor: pointer;
+    color: var(--bismart-blue); // Set the default color
+}
+
+// Ensure the color remains bismart-blue even when invalid
+.fv-row.form-check.form-check-privacy .form-check-input.is-invalid ~ .form-check-label {
+    color: var(--bismart-blue);
+}
+
+
+
+.fv-row.form-check.form-check-privacy {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 0 0.5em;
+  align-items: start;
+
+  .form-check-input {
+    grid-row: 1;
+    grid-column: 1;
+    margin-right: 0;
+  }
+
+  .form-check-label {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .invalid-feedback {
+    grid-row: 2;
+    grid-column: 2;
+    padding-left: 0;
+  }
+}
+
+

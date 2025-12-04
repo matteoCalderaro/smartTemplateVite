@@ -1,0 +1,75 @@
+@use '../base/variables';
+@use '../base/media-queries';
+
+//////////////////////
+///  COLORI SFONDO SEZIONI
+///////////////////
+/// 
+
+
+body,
+#navbar,
+#hero,
+#footer
+{
+    background-color: var(--bismart-blue);
+}
+#form {
+    background: linear-gradient(to bottom, #010336 0%, #4a5f9f 45%, #4a5f9f 55%, #010336 100%);
+}
+
+//////////////////////////////////////////////
+///  SPAZIATURA VERTICALE SEZIONI
+////////////////////////////////////////////////
+.section-padding-bottom {
+    padding-bottom: 8.5rem;
+
+    @include media-queries.media-down(variables.$breakpoint-lg) {
+        padding-bottom: 4rem;
+    }
+
+    @include media-queries.media-down(variables.$breakpoint-md) {
+        padding-bottom: 1.5rem;
+    }
+}
+
+// Contenuto principale della pagina
+.main-content {
+    position: relative;
+}
+
+.container-offset {
+    margin-top: -60px;
+}
+
+
+  
+//////////////////////
+///  CUSTOM CONTAINER WIDTH
+///////////////////
+
+.container:not(#video .container):not(#hero .container) {
+    max-width: 1000px;
+}
+#video .container {
+    width: 1000px;
+
+    @include media-queries.media-down(variables.$breakpoint-sm) {
+        width: 500px;
+        margin-left: 10px;
+    }
+}  
+
+//////////////////////
+///  testo dinamico in video-controlli
+/// titolo slideshow prima del footer
+///////////////////
+
+.custom-text {
+    font-size: 1.2rem !important ; /* Default font size */
+
+    @include media-queries.media-down(variables.$breakpoint-sm) {
+        font-size: 1.2rem !important; /* Reduced font size for smaller screens */
+    }
+}
+  

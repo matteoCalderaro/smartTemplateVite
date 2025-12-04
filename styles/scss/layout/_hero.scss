@@ -1,0 +1,163 @@
+@use '../base/variables';
+@use '../base/media-queries';
+
+#hero {
+    position: sticky;
+    top: 0;
+    height: calc(100vh - 74px);
+    overflow: hidden; // Nasconde le immagini laterali che escono dai bordi
+    //background-color: red;
+    .container {
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.copy-container{
+    max-width: 70%;
+   
+    .brand {
+		font-size: 64px;
+        font-weight: 700;
+        flex-wrap: nowrap;
+
+        .brand__text {
+            white-space: nowrap;
+        }
+    }
+
+    .payhoff {
+        font-size: 42px;
+        font-weight: 700;
+        line-height: 55px;
+    }
+
+    .decription {
+        font-size: 20px;
+		font-weight: 500;
+    }
+
+	.brand, .payhoff, .decription {
+		margin-bottom: 25px;
+	}
+	@include media-queries.media-down(variables.$breakpoint-xxl) {
+		.brand, .payhoff, .decription {
+			margin-bottom: 20px;
+		}
+	}
+	@include media-queries.media-down(variables.$breakpoint-xl) {
+		.brand {
+            font-size: 45px;
+        }
+		.payhoff {
+			font-size: 30px;
+			line-height: 40px;
+        }
+	}
+
+	@include media-queries.media-down(variables.$breakpoint-lg) {
+		max-width: 100%;
+	}
+	@include media-queries.media-down(variables.$breakpoint-md) {       
+		.brand {
+			font-size: 35px;
+		}
+		.payhoff {
+			font-size: 25px;
+			line-height: 33px;
+		}
+        .decription {
+            font-size: 18px;
+        }
+    }
+}
+
+.hero-side-image {
+	position: absolute;
+
+	// Regole generali per tutte le cloud all'interno di hero-side-image
+	.hero-cloud {
+		mask-size: contain;
+		mask-repeat: no-repeat;
+		aspect-ratio: 2;
+
+		.cloud-background {
+			background: var(--bismart-gold-gradient);
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	&--left {
+		top: 35%;
+		left: -21rem;
+
+		.hero-cloud {
+			mask-image: url('#{variables.$base-path}/media/cloud_sx.webp');
+			width: 512px;
+
+			@include media-queries.media-down(variables.$breakpoint-xxl) {
+				width: 312px;
+			}
+			@include media-queries.media-down(variables.$breakpoint-md) {
+				width: 312px;
+			}
+		}
+
+		@include media-queries.media-down(variables.$breakpoint-xxl) {
+			display: block;
+			left: 4rem;
+			top: 1%;
+		}
+		@include media-queries.media-down(variables.$breakpoint-md) {
+			display: block;
+			left: 4rem;
+			top: 1%;
+		}
+	}
+
+	&--right {
+		top: 30%;
+		right: -28rem;
+
+		.hero-cloud {
+			mask-image: url('#{variables.$base-path}/media/cloud_dx.webp');
+			width: 600px;
+
+			@include media-queries.media-down(variables.$breakpoint-xxl) {
+				width: 312px;
+			}
+		}
+		@include media-queries.media-down(variables.$breakpoint-xxl) {
+			top: 0%;
+			right: -3rem;
+		}
+		@include media-queries.media-down(variables.$breakpoint-md) {
+			display: none;
+		}
+	}
+}
+
+.hero-animated-wrapper {
+    animation: spostamentoOrizzontale 4s ease-in-out infinite alternate;
+}
+
+@keyframes spostamentoOrizzontale {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-15px); // Sposta a sinistra di 10px
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+
+
