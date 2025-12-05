@@ -34,8 +34,8 @@ export default function ApplicationPage({ heroContent, strengthsContent, videoPa
       <main id="main-content">
         <VideoPlayer videos={videoPaths} />
         <Strengths content={strengthsContent} />
-        {/* <Form /> */}
-        {/* <FounderMessage /> */}
+        <Form />
+        <FounderMessage />
         <SuiteTitle />
         <SuiteCarousel />
       </main>
