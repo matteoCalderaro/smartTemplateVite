@@ -49,10 +49,9 @@
             filter: blur(30px); // Riporta al blur di default
         }
     }
-
+    // Titoli applicazioni pù grande
     &.strength-card-link h4 {
         font-size: 35px;
-        
     }
 }
 
@@ -75,12 +74,3 @@
         font-size: 18px !important;
     }
 }
-
-.card__icon {
-    font-size: 3.5rem;
-}
-
-.card__description {
-    font-size: 1.1rem;
-}
-

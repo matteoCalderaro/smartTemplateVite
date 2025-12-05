@@ -48,8 +48,8 @@ const Navbar = () => {
                 ))}
             </NavDropdown>
 
-            <Nav.Link href="#prezzi" className="color-text-gold-light">Prezzi</Nav.Link>
-            <Nav.Link href="#documentazione" className="color-text-gold-light">Documentazione</Nav.Link>
+            <Nav.Link href="#prezzi" className="color-text-gold-light" style={{ pointerEvents: 'none' }}>Informazioni</Nav.Link>
+            <Nav.Link href="#documentazione" className="color-text-gold-light" style={{ pointerEvents: 'none' }}>Contatti</Nav.Link>
             <Link href="/" passHref legacyBehavior>
               <a className="btn-login">Accedi</a>
             </Link>

@@ -16,7 +16,7 @@ const Strengths = ({ content, clickableCards = false }) => { // Add clickableCar
                   <a className="card h-100 strength-card-link"> {/* Add a class for styling the clickable card */}
                     <div className="card__base p-4 text-center text-white h-100">
                       <i className={`bi ${card.icon} d-block color-text-gold`} aria-hidden="true"></i>
-                      <h4 className="fw-semibold mb-3 color-text-gold-light">{card.title}</h4>
+                      <h4 className="mb-3 color-text-gold-light">{card.title}</h4>
                       <p className="mb-0">{card.description}</p>
                     </div>
                   </a>
@@ -25,7 +25,7 @@ const Strengths = ({ content, clickableCards = false }) => { // Add clickableCar
                 <div className="card h-100">
                   <div className="card__base p-4 text-center text-white h-100">
                     <i className={`bi ${card.icon} mb-3 d-block color-text-gold`} aria-hidden="true"></i>
-                    <h4 className="fw-semibold mb-3 color-text-gold-light">{card.title}</h4>
+                    <h4 className="mb-3 color-text-gold-light">{card.title}</h4>
                     <p className="mb-0">{card.description}</p>
                   </div>
                 </div>

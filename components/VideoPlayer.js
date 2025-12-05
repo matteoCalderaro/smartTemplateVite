@@ -1,34 +1,18 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/router'; // Import useRouter
 
-const defaultVideos = {
-  voice: {
-    mobile: '/media/video/mobile/voice_mob.mp4',
-    desktop: '/media/video/desktop/voice_desk_full_size.mp4',
-  },
-  insights: {
-    mobile: '/media/video/mobile/insights_mob.mp4',
-    desktop: '/media/video/desktop/insights_desk_full_size.mp4',
-  },
-};
 
-const VideoPlayer = ({ videos = defaultVideos }) => {
-  const router = useRouter(); // Initialize useRouter
+const VideoPlayer = ({ videos }) => {
+  const router = useRouter();
   const basePath = router.basePath;
   const videoContainerRef = useRef(null);
-  const voiceMobileRef = useRef(null);
-  const voiceDesktopRef = useRef(null);
-  const insightsMobileRef = useRef(null);
-  const insightsDesktopRef = useRef(null);
-  const playPauseBtnRef = useRef(null);
-  const btnVoiceRef = useRef(null);
-  const btnInsightsRef = useRef(null);
+  const videoRefs = useRef({}); // New: Manages all video refs dynamically
 
-  const textVideo1Ref = useRef(null);
-  const textVideo2Ref = useRef(null);
+  // Dynamically get theme names from the videos prop
+  const themeNames = Object.keys(videos);
 
   const [isPlaying, setIsPlaying] = useState(false);
-  const [activeTheme, setActiveTheme] = useState('voice'); // 'voice' or 'insights'
+  const [activeTheme, setActiveTheme] = useState(themeNames[0]); // Initialize with the first theme
   const [isMobileView, setIsMobileView] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -63,6 +47,20 @@ const VideoPlayer = ({ videos = defaultVideos }) => {
 
   const handleThemeChange = (newTheme) => {
     if (activeTheme === newTheme || isTransitioning) return;
+
+    // Pause and reset ALL videos
+    Object.values(videoRefs.current).forEach(themeVideos => {
+      if (themeVideos.mobile) {
+        themeVideos.mobile.pause();
+      }
+      if (themeVideos.desktop) {
+        themeVideos.desktop.pause();
+      }
+    });
+
+    // Set isPlaying to false, as all videos are now paused
+    setIsPlaying(false);
+
     setIsTransitioning(true);
     // The rest of the logic will be handled by useEffect based on activeTheme change
     setTimeout(() => {
@@ -72,9 +70,10 @@ const VideoPlayer = ({ videos = defaultVideos }) => {
   };
 
   const handlePlayPause = () => {
-    const videoToPlay = activeTheme === 'voice'
-      ? (isMobileView ? voiceMobileRef.current : voiceDesktopRef.current)
-      : (isMobileView ? insightsMobileRef.current : insightsDesktopRef.current);
+    const currentThemeVideos = videoRefs.current[activeTheme];
+    if (!currentThemeVideos) return;
+
+    const videoToPlay = isMobileView ? currentThemeVideos.mobile : currentThemeVideos.desktop;
       
     if (videoToPlay) {
       if (videoToPlay.paused) {
@@ -88,8 +87,13 @@ const VideoPlayer = ({ videos = defaultVideos }) => {
   };
 
   useEffect(() => {
-    const allVideos = [voiceMobileRef.current, voiceDesktopRef.current, insightsMobileRef.current, insightsDesktopRef.current];
-    allVideos.forEach(video => {
+    const currentVideoElements = [];
+    Object.values(videoRefs.current).forEach(themeVideos => {
+      currentVideoElements.push(themeVideos.mobile);
+      currentVideoElements.push(themeVideos.desktop);
+    });
+
+    currentVideoElements.forEach(video => {
         if(video) {
             video.addEventListener('play', () => setIsPlaying(true));
             video.addEventListener('pause', () => setIsPlaying(false));
@@ -97,14 +101,25 @@ const VideoPlayer = ({ videos = defaultVideos }) => {
     });
 
     return () => {
-        allVideos.forEach(video => {
+        currentVideoElements.forEach(video => {
             if(video) {
                 video.removeEventListener('play', () => setIsPlaying(true));
                 video.removeEventListener('pause', () => setIsPlaying(false));
             }
         });
     }
-  }, []);
+  }, []); // Empty dependency array means this effect runs once on mount
+
+  // New useEffect to reset currentTime for the active video
+  useEffect(() => {
+    const currentThemeVideos = videoRefs.current[activeTheme];
+    if (currentThemeVideos) {
+      const videoToReset = isMobileView ? currentThemeVideos.mobile : currentThemeVideos.desktop;
+      if (videoToReset) {
+        videoToReset.currentTime = 0;
+      }
+    }
+  }, [activeTheme, isMobileView]);
 
   return (
     <>
@@ -112,32 +127,32 @@ const VideoPlayer = ({ videos = defaultVideos }) => {
         <div className="container">
           <div className="card card--video-no-hover">
             <div className={`video-player-container ${isPlaying ? 'is-playing' : ''}`} ref={videoContainerRef}>
-              <video 
-                id="voiceMobile" 
-                preload="metadata" muted playsInline 
-                className={`animate__animated ${activeTheme === 'voice' && isMobileView ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`}
-                src={basePath + videos.voice.mobile} ref={voiceMobileRef}
-              ></video>
-              <video 
-                id="voiceDesktop" 
-                preload="metadata" muted playsInline 
-                className={`animate__animated ${activeTheme === 'voice' && !isMobileView ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`}
-                src={basePath + videos.voice.desktop} ref={voiceDesktopRef}
-              ></video>
-              <video 
-                id="insightsMobile" 
-                preload="metadata" muted playsInline 
-                className={`animate__animated ${activeTheme === 'insights' && isMobileView ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`}
-                src={basePath + videos.insights.mobile} ref={insightsMobileRef}
-              ></video>
-              <video 
-                id="insightsDesktop" 
-                preload="metadata" muted playsInline 
-                className={`animate__animated ${activeTheme === 'insights' && !isMobileView ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`}
-                src={basePath + videos.insights.desktop} ref={insightsDesktopRef}
-              ></video>
+              {themeNames.map((themeName) => (
+                <React.Fragment key={themeName}>
+                  <video 
+                    id={`${themeName}Mobile`} 
+                    preload="metadata" muted playsInline 
+                    className={`animate__animated ${activeTheme === themeName && isMobileView ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`}
+                    src={basePath + videos[themeName].mobile}
+                    ref={(el) => {
+                      if (!videoRefs.current[themeName]) videoRefs.current[themeName] = {};
+                      videoRefs.current[themeName].mobile = el;
+                    }}
+                  ></video>
+                  <video 
+                    id={`${themeName}Desktop`} 
+                    preload="metadata" muted playsInline 
+                    className={`animate__animated ${activeTheme === themeName && !isMobileView ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`}
+                    src={basePath + videos[themeName].desktop}
+                    ref={(el) => {
+                      if (!videoRefs.current[themeName]) videoRefs.current[themeName] = {};
+                      videoRefs.current[themeName].desktop = el;
+                    }}
+                  ></video>
+                </React.Fragment>
+              ))}
 
-              <button id="playPauseBtn" className="video-play-button" onClick={handlePlayPause} ref={playPauseBtnRef}>
+              <button id="playPauseBtn" className="video-play-button" onClick={handlePlayPause}>
                 <i className={`bi ${isPlaying ? 'bi-pause-fill' : 'bi-play-fill'}`}></i>
               </button>
             </div>
@@ -145,16 +160,32 @@ const VideoPlayer = ({ videos = defaultVideos }) => {
         </div>
       </section>
 
-      <section id="video-controlli" className="text-center">
-        <div className="container">
-          <div className="video-controls-bar">
-            <button id="btn-voice" className={`video-controls-bar__button ${activeTheme === 'voice' ? 'video-controls-bar__button--active' : ''}`} onClick={() => handleThemeChange('voice')} ref={btnVoiceRef}>VOICE</button>
-            <button id="btn-insights" className={`video-controls-bar__button ${activeTheme === 'insights' ? 'video-controls-bar__button--active' : ''}`} onClick={() => handleThemeChange('insights')} ref={btnInsightsRef}>INSIGHTS</button>
+      {/* La sezione #video-controlli verrà renderizzata solo se ci sono più di un tema */}
+        <section id="video-controlli" className="text-center">
+          <div className="container" style={{ visibility: themeNames.length > 1 ? 'visible' : 'hidden' }}  >
+            <div className="video-controls-bar">
+              {themeNames.map((themeName) => (
+                <button 
+                  key={themeName}
+                  id={`btn-${themeName}`} 
+                  className={`video-controls-bar__button ${activeTheme === themeName ? 'video-controls-bar__button--active' : ''}`} 
+                  onClick={() => handleThemeChange(themeName)}
+                >
+                  {themeName.toUpperCase()}
+                </button>
+              ))}
+            </div>
+            {themeNames.map((themeName) => (
+              <p 
+                key={`text-video-${themeName}`}
+                id={`text-video-${themeName}`} 
+                className={`animate__animated color-text-gold-light mt-3 mb-0 custom-text ${activeTheme === themeName ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`}
+              >
+                {videos[themeName].text}
+              </p>
+            ))}
           </div>
-          <p id="text-video-1" className={`animate__animated color-text-gold-light mt-3 mb-0 custom-text ${activeTheme === 'voice' ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`} ref={textVideo1Ref}>Automatizza la raccolta di informazioni usando la voce degli utenti</p>
-          <p id="text-video-2" className={`animate__animated color-text-gold-light mt-3 mb-0 custom-text ${activeTheme === 'insights' ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`} ref={textVideo2Ref}>Trasforma l'audio in informazioni strategiche strutturate da sincronizzare in azienda</p>
-        </div>
-      </section>
+        </section>
     </>
   );
 };
