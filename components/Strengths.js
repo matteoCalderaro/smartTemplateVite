@@ -6,7 +6,7 @@ const Strengths = ({ content, clickableCards = false }) => { // Add clickableCar
     <section id="strengths" className="section-padding-bottom">
       <div className="container">
         <div className="mb-3 mb-md-4 text-center text-white">
-          <h2 className="fw-bold color-text-gold-light">{content.title}</h2>
+          <h2 className="fw-semibold color-text-gold-light">{content.title}</h2>
         </div>
         <div className="cards-grid">
           {content.cards.map((card, index) => (
@@ -15,8 +15,8 @@ const Strengths = ({ content, clickableCards = false }) => { // Add clickableCar
                 <Link href={`/${card.path}`} passHref legacyBehavior>
                   <a className="card h-100 strength-card-link"> {/* Add a class for styling the clickable card */}
                     <div className="card__base p-4 text-center text-white h-100">
-                      <i className={`bi ${card.icon} fs-1 mb-3 d-block color-text-gold`} aria-hidden="true"></i>
-                      <h4 className="fw-bold mb-2 color-text-gold-light">{card.title}</h4>
+                      <i className={`bi ${card.icon} d-block color-text-gold`} aria-hidden="true"></i>
+                      <h4 className="fw-semibold mb-3 color-text-gold-light">{card.title}</h4>
                       <p className="mb-0">{card.description}</p>
                     </div>
                   </a>
@@ -24,8 +24,8 @@ const Strengths = ({ content, clickableCards = false }) => { // Add clickableCar
               ) : ( // Otherwise render as non-clickable div
                 <div className="card h-100">
                   <div className="card__base p-4 text-center text-white h-100">
-                    <i className={`bi ${card.icon} fs-1 mb-3 d-block color-text-gold`} aria-hidden="true"></i>
-                    <h4 className="fw-bold mb-2 color-text-gold-light">{card.title}</h4>
+                    <i className={`bi ${card.icon} mb-3 d-block color-text-gold`} aria-hidden="true"></i>
+                    <h4 className="fw-semibold mb-3 color-text-gold-light">{card.title}</h4>
                     <p className="mb-0">{card.description}</p>
                   </div>
                 </div>

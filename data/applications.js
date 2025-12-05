@@ -4,13 +4,13 @@ const applications = [
     isHome: true,
     name: 'Home Page Content', // Can be customized later
     heroContent: {
-      brand: 'Bi Smart',
+      brand: '(Be) Bi Smart',
       icon: '',
-      payhoff: 'Trasforma registrazioni (customer service, field agent, meeting, interviste) in testo strutturato',
+      payhoff: 'La Business Intelligence prende il volo, sempre più Smart con AI e ML',
       descriptions: [
-        'Analizza le informazioni per topic, sentiment, urgenza e rilevanza',
-        "Aiuta l\'utente nel fornire dettagli completi",
-        'Integrabile via dashboard/API con CRM e tool aziendali',
+        'Accelera l\'innovazione con decisioni rapide e informate',
+        "Offre visione chiara e predittiva per il successo",
+        'Trasforma i dati in conoscenza strategica',
       ],
       buttonText: 'Contattaci per una demo!',
     },
@@ -78,7 +78,7 @@ const applications = [
     heroContent: {
       brand: 'Voice 2 Insights',
       icon: 'bi bi-mic-fill',
-      payhoff: 'Trasforma registrazioni (customer service, field agent, meeting, interviste) in testo strutturato',
+      payhoff: 'La Business Intelligence prende il volo, sempre più smart con AI e ML',
       descriptions: [
         'Analizza le informazioni per topic, sentiment, urgenza e rilevanza',
         "Aiuta l\'utente nel fornire dettagli completi",
@@ -87,7 +87,7 @@ const applications = [
       buttonText: 'Contattaci per una demo!',
     },
     strengthsContent: {
-      title: "Quattro motivi per non poterne più fare a meno!",
+      title: "4 motivi per non poterne più fare a meno!",
       cards: [
         {
           icon: "bi-lightning-charge-fill",
@@ -133,7 +133,7 @@ const applications = [
       buttonText: 'Contattaci per una demo!',
     },
     strengthsContent: {
-      title: "I vantaggi di WAQ",
+      title: "4 motivi per non poterne più fare a meno!",
       cards: [
         { icon: 'bi bi-check-circle-fill', title: 'Assistenza immediata clienti', description: 'Offri supporto istantaneo e migliora la soddisfazione.' },
         { icon: 'bi bi-check-circle-fill', title: 'FAQ automatizzate', description: 'Rispondi alle domande comuni senza intervento umano.' },
@@ -163,7 +163,7 @@ const applications = [
       buttonText: 'Contattaci per una demo!',
     },
     strengthsContent: {
-      title: "I vantaggi di Smart Pricing",
+      title: "4 motivi per non poterne più fare a meno!",
       cards: [
         { icon: 'bi bi-check-circle-fill', title: 'Prezzi dinamici ottimali', description: 'Adatta i prezzi in tempo reale per massimizzare i profitti.' },
         { icon: 'bi bi-check-circle-fill', title: 'Aumento marginalità', description: 'Migliora i margini di guadagno su ogni vendita.' },
@@ -193,7 +193,7 @@ const applications = [
       buttonText: 'Contattaci per una demo!',
     },
     strengthsContent: {
-      title: "I vantaggi di Stay On",
+      title: "4 motivi per non poterne più fare a meno!",
       cards: [
         { icon: 'bi bi-check-circle-fill', title: 'Previsione abbandono clienti', description: 'Anticipa quali clienti sono a rischio e agisci in tempo.' },
         { icon: 'bi bi-check-circle-fill', title: 'Strategie di retention personalizzate', description: 'Crea campagne mirate per trattenere i clienti.' },
@@ -223,7 +223,7 @@ const applications = [
       buttonText: 'Contattaci per una demo!',
     },
     strengthsContent: {
-      title: "I vantaggi di Sentiment",
+      title: "4 motivi per non poterne più fare a meno!",
       cards: [
         { icon: 'bi bi-check-circle-fill', title: 'Monitoraggio reputazione in tempo reale', description: 'Tieni sotto controllo cosa si dice del tuo brand online.' },
         { icon: 'bi bi-check-circle-fill', title: 'Insight azionabili', description: 'Ottieni spunti per migliorare marketing, customer care e prodotti.' },
@@ -253,7 +253,7 @@ const applications = [
       buttonText: 'Contattaci per una demo!',
     },
     strengthsContent: {
-      title: "I vantaggi di Sales Predict",
+      title: "4 motivi per non poterne più fare a meno!",
       cards: [
         { icon: 'bi bi-check-circle-fill', title: 'Previsioni accurate vendite', description: 'Pianifica con maggiore sicurezza basandoti su dati affidabili.' },
         { icon: 'bi bi-check-circle-fill', title: 'Pianificazione strategica ottimizzata', description: 'Migliora \'allocazione delle risorse e la gestione del budget.' },
@@ -283,7 +283,7 @@ const applications = [
       buttonText: 'Contattaci per una demo!',
     },
     strengthsContent: {
-      title: "I vantaggi di WAP",
+      title: "4 motivi per non poterne più fare a meno!",
       cards: [
         { icon: 'bi bi-check-circle-fill', title: 'Automatizza gli invii, elimina gli errori', description: 'Riduci il lavoro manuale e garantisci la precisione.' },
         { icon: 'bi bi-check-circle-fill', title: 'Scala facilmente, senza perdere controllo', description: 'Invia comunicazioni a un gran numero di contatti.' },

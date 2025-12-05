@@ -53,11 +53,13 @@ export async function getStaticProps() {
     };
   }
 
-  return {
-    props: {
-      heroContent: homeApplication.heroContent,
-      strengthsContent: homeApplication.strengthsContent,
-      videoPaths: homeApplication.videoPaths,
-    },
-  };
-}
+      return {
+      props: {
+        heroContent: {
+          ...homeApplication.heroContent,
+          isHome: true,
+        },
+        strengthsContent: homeApplication.strengthsContent,
+        videoPaths: homeApplication.videoPaths,
+      },
+    };}

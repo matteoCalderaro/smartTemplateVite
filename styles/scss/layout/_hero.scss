@@ -4,7 +4,7 @@
 #hero {
     position: sticky;
     top: 0;
-    height: calc(100vh - 74px);
+    height: calc(100vh - 68px);
     overflow: hidden; // Nasconde le immagini laterali che escono dai bordi
     //background-color: red;
     .container {
@@ -22,7 +22,7 @@
    
     .brand {
 		font-size: 64px;
-        font-weight: 700;
+        font-weight: 600;
         flex-wrap: nowrap;
 
         .brand__text {
@@ -43,6 +43,9 @@
 
 	.brand, .payhoff, .decription {
 		margin-bottom: 25px;
+	}
+	.decription {
+		margin-bottom: 55px;
 	}
 	@include media-queries.media-down(variables.$breakpoint-xxl) {
 		.brand, .payhoff, .decription {

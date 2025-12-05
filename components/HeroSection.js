@@ -1,21 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import React, { useEffect, useRef } from 'react';
 
 const FADE_SPEED = 1.5;
 const MAX_MOVE_AMOUNT = 300;
 
-const defaultContent = {
-  brand: 'Voice 2 Insights',
-  payhoff: 'Trasforma registrazioni (customer service, field agent, meeting, interviste) in testo strutturato',
-  descriptions: [
-    'Analizza le informazioni per topic, sentiment, urgenza e rilevanza',
-    "Aiuta l'utente nel fornire dettagli completi",
-    'Integrabile via dashboard/API con CRM e tool aziendali',
-  ],
-  buttonText: 'Contattaci per una demo!',
-};
-
-const HeroSection = ({ content = defaultContent }) => {
+const HeroSection = ({ content }) => {
   const heroRef = useRef(null);
   const heroSideImageLeftRef = useRef(null);
   const heroSideImageRightRef = useRef(null);
@@ -52,14 +40,14 @@ const HeroSection = ({ content = defaultContent }) => {
   return (
     <header id="hero" className="text-center" ref={heroRef}>
       <div className="container">
-        <div className="hero-side-image hero-side-image--left" ref={heroSideImageLeftRef}>
+        <div className={`hero-side-image hero-side-image--left ${!content.isHome ? 'd-none' : ''}`} ref={heroSideImageLeftRef}>
           <div className="hero-animated-wrapper">
             <div className="hero-cloud hero-cloud--sx">
               <div className="cloud-background"></div>
             </div>
           </div>
         </div>
-        <div className="hero-side-image hero-side-image--right" ref={heroSideImageRightRef}>
+        <div className={`hero-side-image hero-side-image--right ${!content.isHome ? 'd-none' : ''}`} ref={heroSideImageRightRef}>
           <div className="hero-animated-wrapper">
             <div className="hero-cloud hero-cloud--dx">
               <div className="cloud-background"></div>
@@ -67,7 +55,7 @@ const HeroSection = ({ content = defaultContent }) => {
           </div>
         </div>
         <div className="copy-container">
-          <div className="brand d-flex align-items-center justify-content-center gap-2 color-text-gold-light">
+          <div className="brand d-flex align-items-center justify-content-center gap-4 color-text-gold-light">
             <i className={`bi ${content.icon}`}></i>
             <span className="brand__text">{content.brand}</span>
           </div>

@@ -6,7 +6,7 @@
     .cards-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: minmax(281px, auto);
+        grid-auto-rows: minmax(310px, auto);
         gap: 1.5rem;
 
         // Rule to center the last item IF the total number of items is odd (in a 2-column grid)
