@@ -59,12 +59,11 @@ const VideoPlayer = ({ videos }) => {
     });
 
     // Set isPlaying to false, as all videos are now paused
-    setIsPlaying(false);
-
     setIsTransitioning(true);
     // The rest of the logic will be handled by useEffect based on activeTheme change
     setTimeout(() => {
         setActiveTheme(newTheme);
+        setIsPlaying(false); // Change state AFTER transition
         setIsTransitioning(false);
     }, 500); // Should match animation duration
   };
@@ -86,29 +85,7 @@ const VideoPlayer = ({ videos }) => {
     }
   };
 
-  useEffect(() => {
-    const currentVideoElements = [];
-    Object.values(videoRefs.current).forEach(themeVideos => {
-      currentVideoElements.push(themeVideos.mobile);
-      currentVideoElements.push(themeVideos.desktop);
-    });
 
-    currentVideoElements.forEach(video => {
-        if(video) {
-            video.addEventListener('play', () => setIsPlaying(true));
-            video.addEventListener('pause', () => setIsPlaying(false));
-        }
-    });
-
-    return () => {
-        currentVideoElements.forEach(video => {
-            if(video) {
-                video.removeEventListener('play', () => setIsPlaying(true));
-                video.removeEventListener('pause', () => setIsPlaying(false));
-            }
-        });
-    }
-  }, []); // Empty dependency array means this effect runs once on mount
 
   // New useEffect to reset currentTime for the active video
   useEffect(() => {
@@ -152,7 +129,7 @@ const VideoPlayer = ({ videos }) => {
                 </React.Fragment>
               ))}
 
-              <button id="playPauseBtn" className="video-play-button" onClick={handlePlayPause}>
+              <button id="playPauseBtn" className="video-play-button" onClick={handlePlayPause} aria-label={isPlaying ? 'Pause video' : 'Play video'} disabled={isTransitioning}>
                 <i className={`bi ${isPlaying ? 'bi-pause-fill' : 'bi-play-fill'}`}></i>
               </button>
             </div>
