@@ -139,10 +139,10 @@ const applications = [
     strengthsContent: {
       title: "4 motivi per non poterne più fare a meno!",
       cards: [
-        { icon: 'bi bi-check-circle-fill', title: 'Assistenza immediata clienti', description: 'Offri supporto istantaneo e migliora la soddisfazione!' },
-        { icon: 'bi bi-check-circle-fill', title: 'FAQ automatizzate', description: 'Rispondi alle domande comuni senza intervento umano!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Esperienza omnicanale fluida', description: 'Integra WhatsApp con gli altri tuoi canali di comunicazione!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Carico team ridotto', description: 'Libera il tuo team per concentrarsi su compiti a maggior valore!' },
+        { icon: 'bi-headset', title: 'Assistenza immediata clienti', description: 'Offri supporto istantaneo e migliora la soddisfazione!' },
+        { icon: 'bi-chat-dots', title: 'FAQ automatizzate', description: 'Rispondi alle domande comuni senza intervento umano!' },
+        { icon: 'bi-arrows-fullscreen', title: 'Esperienza omnicanale fluida', description: 'Integra WhatsApp con gli altri tuoi canali di comunicazione!' },
+        { icon: 'bi-speedometer2', title: 'Carico team ridotto', description: 'Libera il tuo team per concentrarsi su compiti a maggior valore!' },
       ]
     },
     videoPaths: {
@@ -171,10 +171,10 @@ const applications = [
     strengthsContent: {
       title: "4 motivi per non poterne più fare a meno!",
       cards: [
-        { icon: 'bi bi-check-circle-fill', title: 'Prezzi dinamici ottimali', description: 'Adatta i prezzi in tempo reale per massimizzare i profitti!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Aumento marginalità', description: 'Migliora i margini di guadagno su ogni vendita!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Reattività al mercato', description: 'Rispondi rapidamente alle mosse dei competitor e ai cambiamenti della domanda!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Strategie di vendita mirate', description: 'Crea offerte personalizzate basate sui dati dei clienti!' },
+        { icon: 'bi-graph-up-arrow', title: 'Prezzi dinamici ottimali', description: 'Adatta i prezzi in tempo reale per massimizzare i profitti!' },
+        { icon: 'bi-percent', title: 'Aumento marginalità', description: 'Migliora i margini di guadagno su ogni vendita!' },
+        { icon: 'bi-lightning-charge', title: 'Reattività al mercato', description: 'Rispondi rapidamente alle mosse dei competitor e ai cambiamenti della domanda!' },
+        { icon: 'bi-bullseye', title: 'Strategie di vendita mirate', description: 'Crea offerte personalizzate basate sui dati dei clienti!' },
       ]
     },
     videoPaths: {
@@ -198,10 +198,10 @@ const applications = [
     strengthsContent: {
       title: "4 motivi per non poterne più fare a meno!",
       cards: [
-        { icon: 'bi bi-check-circle-fill', title: 'Previsione abbandono clienti', description: 'Anticipa quali clienti sono a rischio e agisci in tempo!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Strategie di retention personalizzate', description: 'Crea campagne mirate per trattenere i clienti!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Insight predittivi immediati', description: 'Ottieni subito informazioni preziose sul comportamento dei clienti!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Aumento loyalty e ricavi', description: 'Fidelizza i clienti e aumenta il loro valore nel tempo!' },
+        { icon: 'bi-person-x-fill', title: 'Previsione abbandono clienti', description: 'Anticipa quali clienti sono a rischio e agisci in tempo!' },
+        { icon: 'bi-funnel', title: 'Strategie di retention personalizzate', description: 'Crea campagne mirate per trattenere i clienti!' },
+        { icon: 'bi-lightbulb', title: 'Insight predittivi immediati', description: 'Ottieni subito informazioni preziose sul comportamento dei clienti!' },
+        { icon: 'bi-heart-fill', title: 'Aumento loyalty e ricavi', description: 'Fidelizza i clienti e aumenta il loro valore nel tempo!' },
       ]
     },
     videoPaths: {
@@ -225,10 +225,10 @@ const applications = [
     strengthsContent: {
       title: "4 motivi per non poterne più fare a meno!",
       cards: [
-        { icon: 'bi bi-check-circle-fill', title: 'Monitoraggio reputazione in tempo reale', description: 'Tieni sotto controllo cosa si dice del tuo brand online!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Insight azionabili', description: 'Ottieni spunti per migliorare marketing, customer care e prodotti!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Benchmarking con i competitor', description: 'Confronta la tua performance con quella dei concorrenti!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Alert automatici su criticità', description: 'Ricevi notifiche immediate su problemi emergenti!' },
+        { icon: 'bi-eyeglasses', title: 'Monitoraggio reputazione in tempo reale', description: 'Tieni sotto controllo cosa si dice del tuo brand online!' },
+        { icon: 'bi-tools', title: 'Insight azionabili', description: 'Ottieni spunti per migliorare marketing, customer care e prodotti!' },
+        { icon: 'bi-bar-chart-line', title: 'Benchmarking con i competitor', description: 'Confronta la tua performance con quella dei concorrenti!' },
+        { icon: 'bi-bell-fill', title: 'Alert automatici su criticità', description: 'Ricevi notifiche immediate su problemi emergenti!' },
       ]
     },
     videoPaths: {
@@ -252,10 +252,10 @@ const applications = [
     strengthsContent: {
       title: "4 motivi per non poterne più fare a meno!",
       cards: [
-        { icon: 'bi bi-check-circle-fill', title: 'Previsioni accurate vendite', description: 'Pianifica con maggiore sicurezza basandoti su dati affidabili!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Pianificazione strategica ottimizzata', description: 'Migliora l\'allocazione delle risorse e la gestione del budget!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Maggior efficienza commerciale', description: 'Supporta il tuo team di vendita con informazioni strategiche!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Gestione scorte migliorata', description: 'Evita rotture di stock e ottimizza i livelli di inventario!' },
+        { icon: 'bi-graph-up', title: 'Previsioni accurate vendite', description: 'Pianifica con maggiore sicurezza basandoti su dati affidabili!' },
+        { icon: 'bi-briefcase', title: 'Pianificazione strategica ottimizzata', description: 'Migliora l\'allocazione delle risorse e la gestione del budget!' },
+        { icon: 'bi-person-gear', title: 'Maggior efficienza commerciale', description: 'Supporta il tuo team di vendita con informazioni strategiche!' },
+        { icon: 'bi-box-seam', title: 'Gestione scorte migliorata', description: 'Evita rotture di stock e ottimizza i livelli di inventario!' },
       ]
     },
     videoPaths: {
@@ -279,10 +279,10 @@ const applications = [
     strengthsContent: {
       title: "4 motivi per non poterne più fare a meno!",
       cards: [
-        { icon: 'bi bi-check-circle-fill', title: 'Automatizza gli invii, elimina gli errori', description: 'Riduci il lavoro manuale e garantisci la precisione!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Scala facilmente, senza perdere controllo', description: 'Invia comunicazioni a un gran numero di contatti!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Comunica in tempo reale, dove tutti leggono', description: 'Sfrutta il canale di comunicazione più usato al mondo!' },
-        { icon: 'bi bi-check-circle-fill', title: 'Integra WAP con Qlik, CRM ed ERP', description: 'Collega i tuoi sistemi aziendali per un flusso di dati automatizzato!' },
+        { icon: 'bi-robot', title: 'Automatizza gli invii, elimina gli errori', description: 'Riduci il lavoro manuale e garantisci la precisione!' },
+        { icon: 'bi-arrows-expand', title: 'Scala facilmente, senza perdere controllo', description: 'Invia comunicazioni a un gran numero di contatti!' },
+        { icon: 'bi-chat-right-text-fill', title: 'Comunica in tempo reale, dove tutti leggono', description: 'Sfrutta il canale di comunicazione più usato al mondo!' },
+        { icon: 'bi-share', title: 'Integra WAP con Qlik, CRM ed ERP', description: 'Collega i tuoi sistemi aziendali per un flusso di dati automatizzato!' },
       ]
     },
     videoPaths: {
