@@ -16,6 +16,11 @@ const VideoPlayer = ({ videos }) => {
   const [previousTheme, setPreviousTheme] = useState(null);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isClient, setIsClient] = useState(false); // New state to track client mount
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []); // Empty dependency array means it runs once after initial render on client
 
   const playButtonRef = useRef(null);
 
@@ -95,9 +100,8 @@ const VideoPlayer = ({ videos }) => {
     if (activeTheme === newTheme || isTransitioning) return;
 
     const currentThemeVideos = videoRefs.current[activeTheme];
-    if (currentThemeVideos) {
-      if (currentThemeVideos.mobile) currentThemeVideos.mobile.pause();
-      if (currentThemeVideos.desktop) currentThemeVideos.desktop.pause();
+    if (currentThemeVideos && currentThemeVideos.element) {
+      currentThemeVideos.element.pause();
     }
 
     setIsTransitioning(true);
@@ -115,7 +119,7 @@ const VideoPlayer = ({ videos }) => {
     const currentThemeVideos = videoRefs.current[activeTheme];
     if (!currentThemeVideos) return;
 
-    const videoToPlay = isMobileView ? currentThemeVideos.mobile : currentThemeVideos.desktop;
+    const videoToPlay = currentThemeVideos.element;
       
     if (videoToPlay) {
       if (videoToPlay.paused) {
@@ -134,7 +138,7 @@ const VideoPlayer = ({ videos }) => {
   useEffect(() => {
     const currentThemeVideos = videoRefs.current[activeTheme];
     if (currentThemeVideos) {
-      const videoToReset = isMobileView ? currentThemeVideos.mobile : currentThemeVideos.desktop;
+      const videoToReset = currentThemeVideos.element;
       if (videoToReset) {
         videoToReset.currentTime = 0;
       }
@@ -147,52 +151,25 @@ const VideoPlayer = ({ videos }) => {
         <div className="container">
           <div className="card card--video-no-hover">
             <div className={`video-player-container ${isPlaying ? 'is-playing' : ''}`} ref={videoContainerRef}>
-              {[activeTheme, previousTheme].filter(Boolean).map((themeName) => {
+              {isClient && ([activeTheme, previousTheme].filter(Boolean).map((themeName) => {
                 const isActive = themeName === activeTheme;
 
-                let mobileClass = 'animate__animated';
-                if (isMobileView) {
-                    mobileClass += isActive ? ' animate__fadeIn' : ' animate__fadeOut';
-                } else {
-                    mobileClass += ' video--hidden';
-                }
-
-                let desktopClass = 'animate__animated';
-                if (!isMobileView) {
-                    desktopClass += isActive ? ' animate__fadeIn' : ' animate__fadeOut';
-                } else {
-                    desktopClass += ' video--hidden';
-                }
-
                 return (
-                  <React.Fragment key={themeName}>
-                    <video
-                      id={`${themeName}Mobile`}
-                      preload="metadata"
-                      muted
-                      playsInline
-                      className={mobileClass}
-                      src={basePath + videos[themeName].mobile}
-                      ref={isActive ? (el) => {
-                        if (!videoRefs.current[themeName]) videoRefs.current[themeName] = {};
-                        videoRefs.current[themeName].mobile = el;
-                      } : null}
-                    ></video>
-                    <video
-                      id={`${themeName}Desktop`}
-                      preload="metadata"
-                      muted
-                      playsInline
-                      className={desktopClass}
-                      src={basePath + videos[themeName].desktop}
-                      ref={isActive ? (el) => {
-                        if (!videoRefs.current[themeName]) videoRefs.current[themeName] = {};
-                        videoRefs.current[themeName].desktop = el;
-                      } : null}
-                    ></video>
-                  </React.Fragment>
+                  <video
+                    key={themeName}
+                    id={`${themeName}Video`}
+                    preload="metadata"
+                    muted
+                    playsInline
+                    className={`animate__animated ${isActive ? ' animate__fadeIn' : ' animate__fadeOut'}`}
+                    src={isMobileView ? (basePath + videos[themeName].mobile) : (basePath + videos[themeName].desktop)}
+                    ref={isActive ? (el) => {
+                      if (!videoRefs.current[themeName]) videoRefs.current[themeName] = {};
+                      videoRefs.current[themeName].element = el; // Store the single element
+                    } : null}
+                  ></video>
                 );
-              })}
+              }))}
 
               <button ref={playButtonRef} id="playPauseBtn" className="video-play-button" onClick={handlePlayPause} aria-label={isPlaying ? 'Pause video' : 'Play video'} disabled={isTransitioning}>
                 <i className={`bi ${isPlaying ? 'bi-pause-fill' : 'bi-play-fill'}`}></i>
