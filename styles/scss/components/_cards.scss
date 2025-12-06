@@ -1,6 +1,8 @@
 /*
  * Stili per le card delle applicazioni
  * -------------------------------------------------------------------------- */
+ @use '../base/variables';
+@use '../base/media-queries';
 
 .card {
     // Contenitore esterno con bordo e sfondo semi-trasparente
@@ -39,14 +41,19 @@
     }
 
     &.card--video-no-hover {
+        width: 100%;
         &::before {
             transform: translate(10px, 20px);
             background: radial-gradient(circle at bottom left, rgba(var(--color-white-rgb), 1), transparent 25%);
         }
-        position: static;
-        &:hover::before {
-            opacity: 0.5; // Riporta all'opacità di default
-            filter: blur(30px); // Riporta al blur di default
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+
+        //position: static;
+        @include media-queries.media-down(variables.$breakpoint-sm) {
+          
+            height: 470px;
+            min-width: 470px;
         }
     }
     // Titoli applicazioni pù grande

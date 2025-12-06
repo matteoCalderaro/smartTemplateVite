@@ -13,8 +13,11 @@ const VideoPlayer = ({ videos }) => {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeTheme, setActiveTheme] = useState(themeNames[0]); // Initialize with the first theme
+  const [previousTheme, setPreviousTheme] = useState(null);
   const [isMobileView, setIsMobileView] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const playButtonRef = useRef(null);
 
   const isMobile = useCallback(() => window.innerWidth < 576, []);
 
@@ -41,30 +44,70 @@ const VideoPlayer = ({ videos }) => {
     handleResize(); // Set initial state
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', debouncedHandleResize);
     };
   }, [isMobile]);
+
+  // Effect to dynamically reposition the play button on mobile to keep it in the viewport
+  useEffect(() => {
+    const playButton = playButtonRef.current;
+    const videoContainer = videoContainerRef.current;
+
+    const repositionButton = () => {
+      if (!playButton || !videoContainer) return;
+
+      // On desktop, or if not overflowing, clear inline style to let CSS take over.
+      if (!isMobileView) {
+        playButton.style.right = '';
+        return;
+      }
+      
+      // On mobile, calculate dynamic 'right'
+      const containerRect = videoContainer.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+
+      // If the container's right edge is off-screen
+      if (containerRect.right > viewportWidth) {
+          const overflowAmount = containerRect.right - viewportWidth;
+          // The new 'right' is the base distance (47px from CSS) minus the overflow amount.
+          const newRight = 47 + overflowAmount;
+          playButton.style.right = `${newRight}px`;
+      } else {
+          // If not overflowing, ensure the default CSS rule applies by clearing the inline style.
+          playButton.style.right = '';
+      }
+    };
+
+    const throttledReposition = () => window.requestAnimationFrame(repositionButton);
+
+    window.addEventListener('scroll', throttledReposition, { passive: true });
+    window.addEventListener('resize', throttledReposition);
+
+    repositionButton(); // Initial call
+
+    return () => {
+      window.removeEventListener('scroll', throttledReposition);
+      window.removeEventListener('resize', throttledReposition);
+    };
+  }, [isMobileView]); // Run this effect whenever isMobileView changes
 
   const handleThemeChange = (newTheme) => {
     if (activeTheme === newTheme || isTransitioning) return;
 
-    // Pause and reset ALL videos
-    Object.values(videoRefs.current).forEach(themeVideos => {
-      if (themeVideos.mobile) {
-        themeVideos.mobile.pause();
-      }
-      if (themeVideos.desktop) {
-        themeVideos.desktop.pause();
-      }
-    });
+    const currentThemeVideos = videoRefs.current[activeTheme];
+    if (currentThemeVideos) {
+      if (currentThemeVideos.mobile) currentThemeVideos.mobile.pause();
+      if (currentThemeVideos.desktop) currentThemeVideos.desktop.pause();
+    }
 
-    // Set isPlaying to false, as all videos are now paused
     setIsTransitioning(true);
-    // The rest of the logic will be handled by useEffect based on activeTheme change
+    setPreviousTheme(activeTheme);
+    setActiveTheme(newTheme);
+
     setTimeout(() => {
-        setActiveTheme(newTheme);
-        setIsPlaying(false); // Change state AFTER transition
-        setIsTransitioning(false);
+      setPreviousTheme(null);
+      setIsPlaying(false);
+      setIsTransitioning(false);
     }, 500); // Should match animation duration
   };
 
@@ -104,32 +147,54 @@ const VideoPlayer = ({ videos }) => {
         <div className="container">
           <div className="card card--video-no-hover">
             <div className={`video-player-container ${isPlaying ? 'is-playing' : ''}`} ref={videoContainerRef}>
-              {themeNames.map((themeName) => (
-                <React.Fragment key={themeName}>
-                  <video 
-                    id={`${themeName}Mobile`} 
-                    preload="metadata" muted playsInline 
-                    className={`animate__animated ${activeTheme === themeName && isMobileView ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`}
-                    src={basePath + videos[themeName].mobile}
-                    ref={(el) => {
-                      if (!videoRefs.current[themeName]) videoRefs.current[themeName] = {};
-                      videoRefs.current[themeName].mobile = el;
-                    }}
-                  ></video>
-                  <video 
-                    id={`${themeName}Desktop`} 
-                    preload="metadata" muted playsInline 
-                    className={`animate__animated ${activeTheme === themeName && !isMobileView ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`}
-                    src={basePath + videos[themeName].desktop}
-                    ref={(el) => {
-                      if (!videoRefs.current[themeName]) videoRefs.current[themeName] = {};
-                      videoRefs.current[themeName].desktop = el;
-                    }}
-                  ></video>
-                </React.Fragment>
-              ))}
+              {[activeTheme, previousTheme].filter(Boolean).map((themeName) => {
+                const isActive = themeName === activeTheme;
 
-              <button id="playPauseBtn" className="video-play-button" onClick={handlePlayPause} aria-label={isPlaying ? 'Pause video' : 'Play video'} disabled={isTransitioning}>
+                let mobileClass = 'animate__animated';
+                if (isMobileView) {
+                    mobileClass += isActive ? ' animate__fadeIn' : ' animate__fadeOut';
+                } else {
+                    mobileClass += ' video--hidden';
+                }
+
+                let desktopClass = 'animate__animated';
+                if (!isMobileView) {
+                    desktopClass += isActive ? ' animate__fadeIn' : ' animate__fadeOut';
+                } else {
+                    desktopClass += ' video--hidden';
+                }
+
+                return (
+                  <React.Fragment key={themeName}>
+                    <video
+                      id={`${themeName}Mobile`}
+                      preload="metadata"
+                      muted
+                      playsInline
+                      className={mobileClass}
+                      src={basePath + videos[themeName].mobile}
+                      ref={isActive ? (el) => {
+                        if (!videoRefs.current[themeName]) videoRefs.current[themeName] = {};
+                        videoRefs.current[themeName].mobile = el;
+                      } : null}
+                    ></video>
+                    <video
+                      id={`${themeName}Desktop`}
+                      preload="metadata"
+                      muted
+                      playsInline
+                      className={desktopClass}
+                      src={basePath + videos[themeName].desktop}
+                      ref={isActive ? (el) => {
+                        if (!videoRefs.current[themeName]) videoRefs.current[themeName] = {};
+                        videoRefs.current[themeName].desktop = el;
+                      } : null}
+                    ></video>
+                  </React.Fragment>
+                );
+              })}
+
+              <button ref={playButtonRef} id="playPauseBtn" className="video-play-button" onClick={handlePlayPause} aria-label={isPlaying ? 'Pause video' : 'Play video'} disabled={isTransitioning}>
                 <i className={`bi ${isPlaying ? 'bi-pause-fill' : 'bi-play-fill'}`}></i>
               </button>
             </div>

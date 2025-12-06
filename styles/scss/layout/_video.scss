@@ -10,34 +10,25 @@
     & > .container {
         position: relative; // Moved from inline style in index.html
     }
-
-    @include media-queries.media-down(variables.$breakpoint-sm) {
-        position: relative; // #video acquires position: relative below sm breakpoint
-        & > .container {
-            position: static; // .container loses position: relative below sm breakpoint
-            display: flex;
-        }
-    }
 }
 
 .video-player-container {
-    //position: relative;
+    position: relative;
     width: 100%;
     height: 100%;
-    overflow: hidden; // Assicura che gli angoli arrotondati del video vengano rispettati
+    aspect-ratio: 16 / 9; // Creates a 16:9 aspect ratio
+    overflow: hidden;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 
     video {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: inherit;
-    }
-    @include media-queries.media-down(variables.$breakpoint-sm) {
-        video {
-            height: 430px;
-        }
     }
 }
 
@@ -58,14 +49,6 @@
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
-
-    @include media-queries.media-down(variables.$breakpoint-sm) {
-        bottom: 41px;
-        right: 28px;
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
 
     &:hover {
         background-color: var(--bismart-gold-hover);
@@ -94,9 +77,4 @@
 
 .video--hidden {
     display: none !important;
-}
-
-.animate__slideOutDown,
-.animate__slideInUp {
-    animation-duration: 0.5s;
 }
