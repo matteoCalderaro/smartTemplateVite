@@ -80,7 +80,7 @@ const applications = [
     heroContent: {
       brand: 'Voice 2 Insights',
       icon: 'bi bi-mic-fill',
-      payhoff: 'La Business Intelligence prende il volo, sempre più smart con AI e ML',
+      payhoff: 'Trasforma registrazioni (customer service, field agent, meeting, interviste) in testo strutturato',
       descriptions: [
         'Analizza le informazioni per topic, sentiment, urgenza e rilevanza',
         "Aiuta l\'utente nel fornire dettagli completi",
