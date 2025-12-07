@@ -21,6 +21,11 @@
     // Base Styles for the block
     max-width: 70%;
 
+    @include media-queries.media-down(variables.$breakpoint-lg) {
+        max-width: 100%;
+    }
+
+
     &__brand {
         font-size: 64px;
         font-weight: 600;

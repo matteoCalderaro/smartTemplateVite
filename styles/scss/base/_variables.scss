@@ -51,9 +51,10 @@ $bismart-dark-grey-blue: #2a4e69;
 .color-btn-border { border-color: var(--bismart-gold) !important; }
 
 // Breakpoints Bootstrap (mappatura manuale)
-$breakpoint-sm: 576px;
-$breakpoint-md: 769px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
-$breakpoint-xxl: 1400px;
+// Conversione da px a em (1em = 16px)
+$breakpoint-sm: 36em;    // 576px / 16 = 36em
+$breakpoint-md: 48em;    // 768px / 16 = 48em
+$breakpoint-lg: 62em;    // 992px / 16 = 62em
+$breakpoint-xl: 75em;    // 1200px / 16 = 75em
+$breakpoint-xxl: 87.5em; // 1400px / 16 = 87.5em
 
