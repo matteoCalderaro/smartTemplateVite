@@ -1,5 +1,4 @@
 import Link from 'next/link'; // Import Link
-import React from 'react';
 
 const Strengths = ({ content, clickableCards = false }) => { // Add clickableCards prop with default false
   return (

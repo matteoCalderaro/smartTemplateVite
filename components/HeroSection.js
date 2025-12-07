@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import useScrollPosition from '../hooks/useScrollPosition';
 
 const FADE_SPEED = 1.5;
 const MAX_MOVE_AMOUNT = 300;
@@ -7,35 +8,26 @@ const HeroSection = ({ content }) => {
   const heroRef = useRef(null);
   const heroSideImageLeftRef = useRef(null);
   const heroSideImageRightRef = useRef(null);
+  const scrollPosition = useScrollPosition();
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (heroRef.current) {
-        const scrollPosition = window.scrollY;
-        const heroHeight = heroRef.current.offsetHeight;
+    if (heroRef.current) {
+      const heroHeight = heroRef.current.offsetHeight;
 
-        let opacity = 1 - (scrollPosition / (heroHeight / FADE_SPEED));
+      let opacity = 1 - (scrollPosition / (heroHeight / FADE_SPEED));
 
-        if (opacity < 0) opacity = 0;
-        if (opacity > 1) opacity = 1;
+      if (opacity < 0) opacity = 0;
+      if (opacity > 1) opacity = 1;
 
-        heroRef.current.style.opacity = opacity;
+      heroRef.current.style.opacity = opacity;
 
-        if (heroSideImageLeftRef.current && heroSideImageRightRef.current) {
-          let moveAmount = Math.min(scrollPosition, heroHeight) / (heroHeight / MAX_MOVE_AMOUNT);
-          heroSideImageLeftRef.current.style.transform = `translateX(${-moveAmount}px)`;
-          heroSideImageRightRef.current.style.transform = `translateX(${moveAmount}px)`;
-        }
+      if (heroSideImageLeftRef.current && heroSideImageRightRef.current) {
+        let moveAmount = Math.min(scrollPosition, heroHeight) / (heroHeight / MAX_MOVE_AMOUNT);
+        heroSideImageLeftRef.current.style.transform = `translateX(${-moveAmount}px)`;
+        heroSideImageRightRef.current.style.transform = `translateX(${moveAmount}px)`;
       }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Set initial state
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    }
+  }, [scrollPosition]);
 
   return (
     <header id="hero" className="text-center" ref={heroRef}>

@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import useScrollPosition from '../hooks/useScrollPosition';
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const scrollPosition = useScrollPosition();
 
   useEffect(() => {
-    const toggleVisibility = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener('scroll', toggleVisibility);
-
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility);
-    };
-  }, []);
+    if (scrollPosition > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  }, [scrollPosition]);
 
   const scrollToTop = () => {
     window.scrollTo({

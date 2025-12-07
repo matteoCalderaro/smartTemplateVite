@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import React from 'react';
 import applications from '../data/applications';
 
 // Import components used in index.js for consistent layout
