@@ -5,10 +5,8 @@
 // Stili per il contenitore del video player custom
 #video {
     overflow: clip;
-
-    // Default styles for desktop (>= 576px)
-    & > .container {
-        position: relative; // Moved from inline style in index.html
+    & > .container-fluid {
+        max-width: 1200px;
     }
 }
 
@@ -20,81 +18,111 @@
     padding-bottom: 0;
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
-
+    position: relative;
+   
+  
     @include media-queries.media-down(variables.$breakpoint-sm) {
         height: 470px;
         min-width: 470px;
     }
-}
 
-.video-player-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 16 / 9; // Creates a 16:9 aspect ratio
-    overflow: hidden;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-
-    video {
-        position: absolute;
-        top: 0;
-        left: 0;
+    &__video-container {
+        position: relative;
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        border-radius: inherit;
+        aspect-ratio: 16 / 9; // Creates a 16:9 aspect ratio
+        overflow: hidden;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        .video-play-button {
+            position: absolute;
+            bottom: 34px; // Spostato in basso
+            right: 47px;  // Spostato a destra
+            background-color: var(--bismart-gold);
+            border: 2px solid var(--bismart-gold);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: var(--bismart-gold-hover);
+            }
+
+            .bi-pause-fill {
+                display: none;
+            }
+        }
+    }
+
+    &__video-container.is-playing {
+        .video-play-button {
+
+            .bi-play-fill {
+                display: none;
+            }
+            .bi-pause-fill {
+                display: block;
+            }
+        }
+    }
+}
+
+.video__controls { // Renamed from #video-controlli
+    position: relative;
+    z-index: 3;
+    background: var(--bismart-blue-gradient-to-bottom);
+    padding-bottom: 5.5rem;
+    @include media-queries.media-down(variables.$breakpoint-md) {
+        padding-bottom: 2.5rem;
     }
 }
 
 
-
-// Quando il video è in play, mostra l'icona di pausa e nascondi quella di play
-.video-player-container.is-playing {
-    .video-play-button {
-        // Opzionale: nascondi il pulsante durante la riproduzione
-        // opacity: 0;
-
-        .bi-play-fill {
-            display: none;
-        }
-        .bi-pause-fill {
-            display: block;
-        }
-    }
-}
-
-.video--hidden {
-    display: none !important;
-}
-
-
-
-
-// Stile per il pulsante di play/pausa sovrapposto
-.video-play-button {
-    position: absolute;
-    bottom: 34px; // Spostato in basso
-    right: 47px;  // Spostato a destra
-    background-color: var(--bismart-gold);
-    border: 2px solid var(--bismart-gold);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
+.video__controls-bar { // Renamed from .video-controls-bar
+    //background: var(--bismart-blue-gradient-to-bottom);
+    display: inline-flex; /* Changed from inline-flex */
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 9999px; // Pill shape
+    border: 1px solid rgba(var(--color-white-rgb), 0.6);
+    gap: 0.5rem;
+    margin-top: 40px;
+}
+
+.video__controls-bar__button { // Renamed from .video-controls-bar__button
+    width: 8rem; /* Forced equal width */
+    background-color: transparent;
+    border: 1px solid rgba(var(--color-white-rgb), 0.6);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 9999px; // Pill shape
+    font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0s ease, border-color 0.3s ease; /* Instant background transition */
 
+    &--active,
     &:hover {
-        background-color: var(--bismart-gold-hover);
-    }
-
-    .bi-pause-fill {
-        // Nascondi l'icona di pausa di default
-        display: none;
+        background-color: white; /* Changed */
+        color: var(--bismart-blue); /* Changed */
+        transition-duration: 0.3s; /* Smooth background transition for active/hover */
     }
 }

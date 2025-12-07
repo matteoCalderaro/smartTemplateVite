@@ -148,9 +148,9 @@ const VideoPlayer = ({ videos }) => {
   return (
     <>
       <section id="video" className="container-offset">
-        <div className="container">
+        <div className="container-fluid">
           <div className="video-card">
-            <div className={`video-player-container ${isPlaying ? 'is-playing' : ''}`} ref={videoContainerRef}>
+            <div className={`video-card__video-container ${isPlaying ? 'is-playing' : ''}`} ref={videoContainerRef}>
               {isClient && ([activeTheme, previousTheme].filter(Boolean).map((themeName) => {
                 const isActive = themeName === activeTheme;
 
@@ -180,14 +180,14 @@ const VideoPlayer = ({ videos }) => {
       </section>
 
       {/* La sezione #video-controlli verrà renderizzata solo se ci sono più di un tema */}
-        <section id="video-controlli" className="text-center">
+        <section className="video__controls text-center">
           <div className="container" style={{ visibility: themeNames.length > 1 ? 'visible' : 'hidden' }}  >
-            <div className="video-controls-bar">
+            <div className="video__controls-bar">
               {themeNames.map((themeName) => (
                 <button 
                   key={themeName}
                   id={`btn-${themeName}`} 
-                  className={`video-controls-bar__button ${activeTheme === themeName ? 'video-controls-bar__button--active' : ''}`} 
+                  className={`video__controls-bar__button ${activeTheme === themeName ? 'video__controls-bar__button--active' : ''}`} 
                   onClick={() => handleThemeChange(themeName)}
                 >
                   {themeName.toUpperCase()}
@@ -198,7 +198,7 @@ const VideoPlayer = ({ videos }) => {
               <p 
                 key={`text-video-${themeName}`}
                 id={`text-video-${themeName}`} 
-                className={`animate__animated color-text-gold-light mt-3 mb-0 custom-text ${activeTheme === themeName ? 'animate__fadeIn' : 'animate__fadeOut video--hidden'}`}
+                className={`animate__animated color-text-gold-light mt-3 mb-0 custom-text ${activeTheme === themeName ? 'animate__fadeIn' : 'animate__fadeOut d-none'}`}
               >
                 {videos[themeName].text}
               </p>
