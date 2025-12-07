@@ -149,7 +149,7 @@ const VideoPlayer = ({ videos }) => {
     <>
       <section id="video" className="container-offset">
         <div className="container">
-          <div className="card card--video-no-hover">
+          <div className="video-card">
             <div className={`video-player-container ${isPlaying ? 'is-playing' : ''}`} ref={videoContainerRef}>
               {isClient && ([activeTheme, previousTheme].filter(Boolean).map((themeName) => {
                 const isActive = themeName === activeTheme;

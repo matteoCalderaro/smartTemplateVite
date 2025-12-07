@@ -2,7 +2,13 @@
  * Stili per i bottoni
  * -------------------------------------------------------------------------- */
 
-.cta-btn {
+/**
+ * @block form-cta-button
+ * @description Stile per il bottone di Call-to-Action specifico per i moduli (form).
+ *              Utilizzato per azioni come l'invio di un modulo.
+ * @used-in Form.js
+ */
+.form-cta-button {
     display: block;
     margin: 0 auto;
     padding: 10px 40px;
@@ -21,8 +27,13 @@
     }
 }
 
-.hero-button {
-    // Stile per il bottone principale della hero section
+/**
+ * @block hero-cta-button
+ * @description Stile per un bottone di Call-to-Action prominente, tipicamente utilizzato nella sezione Hero.
+ *              Offre un aspetto distintivo con bordo e gradiente all'hover.
+ * @used-in HeroSection.js
+ */
+.hero-cta-button {
     color: var(--bismart-blue);
     border: 2px solid var(--bismart-blue);
     transition: all 0.6s ease;
@@ -46,7 +57,7 @@
         border-radius: inherit;
     }
 
-    .hero-button__content {
+    .hero-cta-button__content { // Elemento interno per il testo del bottone
         position: relative;
         z-index: 3;
         font-size: 1.25rem;
@@ -62,16 +73,5 @@
         &::before {
             opacity: 0;
         }
-    }
-}
-
-/* Stile per i bottoni primari custom */
-.btn-primary.color-bg-primary-btn {
-    background-color: var(--bismart-gold-light);
-    color: var(--color-white);
-    border: none;
-
-    &:hover {
-        background-color: var(--bismart-gold-light-hover); // Usata variabile
     }
 }

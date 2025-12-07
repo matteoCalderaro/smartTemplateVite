@@ -40,26 +40,8 @@
         filter: blur(20px);
     }
 
-    &.card--video-no-hover {
-        width: 100%;
-        &::before {
-            transform: translate(10px, 20px);
-            background: radial-gradient(circle at bottom left, rgba(var(--color-white-rgb), 1), transparent 25%);
-        }
-        border-bottom-left-radius: 0 !important;
-        border-bottom-right-radius: 0 !important;
 
-        //position: static;
-        @include media-queries.media-down(variables.$breakpoint-sm) {
-          
-            height: 470px;
-            min-width: 470px;
-        }
-    }
-    // Titoli applicazioni pù grande
-    &.strength-card-link h4 {
-        font-size: 35px;
-    }
+
 }
 
 .card__base {
@@ -74,10 +56,13 @@
         box-shadow: 0 12px 24px rgba(var(--bismart-blue-rgb), 0.2);
     }
 
-    i {
-        font-size: 3.5rem !important;
+    .card__icon {
+        font-size: 3.5rem;
     }
-    p {
-        font-size: 18px !important;
+    .card__title {
+        font-size: 1.5rem;
+    }
+    .card__description {
+        font-size: 1.25rem;
     }
 }

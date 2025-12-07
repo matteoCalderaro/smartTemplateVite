@@ -182,7 +182,7 @@ const Form = () => {
                     </label>
                     {errors.privacy && <div className="invalid-feedback">{errors.privacy.message}</div>}
                   </div>
-                  <button type="submit" className="btn cta-btn mt-5" id="submit" disabled={isSubmitting}>
+                  <button type="submit" className="btn form-cta-button mt-5" id="submit" disabled={isSubmitting}>
                     {isSubmitting && <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>}
                     <span className="button-text">{isSubmitting ? 'Invio...' : 'Invia'}</span>
                   </button>

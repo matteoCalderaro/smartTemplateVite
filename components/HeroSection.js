@@ -47,19 +47,19 @@ const HeroSection = ({ content }) => {
           </div>
         </div>
         <div className="copy-container">
-          <div className="brand d-flex align-items-center justify-content-center gap-4 color-text-gold-light">
+          <div className="copy-container__brand d-flex align-items-center justify-content-center gap-4 color-text-gold-light">
             <i className={`bi ${content.icon}`}></i>
             <span className="brand__text">{content.brand}</span>
           </div>
-          <div className="payhoff text-shadow-effect text-white">{content.payhoff}</div>
-          <div className="decription color-text-gold-light">
+          <div className="copy-container__payhoff text-shadow-effect text-white">{content.payhoff}</div>
+          <div className="copy-container__description color-text-gold-light">
             {content.descriptions.map((line, index) => (
               <div key={index}>{line}</div>
             ))}
           </div>
-          <div className="button d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
-            <a href="#form" className="hero-button fw-semibold rounded-4" data-scroll-to>
-              <span className="hero-button__content">{content.buttonText}</span>
+          <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
+            <a href="#form" className="hero-cta-button fw-semibold rounded-4" data-scroll-to>
+              <span className="hero-cta-button__content">{content.buttonText}</span>
             </a>
           </div>
         </div>

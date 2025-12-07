@@ -12,6 +12,21 @@
     }
 }
 
+.video-card {
+    // Base styles from .card
+    border: 1px solid rgba(var(--color-white-rgb), 0.8);
+    border-bottom: 0;
+    padding: 1rem;
+    padding-bottom: 0;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+
+    @include media-queries.media-down(variables.$breakpoint-sm) {
+        height: 470px;
+        min-width: 470px;
+    }
+}
+
 .video-player-container {
     position: relative;
     width: 100%;
@@ -31,6 +46,30 @@
         border-radius: inherit;
     }
 }
+
+
+
+// Quando il video è in play, mostra l'icona di pausa e nascondi quella di play
+.video-player-container.is-playing {
+    .video-play-button {
+        // Opzionale: nascondi il pulsante durante la riproduzione
+        // opacity: 0;
+
+        .bi-play-fill {
+            display: none;
+        }
+        .bi-pause-fill {
+            display: block;
+        }
+    }
+}
+
+.video--hidden {
+    display: none !important;
+}
+
+
+
 
 // Stile per il pulsante di play/pausa sovrapposto
 .video-play-button {
@@ -58,23 +97,4 @@
         // Nascondi l'icona di pausa di default
         display: none;
     }
-}
-
-// Quando il video è in play, mostra l'icona di pausa e nascondi quella di play
-.video-player-container.is-playing {
-    .video-play-button {
-        // Opzionale: nascondi il pulsante durante la riproduzione
-        // opacity: 0;
-
-        .bi-play-fill {
-            display: none;
-        }
-        .bi-pause-fill {
-            display: block;
-        }
-    }
-}
-
-.video--hidden {
-    display: none !important;
 }
