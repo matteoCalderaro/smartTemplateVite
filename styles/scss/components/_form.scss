@@ -1,5 +1,7 @@
+@use '../base/variables';
+
 #form {
-    scroll-margin-top: 74px;
+    scroll-margin-top: variables.$navbar-height;
 }
 
 .form__wrapper {

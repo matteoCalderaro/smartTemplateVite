@@ -117,3 +117,28 @@
         transition-duration: 0.3s; /* Smooth background transition for active/hover */
     }
 }
+
+// Progress Bar Styles
+.video-progress-bar {
+    &__container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 7px; // Minimal height
+        background-color: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        // &:hover {
+        //     height: 10px;
+        // }
+        @include media-queries.media-down(variables.$breakpoint-576) {
+            display: none; // Hide on mobile
+        }
+    }
+
+    &__filled {
+        height: 100%;
+        background-color: var(--bismart-gold);
+        transition: width 0.1s linear;
+    }
+}

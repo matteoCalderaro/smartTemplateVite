@@ -17,6 +17,13 @@ const VideoPlayer = ({ videos }) => {
   const [isMobileView, setIsMobileView] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isClient, setIsClient] = useState(false); // New state to track client mount
+  
+  // --- Progress Bar State ---
+  // `progress`: tiene traccia del tempo di riproduzione corrente in secondi.
+  const [progress, setProgress] = useState(0);
+  // `duration`: memorizza la durata totale del video in secondi.
+  const [duration, setDuration] = useState(0);
+
 
   useEffect(() => {
     setIsClient(true);
@@ -132,34 +139,72 @@ const VideoPlayer = ({ videos }) => {
     }
   };
 
+  // --- Progress Bar Logic ---
+  // Gestisce il click sulla barra di avanzamento per navigare nel video (seek).
+  const handleProgressChange = (e) => {
+    const video = videoRefs.current[activeTheme]?.element;
+    if (!video || !duration) return;
+  
+    // `currentTarget` si riferisce all'elemento su cui è montato l'event listener (il contenitore della barra).
+    const rect = e.currentTarget.getBoundingClientRect();
+    // Calcola la posizione del clic relativa all'inizio della barra.
+    const x = e.clientX - rect.left;
+    const width = rect.width;
+    // Converte la posizione del clic in un nuovo tempo del video.
+    const newTime = (x / width) * duration;
+  
+    video.currentTime = newTime;
+    setProgress(newTime);
+  };
 
 
-  // New useEffect to reset currentTime for the active video
+  // Resetta il tempo e la barra di avanzamento quando cambia il video attivo.
   useEffect(() => {
     const currentThemeVideos = videoRefs.current[activeTheme];
     if (currentThemeVideos) {
       const videoToReset = currentThemeVideos.element;
       if (videoToReset) {
         videoToReset.currentTime = 0;
+        setProgress(0); // Resetta lo stato del progresso.
+        setDuration(0); // Resetta la durata.
       }
     }
   }, [activeTheme, isMobileView]);
 
+  // Sincronizza lo stato del video con la UI (barra di avanzamento e pulsanti).
   useEffect(() => {
     const currentVideo = videoRefs.current[activeTheme]?.element;
 
+    // Quando il video finisce, riavvolgilo e imposta lo stato su "pausa".
     const handleVideoEnd = () => {
-      currentVideo.currentTime = 0; // Rewind the video to the beginning
+      if (currentVideo) currentVideo.currentTime = 0;
       setIsPlaying(false);
+      setProgress(0);
     };
+
+    // Aggiorna lo stato `progress` man mano che il video avanza.
+    const handleTimeUpdate = () => {
+      if (currentVideo) setProgress(currentVideo.currentTime);
+    };
+
+    // Imposta la durata totale del video quando i metadati sono caricati.
+    const handleLoadedMetadata = () => {
+      if (currentVideo) setDuration(currentVideo.duration);
+    };
+
 
     if (currentVideo) {
       currentVideo.addEventListener('ended', handleVideoEnd);
+      currentVideo.addEventListener('timeupdate', handleTimeUpdate);
+      currentVideo.addEventListener('loadedmetadata', handleLoadedMetadata);
     }
 
+    // Funzione di pulizia per rimuovere gli event listener ed evitare memory leak.
     return () => {
       if (currentVideo) {
         currentVideo.removeEventListener('ended', handleVideoEnd);
+        currentVideo.removeEventListener('timeupdate', handleTimeUpdate);
+        currentVideo.removeEventListener('loadedmetadata', handleLoadedMetadata);
       }
     };
   }, [activeTheme, isMobileView, isClient]);
@@ -193,6 +238,16 @@ const VideoPlayer = ({ videos }) => {
               <button ref={playButtonRef} id="playPauseBtn" className="video-play-button" onClick={handlePlayPause} aria-label={isPlaying ? 'Pause video' : 'Play video'} disabled={isTransitioning}>
                 <i className={`bi ${isPlaying ? 'bi-pause-fill' : 'bi-play-fill'}`}></i>
               </button>
+              
+              {/* --- Elemento JSX della Barra di Avanzamento --- */}
+              <div className="video-progress-bar__container" onClick={handleProgressChange}>
+                <div 
+                  className="video-progress-bar__filled" 
+                  // La larghezza è una percentuale calcolata dal progresso corrente rispetto alla durata totale.
+                  style={{ width: `${(progress / duration) * 100 || 0}%` }}
+                ></div>
+              </div>
+
             </div>
           </div>
         </div>
