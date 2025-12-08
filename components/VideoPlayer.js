@@ -75,7 +75,7 @@ const VideoPlayer = ({ videos }) => {
       if (containerRect.right > viewportWidth) {
           const overflowAmount = containerRect.right - viewportWidth;
           // The new 'right' is the base distance (47px from CSS) minus the overflow amount.
-          const newRight = 47 + overflowAmount;
+          const newRight = 40 + overflowAmount;
           playButton.style.right = `${newRight}px`;
       } else {
           // If not overflowing, ensure the default CSS rule applies by clearing the inline style.
@@ -148,7 +148,7 @@ const VideoPlayer = ({ videos }) => {
   return (
     <>
       <section id="video" className="video-container-offset">
-        <div className="container-fluid">
+        <div className="container">
           <div className="video-card">
             <div className={`video-card__video-container ${isPlaying ? 'is-playing' : ''}`} ref={videoContainerRef}>
               {isClient && ([activeTheme, previousTheme].filter(Boolean).map((themeName) => {

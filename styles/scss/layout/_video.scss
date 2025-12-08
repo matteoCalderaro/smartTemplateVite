@@ -5,9 +5,6 @@
 // Stili per il contenitore del video player custom
 #video {
     overflow: clip;
-    & > .container-fluid {
-        max-width: 1200px;
-    }
 }
 
 .video-card {
