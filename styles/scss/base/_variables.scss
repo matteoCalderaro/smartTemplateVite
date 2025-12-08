@@ -1,13 +1,24 @@
 /*
- * Variabili CSS e classi di utilità per i colori
- * -------------------------------------------------------------------------- */
+    Configurazione del percorso base per i deployment
+    Lo sviluppatore deve impostare il valore di $base-path in base all'ambiente
+*/
 
+//// PRODUZIONE (.NET build)
+// $base-path: '/suite';
 
-// $base-path: '/suite'; // BUILD PER DOTNET
-$base-path: ''; // Sviluppo
+//// SVILUPPO LOCALE
+$base-path: '';
+
+/*
+    Se si modifica l'altezza della Navbar
+    Aggiornare il valore di $navbar-height
+*/
 
 $navbar-height: 76px; // Altezza della Navbar
 
+///////////////////
+/// VARIABILI
+/// //////////
 
 :root {
     // Colori principali del brand

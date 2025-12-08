@@ -69,7 +69,7 @@ const SuiteCarousel = () => {
   }, []);
 
   return (
-    <section id="suite-marquee" className="section-padding-bottom">
+    <section id="suite-marquee">
       <div className="marquee">
         <div className="marquee__content" ref={marqueeContentRef}>
           <div className="marquee__item">

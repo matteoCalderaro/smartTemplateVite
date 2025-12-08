@@ -180,7 +180,7 @@ const VideoPlayer = ({ videos }) => {
       </section>
 
       {/* La sezione #video-controlli verrà renderizzata solo se ci sono più di un tema */}
-        <section className="video__controls text-center">
+        <section id="video-controls" className="text-center section-padding-bottom-small">
           <div className="container" style={{ visibility: themeNames.length > 1 ? 'visible' : 'hidden' }}  >
             <div className="video__controls-bar">
               {themeNames.map((themeName) => (

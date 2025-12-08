@@ -2,23 +2,35 @@
 @use '../base/media-queries';
 
 
+//////////////////////////////////////////////
+///  UTILITY CLASSES
+////////////////////////////////////////////////
 
+// Margine negativo contenitore Video
 .video-container-offset {
     margin-top: -45px;
 }
 
-
-// Effetto ombra per il testo
+// Effetto ombra per il testo sul payoff
 .text-shadow-effect {
     text-shadow: 0 0 10px rgba(var(--bismart-gold-rgb), 0.3), 0 0 20px rgba(var(--bismart-gold-rgb), 0.2);
 }
 
   
-
-
 //////////////////////////////////////////////
 ///  SPAZIATURA VERTICALE SEZIONI
 ////////////////////////////////////////////////
+
+// Applicata solo alla sezione #video-controls
+.section-padding-bottom-small { 
+    padding-bottom: 5.5rem;
+    
+    @include media-queries.media-down(variables.$breakpoint-768) {
+        padding-bottom: 2.5rem;
+    }
+}
+
+// Applicata a tutte le sezioni escluso #video-controls e #suite-marquee
 .section-padding-bottom {
     padding-bottom: 8.5rem;
 
@@ -31,9 +43,10 @@
     }
 }
 
+
 //////////////////////
-///  testo dinamico in video-controlli
-/// titolo slideshow prima del footer
+///  testo dinamico in #video-controls
+///  titolo suite prima del footer
 ///////////////////
 
 .custom-text {

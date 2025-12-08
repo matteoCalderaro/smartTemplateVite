@@ -85,14 +85,8 @@
     }
 }
 
-.video__controls { // Renamed from #video-controlli
-    position: relative;
-    z-index: 3;
+#video-controls {
     background: var(--bismart-blue-gradient-to-bottom);
-    padding-bottom: 5.5rem;
-    @include media-queries.media-down(variables.$breakpoint-768) {
-        padding-bottom: 2.5rem;
-    }
 }
 
 

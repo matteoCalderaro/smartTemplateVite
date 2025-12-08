@@ -1,7 +1,4 @@
 
-/// PERCORSO BACKGROUD-IMAGE (nuvole)
-
-
 
 *, 
 *::before, 
@@ -20,13 +17,17 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-    margin-bottom: 0 !important; // Equivalent to 16px
+    margin-bottom: 0 !important;
 }
 
 
 
 
-/* Page Transitions */
+/*
+ * Transizioni CSS per i componenti React.
+ * Queste classi sono utilizzate da `CSSTransition` di `react-transition-group`
+ * in `pages/_app.js` per gestire le transizioni tra le pagine.
+ */
 .page-transition-enter {
   opacity: 0;
 }
