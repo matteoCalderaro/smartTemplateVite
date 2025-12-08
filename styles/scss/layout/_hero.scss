@@ -1,4 +1,5 @@
 @use '../base/variables';
+@use '../base/base';
 @use '../base/media-queries';
 
 #hero {
@@ -6,7 +7,7 @@
     top: 0;
     height: calc(100vh - 76px);
     overflow: hidden; // Nasconde le immagini laterali che escono dai bordi
-
+    
     .container {
         position: relative;
         height: 100%;
@@ -18,41 +19,40 @@
 }
 
 .copy-container {
-    // Base Styles for the block
-    max-width: 70%;
-
+    
+    max-width: 70%;  // LARGHEZZA CONTAINER
+    
     @include media-queries.media-down(variables.$breakpoint-992) {
         max-width: 100%;
     }
-
-
+    
+    
     &__brand {
         font-size: 64px;
         font-weight: 600;
         flex-wrap: nowrap;
         margin-bottom: 25px;
-
+        
         .brand__text {
             white-space: nowrap;
         }
     }
-
-    &__payhoff {
+    
+    &__payoff {
         font-size: 42px;
         font-weight: 700;
         line-height: 1.3;
         margin-bottom: 25px;
     }
-
+    
     &__description {
         font-size: 20px;
         font-weight: 500;
         margin-bottom: 25px;
     }
     
-    // Responsive Overrides (Media Queries)
     @include media-queries.media-down(variables.$breakpoint-1400) {
-        &__brand, &__payhoff, &__description {
+        &__brand, &__payoff, &__description {
             margin-bottom: 20px;
         }
     }
@@ -61,23 +61,21 @@
         &__brand {
             font-size: 45px;
         }
-        &__payhoff {
+        &__payoff {
             font-size: 30px;
-            line-height: 40px;
         }
     }
     
     @include media-queries.media-down(variables.$breakpoint-992) {
-        max-width: 100%;
+        max-width: 100%; // LARGHEZZA CONTAINER
     }
-
+    
     @include media-queries.media-down(variables.$breakpoint-768) {       
         &__brand {
             font-size: 35px;
         }
-        &__payhoff {
+        &__payoff {
             font-size: 25px;
-            line-height: 33px;
         }
         &__description {
             font-size: 18px;
@@ -86,69 +84,68 @@
 }
 
 .hero-side-image {
-	position: absolute;
-
-	// Regole generali per tutte le cloud all'interno di hero-side-image
-	.hero-cloud {
-		mask-size: contain;
-		mask-repeat: no-repeat;
-		aspect-ratio: 2;
-
-		.cloud-background {
-			background: var(--bismart-gold-gradient);
-			width: 100%;
-			height: 100%;
-		}
-	}
-
-	&--left {
-		top: 35%;
-		left: -21rem;
-
-		.hero-cloud {
-			mask-image: url('#{variables.$base-path}/media/cloud_sx.webp');
-			width: 512px;
-
-			@include media-queries.media-down(variables.$breakpoint-1400) {
-				width: 312px;
-			}
-			@include media-queries.media-down(variables.$breakpoint-768) {
-				width: 312px;
-			}
-		}
-
-		@include media-queries.media-down(variables.$breakpoint-1400) {
-			display: block;
-			left: 4rem;
-			top: 1%;
-		}
-		@include media-queries.media-down(variables.$breakpoint-768) {
-			display: block;
-			left: 4rem;
-			top: 1%;
-		}
-	}
-
-	&--right {
-		top: 30%;
-		right: -28rem;
-
-		.hero-cloud {
-			mask-image: url('#{variables.$base-path}/media/cloud_dx.webp');
-			width: 600px;
-
-			@include media-queries.media-down(variables.$breakpoint-1400) {
-				width: 312px;
-			}
-		}
-		@include media-queries.media-down(variables.$breakpoint-1400) {
-			top: 0%;
-			right: -3rem;
-		}
-		@include media-queries.media-down(variables.$breakpoint-768) {
-			display: none;
-		}
-	}
+    position: absolute;
+    
+    .hero-cloud {
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        aspect-ratio: 2;
+        
+        .cloud-background {
+            background: var(--bismart-gold-gradient);
+            width: 100%;
+            height: 100%;
+        }
+    }
+    
+    &--left {
+        top: 35%;
+        left: -21rem;
+        
+        .hero-cloud {
+            mask-image: url('#{base.$base-path}/media/cloud_sx.webp');
+            width: 32rem;
+            
+            @include media-queries.media-down(variables.$breakpoint-1400) {
+                width: 19.5rem;
+            }
+            @include media-queries.media-down(variables.$breakpoint-768) {
+                width: 19.5rem;
+            }
+        }
+        
+        @include media-queries.media-down(variables.$breakpoint-1400) {
+            display: block;
+            left: 4rem;
+            top: 1%;
+        }
+        @include media-queries.media-down(variables.$breakpoint-768) {
+            display: block;
+            left: 4rem;
+            top: 1%;
+        }
+    }
+    
+    &--right {
+        top: 30%;
+        right: -28rem;
+        
+        .hero-cloud {
+            mask-image: url('#{base.$base-path}/media/cloud_dx.webp');
+            width: 37.5rem;
+            
+            @include media-queries.media-down(variables.$breakpoint-1400) {
+                width: 19.5rem;
+            }
+        }
+        @include media-queries.media-down(variables.$breakpoint-1400) {
+            top: 0%;
+            right: -3rem;
+        }
+        @include media-queries.media-down(variables.$breakpoint-768) {
+            display: none;
+        }
+    }
 }
 
 .hero-animated-wrapper {
@@ -167,5 +164,18 @@
     }
 }
 
+.mouse-scroll-icon {
+    z-index: 100; // Ensure it's above other content
+    cursor: pointer; // Indicate that the element is clickable
 
+    animation: moveUpDown 2.5s infinite ease-in-out;
+}
 
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

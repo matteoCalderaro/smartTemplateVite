@@ -1,0 +1,46 @@
+
+@use '../base/variables';
+@use '../base/media-queries';
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#main-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+//////////////////////
+///  COLORI SFONDO SEZIONI
+///////////////////
+body,
+#navbar,
+#hero,
+#footer
+{
+    background-color: var(--bismart-blue);
+}
+#form {
+    background: linear-gradient(to bottom, #010336 0%, #4a5f9f 45%, #4a5f9f 55%, #010336 100%);
+}
+
+
+//////////////////////
+///  CUSTOM CONTAINER WIDTH
+///////////////////
+.container:not(#video .container):not(#hero .container) {
+    max-width: 1000px;
+}
+#video .container {
+    width: 1000px;
+
+    @include media-queries.media-down(variables.$breakpoint-576) {
+        width: 100%;
+        margin-left: 0;
+    }
+}  

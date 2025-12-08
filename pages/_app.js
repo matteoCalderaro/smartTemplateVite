@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Navbar /> {/* Render the ReadyNavbar */}
+      <Navbar minimal={router.pathname === '/thank-you'} /> {/* Render the ReadyNavbar */}
       <ScrollToTopButton />
       <TransitionGroup component="div" className="transition-wrapper">
         <CSSTransition

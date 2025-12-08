@@ -7,7 +7,7 @@ import applications from '../data/applications';
 import useScrollPosition from '../hooks/useScrollPosition'; // Import the custom hook
 
 
-const Navbar = () => {
+const Navbar = ({ minimal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
   const scrollPosition = useScrollPosition(); // Get scroll position from custom hook
@@ -33,28 +33,31 @@ const Navbar = () => {
         <BSNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BSNavbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto d-flex align-items-center gap-3"> {/* Use ms-auto for right alignment */}
-            <NavDropdown
-              title="Applicazioni"
-              id="applications-dropdown"
-              menuVariant="dark"
-              className=""
-            >
-              {applications
-                .filter(app => !app.isHome)
-                .map((app) => (
-                  <NavDropdown.Item
-                    key={app.path}
-                    as={Link}
-                    href={`/${app.path}`}
-                    passHref // Required when using as={Link} with href
-                    active={router.asPath === `/${app.path}`}
-                  >
-                    {app.heroContent.brand}
-                  </NavDropdown.Item>
-                ))}
-            </NavDropdown>
-
-            <Nav.Link href="#prezzi" className="color-text-gold-light" style={{ pointerEvents: 'none' }}>Informazioni</Nav.Link>
+            {!minimal && (
+              <NavDropdown
+                title="Applicazioni"
+                id="applications-dropdown"
+                menuVariant="dark"
+                className=""
+              >
+                {applications
+                  .filter(app => !app.isHome)
+                  .map((app) => (
+                    <NavDropdown.Item
+                      key={app.path}
+                      as={Link}
+                      href={`/${app.path}`}
+                      passHref // Required when using as={Link} with href
+                      active={router.asPath === `/${app.path}`}
+                    >
+                      {app.heroContent.brand}
+                    </NavDropdown.Item>
+                  ))}
+              </NavDropdown>
+            )}
+            {!minimal && (
+              <Nav.Link href="#prezzi" className="color-text-gold-light" style={{ pointerEvents: 'none' }}>Informazioni</Nav.Link>
+            )}
             <Link href="/" passHref legacyBehavior>
               <a className="btn-login d-none">Accedi</a>
             </Link>

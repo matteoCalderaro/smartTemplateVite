@@ -6,7 +6,7 @@ const applications = [
     heroContent: {
       brand: '(Be) Bi Smart',
       icon: '',
-      payhoff: 'La Business Intelligence prende il volo, sempre più Smart con AI e ML',
+      payoff: 'Business Intelligence Smart: dati in volo, risultati a terra grazie a AI e ML',
       descriptions: [
         'Accelera l\'innovazione con decisioni rapide e informate',
         "Offre visione chiara e predittiva per il successo",
@@ -80,7 +80,7 @@ const applications = [
     heroContent: {
       brand: 'Voice 2 Insights',
       icon: 'bi bi-mic-fill',
-      payhoff: 'Trasforma registrazioni (customer service, field agent, meeting, interviste) in testo strutturato',
+      payoff: 'Trasforma registrazioni (customer service, field agent, meeting, interviste) in testo strutturato',
       descriptions: [
         'Analizza le informazioni per topic, sentiment, urgenza e rilevanza',
         "Aiuta l\'utente nel fornire dettagli completi",
@@ -132,7 +132,7 @@ const applications = [
     heroContent: {
       brand: 'WAQ',
       icon: 'bi bi-whatsapp',
-      payhoff: 'Il WhatsApp Bot offre un customer service immediato e multicanale, automatizzando le richieste più comuni. Attivo 24/7, riduce il carico dei team interni e migliora l’esperienza dei clienti',
+      payoff: 'Il WhatsApp Bot offre un customer service immediato e multicanale, automatizzando le richieste più comuni. Attivo 24/7, riduce il carico dei team interni e migliora l’esperienza dei clienti',
       descriptions: [],
       buttonText: 'Contattaci per una demo!',
     },
@@ -164,7 +164,7 @@ const applications = [
     heroContent: {
       brand: 'Smart Pricing',
       icon: 'bi bi-currency-euro',
-      payhoff: 'SmartPricing utilizza algoritmi di Machine Learning per ottimizzare prezzi in base a domanda, stagionalità e comportamento dei clienti, massimizzando margini e competitività',
+      payoff: 'SmartPricing utilizza algoritmi di Machine Learning per ottimizzare prezzi in base a domanda, stagionalità e comportamento dei clienti, massimizzando margini e competitività',
       descriptions: [],
       buttonText: 'Contattaci per una demo!',
     },
@@ -191,7 +191,7 @@ const applications = [
     heroContent: {
       brand: 'Stay On',
       icon: 'bi bi-person-check-fill',
-      payhoff: 'StayOn è la soluzione predittiva che analizza i comportamenti dei clienti per individuare segnali di abbandono. Permette di attivare strategie mirate di fidelizzazione, migliorando la retention e riducendo i costi di acquisizione',
+      payoff: 'StayOn è la soluzione predittiva che analizza i comportamenti dei clienti per individuare segnali di abbandono. Permette di attivare strategie mirate di fidelizzazione, migliorando la retention e riducendo i costi di acquisizione',
       descriptions: [],
       buttonText: 'Contattaci per una demo!',
     },
@@ -218,7 +218,7 @@ const applications = [
     heroContent: {
       brand: 'Sentiment',
       icon: 'bi bi-chat-heart-fill',
-      payhoff: 'Analizza in automatico recensioni, social e contenuti online per comprendere come clienti e utenti percepiscono il brand, prodotti e servizi. Classifica i feedback per tono (positivo, neutro, negativo) e per argomento',
+      payoff: 'Analizza in automatico recensioni, social e contenuti online per comprendere come clienti e utenti percepiscono il brand, prodotti e servizi. Classifica i feedback per tono (positivo, neutro, negativo) e per argomento',
       descriptions: [],
       buttonText: 'Contattaci per una demo!',
     },
@@ -245,7 +245,7 @@ const applications = [
     heroContent: {
       brand: 'Sales Predict',
       icon: 'bi bi-cloud-download',
-      payhoff: 'Sales Predict applica modelli predittivi per stimare l’andamento delle vendite, anticipando trend e variazioni di mercato. Consente di pianificare con precisione, ottimizzare scorte e supportare la forza commerciale',
+      payoff: 'Sales Predict applica modelli predittivi per stimare l’andamento delle vendite, anticipando trend e variazioni di mercato. Consente di pianificare con precisione, ottimizzare scorte e supportare la forza commerciale',
       descriptions: [],
       buttonText: 'Contattaci per una demo!',
     },
@@ -272,7 +272,7 @@ const applications = [
     heroContent: {
       brand: 'WAP',
       icon: 'bi bi-broadcast',
-      payhoff: 'Con WAP (WhatsApp Push) puoi automatizzare l’invio di immagini, PDF o report (ad esempio da Qlik) direttamente su WhatsApp. Un canale rapido e affidabile per condividere dati e informazioni in tempo reale',
+      payoff: 'Con WAP (WhatsApp Push) puoi automatizzare l’invio di immagini, PDF o report (ad esempio da Qlik) direttamente su WhatsApp. Un canale rapido e affidabile per condividere dati e informazioni in tempo reale',
       descriptions: [],
       buttonText: 'Contattaci per una demo!',
     },

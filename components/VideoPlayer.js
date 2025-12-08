@@ -147,7 +147,7 @@ const VideoPlayer = ({ videos }) => {
 
   return (
     <>
-      <section id="video" className="container-offset">
+      <section id="video" className="video-container-offset">
         <div className="container-fluid">
           <div className="video-card">
             <div className={`video-card__video-container ${isPlaying ? 'is-playing' : ''}`} ref={videoContainerRef}>

@@ -1,22 +1,24 @@
 @use '../base/variables';
 @use '../base/media-queries';
 
-//////////////////////
-///  COLORI SFONDO SEZIONI
-///////////////////
-/// 
 
 
-body,
-#navbar,
-#hero,
-#footer
-{
-    background-color: var(--bismart-blue);
+.video-container-offset {
+    margin-top: -45px;
 }
-#form {
-    background: linear-gradient(to bottom, #010336 0%, #4a5f9f 45%, #4a5f9f 55%, #010336 100%);
+
+// Classe per aumentare la dimensione del font del lead
+.lead-custom-size {
+    font-size: 1.4rem;
 }
+
+// Effetto ombra per il testo
+.text-shadow-effect {
+    text-shadow: 0 0 10px rgba(var(--bismart-gold-rgb), 0.3), 0 0 20px rgba(var(--bismart-gold-rgb), 0.2);
+}
+
+  
+
 
 //////////////////////////////////////////////
 ///  SPAZIATURA VERTICALE SEZIONI
@@ -32,33 +34,6 @@ body,
         padding-bottom: 1.5rem;
     }
 }
-
-// Contenuto principale della pagina
-.main-content {
-    position: relative;
-}
-
-.container-offset {
-    margin-top: -40px;
-}
-
-
-  
-//////////////////////
-///  CUSTOM CONTAINER WIDTH
-///////////////////
-
-.container:not(#video .container):not(#hero .container) {
-    max-width: 1000px;
-}
-#video .container {
-    width: 1000px;
-
-    @include media-queries.media-down(variables.$breakpoint-576) {
-        width: 100%;
-        margin-left: 0;
-    }
-}  
 
 //////////////////////
 ///  testo dinamico in video-controlli

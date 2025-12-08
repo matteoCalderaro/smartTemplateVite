@@ -11,7 +11,7 @@ const ThankYou = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       
-      <Navbar minimal={true} />
+
 
       <div className="thank-you-page color-bg-primary"> {/* Keep this div for the styling */}
         <div className="page-content-wrapper d-flex flex-column align-items-center">
