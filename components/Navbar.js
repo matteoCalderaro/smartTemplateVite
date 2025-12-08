@@ -4,17 +4,23 @@ import Link from 'next/link';
 import { Navbar as BSNavbar, Nav, NavDropdown, Container } from 'react-bootstrap'; // Renamed Navbar to BSNavbar to avoid conflict
 import { useRouter } from 'next/router';
 import applications from '../data/applications';
+import useScrollPosition from '../hooks/useScrollPosition'; // Import the custom hook
 
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const router = useRouter();
+  const scrollPosition = useScrollPosition(); // Get scroll position from custom hook
+
+  useEffect(() => {
+    setIsScrolled(scrollPosition > 0);
+  }, [scrollPosition]);
 
   return (
     <BSNavbar
       expand="lg"
       id="navbar"
-      className={`navbar ${isScrolled ? 'navbar-scrolled' : ''} py-1`}
+      className={`navbar ${isScrolled ? 'navbar-scrolled' : ''} py-2`}
       data-bs-theme="dark" // Ensures dark dropdown menu variant
     >
       <Container>
@@ -49,10 +55,9 @@ const Navbar = () => {
             </NavDropdown>
 
             <Nav.Link href="#prezzi" className="color-text-gold-light" style={{ pointerEvents: 'none' }}>Informazioni</Nav.Link>
-            {/* <Nav.Link href="#documentazione" className="color-text-gold-light" style={{ pointerEvents: 'none' }}>Contatti</Nav.Link> */}
-            {/* <Link href="/" passHref legacyBehavior>
-              <a className="btn-login">Accedi</a>
-            </Link> */}
+            <Link href="/" passHref legacyBehavior>
+              <a className="btn-login d-none">Accedi</a>
+            </Link>
           </Nav>
         </BSNavbar.Collapse>
       </Container>

@@ -25,14 +25,14 @@
     cursor: pointer;
 
     // Media query per dimensioni più piccole
-    @include media-queries.media-down(variables.$breakpoint-sm) {
+    @include media-queries.media-down(variables.$breakpoint-576) {
         width: 40px;
         height: 40px;
         font-size: 1.2rem;
     }
 
     // Nascondi su desktop
-    @include media-queries.media-up(variables.$breakpoint-md) {
+    @include media-queries.media-up(variables.$breakpoint-768) {
         display: none;
     }
 

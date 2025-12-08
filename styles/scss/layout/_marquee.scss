@@ -11,7 +11,7 @@
         var(--bismart-blue) 100%
     );
 
-    @include media-queries.media-down(variables.$breakpoint-md)  {
+    @include media-queries.media-down(variables.$breakpoint-768)  {
         background-image: linear-gradient(to right, 
             var(--bismart-blue) 0%, 
             rgba(255, 255, 255, 0.1) 20%, 

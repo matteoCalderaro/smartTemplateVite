@@ -21,7 +21,7 @@
     position: relative;
    
   
-    @include media-queries.media-down(variables.$breakpoint-sm) {
+    @include media-queries.media-down(variables.$breakpoint-576) {
         height: 470px;
         min-width: 470px;
     }
@@ -90,7 +90,7 @@
     z-index: 3;
     background: var(--bismart-blue-gradient-to-bottom);
     padding-bottom: 5.5rem;
-    @include media-queries.media-down(variables.$breakpoint-md) {
+    @include media-queries.media-down(variables.$breakpoint-768) {
         padding-bottom: 2.5rem;
     }
 }

@@ -24,11 +24,11 @@ body,
 .section-padding-bottom {
     padding-bottom: 8.5rem;
 
-    @include media-queries.media-down(variables.$breakpoint-lg) {
+    @include media-queries.media-down(variables.$breakpoint-992) {
         padding-bottom: 4rem;
     }
 
-    @include media-queries.media-down(variables.$breakpoint-md) {
+    @include media-queries.media-down(variables.$breakpoint-768) {
         padding-bottom: 1.5rem;
     }
 }
@@ -54,7 +54,7 @@ body,
 #video .container {
     width: 1000px;
 
-    @include media-queries.media-down(variables.$breakpoint-sm) {
+    @include media-queries.media-down(variables.$breakpoint-576) {
         width: 100%;
         margin-left: 0;
     }
@@ -68,7 +68,7 @@ body,
 .custom-text {
     font-size: 1.2rem !important ; /* Default font size */
 
-    @include media-queries.media-down(variables.$breakpoint-sm) {
+    @include media-queries.media-down(variables.$breakpoint-576) {
         font-size: 1.2rem !important; /* Reduced font size for smaller screens */
     }
 }

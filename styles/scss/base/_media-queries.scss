@@ -12,24 +12,24 @@
 }
 
 @mixin media-only($breakpoint) {
-    @if $breakpoint == $breakpoint-sm {
-        @media (min-width: $breakpoint-sm) and (max-width: ($breakpoint-md - 0.001em)) {
+    @if $breakpoint == $breakpoint-576 {
+        @media (min-width: $breakpoint-576) and (max-width: ($breakpoint-768 - 0.001em)) {
             @content;
         }
-    } @else if $breakpoint == $breakpoint-md {
-        @media (min-width: $breakpoint-md) and (max-width: ($breakpoint-lg - 0.001em)) {
+    } @else if $breakpoint == $breakpoint-768 {
+        @media (min-width: $breakpoint-768) and (max-width: ($breakpoint-992 - 0.001em)) {
             @content;
         }
-    } @else if $breakpoint == $breakpoint-lg {
-        @media (min-width: $breakpoint-lg) and (max-width: ($breakpoint-xl - 0.001em)) {
+    } @else if $breakpoint == $breakpoint-992 {
+        @media (min-width: $breakpoint-992) and (max-width: ($breakpoint-1200 - 0.001em)) {
             @content;
         }
-    } @else if $breakpoint == $breakpoint-xl {
-        @media (min-width: $breakpoint-xl) and (max-width: ($breakpoint-xxl - 0.001em)) {
+    } @else if $breakpoint == $breakpoint-1200 {
+        @media (min-width: $breakpoint-1200) and (max-width: ($breakpoint-1400 - 0.001em)) {
             @content;
         }
-    } @else if $breakpoint == $breakpoint-xxl {
-        @media (min-width: $breakpoint-xxl) {
+    } @else if $breakpoint == $breakpoint-1400 {
+        @media (min-width: $breakpoint-1400) {
             @content;
         }
     }

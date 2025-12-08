@@ -20,7 +20,7 @@
           }
         }
 
-        @include media-queries.media-down(variables.$breakpoint-md) {
+        @include media-queries.media-down(variables.$breakpoint-768) {
             grid-template-columns: 1fr;
             grid-auto-rows: minmax(281px, auto);
             

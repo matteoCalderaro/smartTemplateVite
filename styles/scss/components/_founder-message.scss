@@ -2,7 +2,7 @@
 @use '../base/media-queries';
 
 #founder-message {
-    @include media-queries.media-down(variables.$breakpoint-md) {
+    @include media-queries.media-down(variables.$breakpoint-768) {
         .founder-message__text {
             text-align: center;
         }
