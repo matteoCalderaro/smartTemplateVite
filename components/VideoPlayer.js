@@ -145,6 +145,25 @@ const VideoPlayer = ({ videos }) => {
     }
   }, [activeTheme, isMobileView]);
 
+  useEffect(() => {
+    const currentVideo = videoRefs.current[activeTheme]?.element;
+
+    const handleVideoEnd = () => {
+      currentVideo.currentTime = 0; // Rewind the video to the beginning
+      setIsPlaying(false);
+    };
+
+    if (currentVideo) {
+      currentVideo.addEventListener('ended', handleVideoEnd);
+    }
+
+    return () => {
+      if (currentVideo) {
+        currentVideo.removeEventListener('ended', handleVideoEnd);
+      }
+    };
+  }, [activeTheme, isMobileView, isClient]);
+
   return (
     <>
       <section id="video" className="video-container-offset">
