@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
           classNames="page-transition"
           //onEnter={() => window.scrollTo(0, 0)}
         >
-          <div ref={nodeRef} className="page-content-wrapper">
+          <div ref={nodeRef} className={`page-content-wrapper ${router.pathname === '/thank-you' ? 'thank-you-page-layout' : ''}`}>
             <Component {...pageProps} />
           </div>
         </CSSTransition>

@@ -32,7 +32,7 @@
     }
 
     // Nascondi su desktop
-    @include media-queries.media-up(variables.$breakpoint-768) {
+    @media (min-width: variables.$breakpoint-768) {
         display: none;
     }
 

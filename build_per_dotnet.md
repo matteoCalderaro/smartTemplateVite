@@ -21,7 +21,7 @@ const nextConfig = {
 ```
 
 ## Prefixare il path delle background images nel CSS
-### scss\base\_base.scss
+### scss\base\_variables.scss
 
 ```
 // BUILD PER DOTNET

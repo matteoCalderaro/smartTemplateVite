@@ -2,7 +2,12 @@
  * Variabili CSS e classi di utilità per i colori
  * -------------------------------------------------------------------------- */
 
- 
+
+// $base-path: '/suite'; // BUILD PER DOTNET
+$base-path: ''; // Sviluppo
+
+$navbar-height: 76px; // Altezza della Navbar
+
 
 :root {
     // Colori principali del brand

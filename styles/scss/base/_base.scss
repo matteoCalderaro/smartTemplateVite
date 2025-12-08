@@ -1,5 +1,6 @@
-@use '../base/variables';
-@use '../base/media-queries';
+
+/// PERCORSO BACKGROUD-IMAGE (nuvole)
+
 
 
 *, 
@@ -21,13 +22,6 @@ body {
 h1, h2, h3, h4, h5, h6, p {
     margin-bottom: 0 !important; // Equivalent to 16px
 }
-
-///////////////////
-/// PERCORSO BACKGROUD-IMAGE (nuvole)
-/// ///////////
-// $base-path: '/suite'; // BUILD PER DOTNET
- $base-path: ''; // Sviluppo
-
 
 
 

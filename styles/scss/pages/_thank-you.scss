@@ -1,20 +1,27 @@
-.thank-you-page {
+@use '../base/variables';
+
+.thank-you-page-layout { // Questo selettore si applica al div.page-content-wrapper quando la classe thank-you-page-layout è applicata
+    min-height: calc(100vh - variables.$navbar-height); // Altezza totale della viewport meno l'altezza della Navbar
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 
-    #navbar {
-        position: static;
+    // Gli elementi all'interno di questo layout sono .thank-you-page e .footer-custom
+
+    // Stili per il div.thank-you-page (il blocco di contenuto principale del componente)
+    > .thank-you-page { // Figlio diretto di .thank-you-page-layout
+        flex-grow: 1; // Permette all'area di contenuto principale di espandersi e riempire lo spazio disponibile
+        display: flex; // Rende l'elemento un contenitore flex
+        flex-direction: column; // Organizza i suoi figli in colonna
     }
 
-    .page-content-wrapper {
-        flex-grow: 1;
+    // Stili per il wrapper interno del contenuto (messaggio + bottone) all'interno di .thank-you-page
+    > .thank-you-page > .page-content-wrapper { // Il page-content-wrapper interno è un figlio diretto di .thank-you-page
+        flex-grow: 1; // Permette a questo contenuto di espandersi
         padding-bottom: 4.5rem;
     }
 
-    .lead-custom-size {
-        max-width: 60ch;
-        margin-left: auto;
-        margin-right: auto;
+    // Stili per il footer personalizzato. È un figlio diretto di .thank-you-page-layout
+    > .footer-custom {
+        margin-top: auto; // Spinge il footer in fondo a .thank-you-page-layout
     }
 }

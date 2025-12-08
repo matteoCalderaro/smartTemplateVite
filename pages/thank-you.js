@@ -17,11 +17,11 @@ const ThankYou = () => {
         <div className="page-content-wrapper d-flex flex-column align-items-center">
             <div className="container text-center py-5 my-auto">
                 <h1 className="display-3 fw-bolder mb-3 text-white text-shadow-effect">Grazie!</h1>
-                <p className="color-text-gold-light mx-auto mb-5 lead-custom-size">
+                <h4 className="color-text-gold-light mx-auto mb-5">
                     La tua richiesta è stata ricevuta con successo! Il nostro team ti contatterà al più presto all'indirizzo email fornito.
-                </p>
-                <Link href="/" className="hero-button fw-semibold py-3 px-5 rounded-4">
-                    <span className="hero-button__content">Torna alla Home</span>
+                </h4>
+                <Link href="/" className="hero-cta-button fw-semibold py-3 px-5 rounded-4">
+                    <span className="hero-cta-button__content">Torna alla Home</span>
                 </Link>
             </div>
         </div>

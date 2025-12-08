@@ -1,42 +1,6 @@
 // Custom Media Query Mixins
-@mixin media-up($breakpoint) {
-    @media (min-width: $breakpoint) {
-        @content;
-    }
-}
-
 @mixin media-down($breakpoint) {
     @media (max-width: ($breakpoint - 0.001em)) { // Subtract 0.001em to avoid issues with exact breakpoint matches
-        @content;
-    }
-}
-
-@mixin media-only($breakpoint) {
-    @if $breakpoint == $breakpoint-576 {
-        @media (min-width: $breakpoint-576) and (max-width: ($breakpoint-768 - 0.001em)) {
-            @content;
-        }
-    } @else if $breakpoint == $breakpoint-768 {
-        @media (min-width: $breakpoint-768) and (max-width: ($breakpoint-992 - 0.001em)) {
-            @content;
-        }
-    } @else if $breakpoint == $breakpoint-992 {
-        @media (min-width: $breakpoint-992) and (max-width: ($breakpoint-1200 - 0.001em)) {
-            @content;
-        }
-    } @else if $breakpoint == $breakpoint-1200 {
-        @media (min-width: $breakpoint-1200) and (max-width: ($breakpoint-1400 - 0.001em)) {
-            @content;
-        }
-    } @else if $breakpoint == $breakpoint-1400 {
-        @media (min-width: $breakpoint-1400) {
-            @content;
-        }
-    }
-}
-
-@mixin media-between($breakpoint-min, $breakpoint-max) {
-    @media (min-width: $breakpoint-min) and (max-width: ($breakpoint-max - 0.001em)) {
         @content;
     }
 }

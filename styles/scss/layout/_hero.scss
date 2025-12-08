@@ -1,11 +1,10 @@
 @use '../base/variables';
-@use '../base/base';
 @use '../base/media-queries';
 
 #hero {
     position: sticky;
     top: 0;
-    height: calc(100vh - 76px);
+    height: calc(100vh - variables.$navbar-height);
     overflow: hidden; // Nasconde le immagini laterali che escono dai bordi
     
     .container {
@@ -103,7 +102,7 @@
         left: -21rem;
         
         .hero-cloud {
-            mask-image: url('#{base.$base-path}/media/cloud_sx.webp');
+            mask-image: url('#{variables.$base-path}/media/cloud_sx.webp');
             width: 32rem;
             
             @include media-queries.media-down(variables.$breakpoint-1400) {
@@ -131,7 +130,7 @@
         right: -28rem;
         
         .hero-cloud {
-            mask-image: url('#{base.$base-path}/media/cloud_dx.webp');
+            mask-image: url('#{variables.$base-path}/media/cloud_dx.webp');
             width: 37.5rem;
             
             @include media-queries.media-down(variables.$breakpoint-1400) {
