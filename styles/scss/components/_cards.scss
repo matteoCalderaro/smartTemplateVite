@@ -82,8 +82,9 @@
 .strength-card-link {
     text-decoration: none;
     &.card {
-        background: white;
+        background: #bdbdbd;
         padding: 4px;
+        border: none;
     }
     .card__base {
         background: var(--bismart-blue);
