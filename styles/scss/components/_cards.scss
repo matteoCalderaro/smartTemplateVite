@@ -78,3 +78,15 @@
         }
     }
 }
+
+.strength-card-link {
+    text-decoration: none;
+    &.card {
+        background: white;
+        padding: 4px;
+    }
+    .card__base {
+        background: var(--bismart-blue);
+        border-radius: 20px;
+    }
+}
