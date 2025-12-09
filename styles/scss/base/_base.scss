@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .page-transition-enter-active {
   opacity: 1;
-  transition: opacity 1000ms ease-in-out;
+  transition: opacity 800ms ease-in-out;
 }
 .page-transition-exit {
   opacity: 1;
@@ -42,5 +42,17 @@ h1, h2, h3, h4, h5, h6, p {
 }
 .page-transition-exit-active {
   opacity: 0;
-  transition: opacity 1000ms ease-in-out;
+  transition: opacity 800ms ease-in-out;
+}
+
+/*
+ * Regola per disabilitare le transizioni di pagina quando
+ * la classe 'no-page-transition' è applicata al tag <html>.
+ * Utilizzato per rendere istantanee le transizioni su mobile.
+ */
+html.no-page-transition {
+  .page-transition-enter-active,
+  .page-transition-exit-active {
+    transition-duration: 0s !important;
+  }
 }

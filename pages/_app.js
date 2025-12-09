@@ -9,10 +9,12 @@ import { useEffect, createRef } from 'react'; // Import useEffect and createRef
 import NewNavbar from '../components/NewNavbar'; // Import the new Navbar component
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import useSmoothScroll from '../hooks/useSmoothScroll'; // Importa il nuovo hook
+import useMediaQuery from '../hooks/useMediaQuery'; // Importa useMediaQuery
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const nodeRef = createRef(null);
+  const isMobile = useMediaQuery(767); // Rileva se è mobile (meno di 768px)
 
   useSmoothScroll(); // Attiva l'hook per lo scorrimento fluido
 
@@ -28,6 +30,19 @@ function MyApp({ Component, pageProps }) {
     }
   }, []); // Empty dependency array means it runs once on mount
 
+  // Gestisce la classe 'no-page-transition' sul tag <html>
+  useEffect(() => {
+    if (isMobile) {
+      document.documentElement.classList.add('no-page-transition');
+    } else {
+      document.documentElement.classList.remove('no-page-transition');
+    }
+    // Cleanup: assicurati che la classe venga rimossa se isMobile cambia mentre il componente è montato
+    return () => {
+      document.documentElement.classList.remove('no-page-transition');
+    };
+  }, [isMobile]); // Dipende da isMobile
+
   return (
     <>
       <NewNavbar minimal={router.pathname === '/thank-you'} />
@@ -36,7 +51,7 @@ function MyApp({ Component, pageProps }) {
         <CSSTransition
           key={router.asPath}
           nodeRef={nodeRef}
-          timeout={800}
+          timeout={800} // Timeout sempre a 1000ms (durata CSS), la disabilitazione è via CSS
           classNames="page-transition"
           //onEnter={() => window.scrollTo(0, 0)}
         >

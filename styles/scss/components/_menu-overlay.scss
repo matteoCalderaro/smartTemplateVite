@@ -17,7 +17,7 @@
     // Stato iniziale nascosto e transizione
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.8s ease-in-out, visibility 0.3s ease-in-out; // Transizione di 300ms
+    //transition: opacity 3s ease-in-out, visibility 0.3s ease-in-out; // Transizione di 300ms
 
     &.is-open { // Classe aggiunta quando il menu è aperto
         opacity: 1;
