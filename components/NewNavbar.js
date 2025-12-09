@@ -14,8 +14,8 @@ const NewNavbar = ({ minimal }) => {
   const scrollPosition = useScrollPosition();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Usa useMediaQuery per rilevare se è mobile (meno di 992px)
-  const isMobile = useMediaQuery(992); // Corrisponde al breakpoint 'lg' di Bootstrap
+  // Usa useMediaQuery per rilevare se è mobile (meno di 768px)
+  const isMobile = useMediaQuery(767); // Corrisponde a "meno di" del breakpoint 'md' di Bootstrap
 
   useEffect(() => {
     setIsScrolled(scrollPosition > 0);
@@ -35,46 +35,44 @@ const NewNavbar = ({ minimal }) => {
     <>
       <nav
         id="navbar"
-        className={`navbar navbar-expand-lg ${isScrolled ? 'navbar-scrolled' : ''} py-2`}
+        className={`navbar navbar-expand-md ${isScrolled ? 'navbar-scrolled' : ''} py-2`} // Modificato expand-lg a expand-md
         data-bs-theme="dark" // Aggiunto per garantire che l'icona del toggler sia visibile
         style={{ zIndex: 1010 }}
       >
         <Container> {/* Reimportato Container */}
-          <Link className="d-flex align-items-center me-auto gap-3 text-decoration-none" href="/" passHref onClick={handleBrandClick}>
+          <Link className="d-flex align-items-center me-auto gap-3 text-decoration-none" href="/" onClick={handleBrandClick}>
             <div className="navbar-brand">
               <Image src={router.basePath + "/media/logo_trasparente.png"} alt="BiSmart Logo" width={62} height={50} />
               <h1 className="fs-3 fw-bold text-white mb-0 d-inline-block ms-3">bismart.ai</h1>
             </div>
           </Link>
           
-          {isMobile ? (
-            // Versione Mobile: solo il bottone toggle
-            <button
-              className="navbar-toggler"
-              type="button"
-              aria-label="Toggle navigation"
-              onClick={toggleMenu}
-            >
-              <i className={`bi ${isMenuOpen ? 'bi-x-lg' : 'bi-list'}`}></i>
-            </button>
-          ) : (
-            // Versione Desktop: NavDropdown e Nav.Link
-            <Nav className="ms-auto d-flex align-items-center gap-3"> {/* Reimportato Nav */}
-              {!minimal && (
-                <NavDropdown // Reimportato NavDropdown
-                  title="Applicazioni"
-                  id="applications-dropdown"
-                  menuVariant="dark"
-                  className=""
-                >
-                  {applications // Reimportato applications
-                    .filter(app => !app.isHome)
-                    .map((app) => (
+          {/* Versione Mobile: bottone toggle (visibile solo su mobile via CSS) */}
+          <button
+            className="navbar-toggler d-md-none" // d-md-none: Nascondi su schermi >= md
+            type="button"
+            aria-label="Toggle navigation"
+            onClick={toggleMenu}
+          >
+            <i className={`bi ${isMenuOpen ? 'bi-x-lg' : 'bi-list'}`}></i>
+          </button>
+          
+          {/* Versione Desktop: NavDropdown e Nav.Link (visibile solo su desktop via CSS) */}
+          <Nav className="ms-auto d-none d-md-flex align-items-center gap-3"> {/* d-none: Nascondi su mobile, d-md-flex: Mostra su schermi >= md */}
+            {!minimal && (
+              <NavDropdown
+                title="Applicazioni"
+                id="applications-dropdown"
+                menuVariant="dark"
+                className=""
+              >
+                {applications
+                  .filter(app => !app.isHome)
+                  .map((app) => (
                       <NavDropdown.Item
                         key={app.path}
                         as={Link}
                         href={`/${app.path}`}
-                        passHref
                         active={router.asPath === `/${app.path}`}
                       >
                         {app.heroContent.brand}
@@ -85,11 +83,8 @@ const NewNavbar = ({ minimal }) => {
               {!minimal && (
                 <Nav.Link href="#prezzi" className="color-text-gold-light" style={{ pointerEvents: 'none' }}>Informazioni</Nav.Link>
               )}
-              <Link href="/" passHref legacyBehavior>
-                <a className="btn-login">Accedi</a>
-              </Link>
+              <Link href="/" className="btn-login">Accedi</Link>
             </Nav>
-          )}
         </Container>
       </nav>
 
