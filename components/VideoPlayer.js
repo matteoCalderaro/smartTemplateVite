@@ -80,24 +80,44 @@ const VideoPlayer = ({ videos }) => {
     };
   }, [isMobileView]); // Run this effect whenever isMobileView changes
 
-  const handleThemeChange = (newTheme) => {
-    if (activeTheme === newTheme || isTransitioning) return;
+  const transitionTimeoutRef = useRef(null); // Per gestire i timeout delle transizioni video
 
-    const currentThemeVideos = videoRefs.current[activeTheme];
-    if (currentThemeVideos && currentThemeVideos.element) {
-      currentThemeVideos.element.pause();
+  const handleThemeChange = (newTheme) => {
+    if (activeTheme === newTheme) return; // Non fare nulla se si clicca sullo stesso tema
+
+    // Cancella qualsiasi timeout di transizione precedente in corso
+    if (transitionTimeoutRef.current) {
+        clearTimeout(transitionTimeoutRef.current);
+        transitionTimeoutRef.current = null;
     }
 
-    setIsTransitioning(true);
-    setPreviousTheme(activeTheme);
-    setActiveTheme(newTheme);
+    // Metti in pausa il video attualmente in riproduzione prima di cambiare tema
+    const currentlyPlayingVideo = videoRefs.current[activeTheme]?.element;
+    if (currentlyPlayingVideo) {
+      currentlyPlayingVideo.pause();
+    }
 
-    setTimeout(() => {
-      setPreviousTheme(null);
-      setIsPlaying(false);
-      setIsTransitioning(false);
-    }, 500); // Should match animation duration
+    setIsTransitioning(true); // Inizia la transizione del video
+    setPreviousTheme(activeTheme);
+    setActiveTheme(newTheme); // Aggiorna immediatamente il tema attivo
+
+    // Pianifica il reset dello stato di transizione dopo la durata dell'animazione
+    transitionTimeoutRef.current = setTimeout(() => {
+        setPreviousTheme(null);
+        setIsPlaying(false); // Resetta lo stato di riproduzione
+        setIsTransitioning(false); // Termina la transizione del video
+        transitionTimeoutRef.current = null;
+    }, 500); // Corrisponde alla durata dell'animazione CSS
   };
+
+  // Pulisce il timeout alla smontaggio del componente per evitare memory leak
+  useEffect(() => {
+      return () => {
+          if (transitionTimeoutRef.current) {
+              clearTimeout(transitionTimeoutRef.current);
+          }
+      };
+  }, []); // Esegui solo al mount/unmount
 
   const handlePlayPause = () => {
     const currentThemeVideos = videoRefs.current[activeTheme];
