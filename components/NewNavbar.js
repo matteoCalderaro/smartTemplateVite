@@ -21,6 +21,20 @@ const NewNavbar = ({ minimal }) => {
     setIsScrolled(scrollPosition > 0);
   }, [scrollPosition]);
 
+  // Gestisce lo scroll del body quando il menu è aperto
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = ''; // Ripristina lo stato predefinito
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = ''; // Assicura che lo scroll sia ripristinato quando il componente si smonta
+    };
+  }, [isMenuOpen]); // Dipende da isMenuOpen
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -60,15 +74,16 @@ const NewNavbar = ({ minimal }) => {
           {/* Versione Desktop: NavDropdown e Nav.Link (visibile solo su desktop via CSS) */}
           <Nav className="ms-auto d-none d-md-flex align-items-center gap-3"> {/* d-none: Nascondi su mobile, d-md-flex: Mostra su schermi >= md */}
             {!minimal && (
-              <NavDropdown
-                title="Applicazioni"
-                id="applications-dropdown"
-                menuVariant="dark"
-                className=""
-              >
-                {applications
-                  .filter(app => !app.isHome)
-                  .map((app) => (
+              <> {/* Frammento per raggruppare i link e il bottone */}
+                <NavDropdown
+                  title="Applicazioni"
+                  id="applications-dropdown"
+                  menuVariant="dark"
+                  className=""
+                >
+                  {applications
+                    .filter(app => !app.isHome)
+                    .map((app) => (
                       <NavDropdown.Item
                         key={app.path}
                         as={Link}
@@ -79,17 +94,15 @@ const NewNavbar = ({ minimal }) => {
                       </NavDropdown.Item>
                     ))}
                 </NavDropdown>
-              )}
-              {!minimal && (
-                <Nav.Link href="#prezzi" className="color-text-gold-light" style={{ pointerEvents: 'none' }}>Informazioni</Nav.Link>
-              )}
-              <Link href="/" className="btn-login">Accedi</Link>
-            </Nav>
+                <Nav.Link href="#info" className="color-text-gold-light" style={{ pointerEvents: 'none' }}>Informazioni</Nav.Link>
+                <Link href="/" className="btn-login d-none">Accedi</Link>
+              </>
+            )}
+          </Nav>
         </Container>
       </nav>
-
-      {/* Renderizzazione condizionale dell'Overlay, mostrato solo se mobile e aperto */}
-      {isMobile && isMenuOpen && <MenuOverlay closeMenu={toggleMenu} />}
+      {/* Renderizzazione condizionale dell'Overlay, mostrato solo se mobile */}
+      {isMobile && <MenuOverlay closeMenu={toggleMenu} isMenuOpen={isMenuOpen} />}
     </>
   );
 };

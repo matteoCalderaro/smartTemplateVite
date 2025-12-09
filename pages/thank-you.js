@@ -1,7 +1,5 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Navbar from '../components/Navbar';
-import NewNavbar from '../components/NewNavbar';
 
 const ThankYou = () => {
   return (

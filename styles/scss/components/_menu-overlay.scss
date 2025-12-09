@@ -6,13 +6,44 @@
     left: 0;
     width: 100%;
     height: calc(100vh - variables.$navbar-height);
-    background-color: rgba(255, 255, 255, 0.95); // Colore di sfondo con trasparenza
+    background-color: rgba(1, 3, 54, 0.95); // Colore di sfondo con trasparenza
     z-index: 1000; // Assicura che sia sopra altri contenuti, ma sotto la navbar
+    -webkit-backdrop-filter: blur(5px); // Per compatibilità Safari
+    backdrop-filter: blur(5px); // Effetto sfocatura dello sfondo
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 2rem; // Spaziatura interna
+
+    // Stato iniziale nascosto e transizione
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.3s ease-in-out; // Transizione di 300ms
+
+    &.is-open { // Classe aggiunta quando il menu è aperto
+        opacity: 1;
+        visibility: visible;
+    }
+
+    ul {
+        margin-top: 5rem
+    }
+
+    ul li {
+        padding: 1rem;
+        font-size: 20px;
+        color: var(--bismart-gold-light);
+        font-weight: 500;
+    }
+
+    ul li a {
+      text-decoration: none; // Rimuove la sottolineatura
+      color: inherit; // Assicura che il colore venga ereditato o definito altrove
+    }
+
+    ul li.active {
+      background-color: #c3c3d3; // Colore scuro per il link attivo
+      font-weight: bold;
+    }
 
     ul li.active a {
       color: var(--bismart-blue); // Colore scuro per il link attivo
