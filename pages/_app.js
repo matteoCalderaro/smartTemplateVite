@@ -5,14 +5,16 @@ import '../styles/globals.scss';
 import { useRouter } from 'next/router';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useEffect, createRef } from 'react'; // Import useEffect and createRef
-import Script from 'next/script'; // Import Script from next/script
 
 import Navbar from '../components/Navbar'; // Import the ReadyNavbar component
 import ScrollToTopButton from '../components/ScrollToTopButton';
+import useSmoothScroll from '../hooks/useSmoothScroll'; // Importa il nuovo hook
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const nodeRef = createRef(null);
+
+  useSmoothScroll(); // Attiva l'hook per lo scorrimento fluido
 
   useEffect(() => {
     // Scroll to top on every page load/refresh
@@ -43,7 +45,6 @@ function MyApp({ Component, pageProps }) {
           </div>
         </CSSTransition>
       </TransitionGroup>
-      <Script src="/js/smooth-scroll.js" strategy="beforeInteractive" />
     </>
   );
 }
