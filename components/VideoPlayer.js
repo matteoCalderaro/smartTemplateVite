@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useRouter } from 'next/router'; // Import useRouter
+import useMediaQuery from '../hooks/useMediaQuery'; // Importa il nuovo hook useMediaQuery
 
 
 const VideoPlayer = ({ videos }) => {
@@ -14,7 +15,8 @@ const VideoPlayer = ({ videos }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeTheme, setActiveTheme] = useState(themeNames[0]); // Initialize with the first theme
   const [previousTheme, setPreviousTheme] = useState(null);
-  const [isMobileView, setIsMobileView] = useState(false);
+  // Usa il nuovo hook useMediaQuery per determinare la vista mobile
+  const isMobileView = useMediaQuery(576); // Breakpoint per mobile (es. meno di 576px)
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isClient, setIsClient] = useState(false); // New state to track client mount
   
@@ -31,34 +33,9 @@ const VideoPlayer = ({ videos }) => {
 
   const playButtonRef = useRef(null);
 
-  const isMobile = useCallback(() => window.innerWidth < 576, []);
+  // Rimossa la funzione isMobile e la funzione debounce in quanto encapsulate in useMediaQuery
 
-  // Debounce function
-  const debounce = (func, wait) => {
-    let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  };
-
-  useEffect(() => {
-    const handleResize = () => {
-        setIsMobileView(isMobile());
-    };
-    const debouncedHandleResize = debounce(handleResize, 200);
-
-    window.addEventListener('resize', debouncedHandleResize);
-    handleResize(); // Set initial state
-
-    return () => {
-      window.removeEventListener('resize', debouncedHandleResize);
-    };
-  }, [isMobile]);
+  // Rimosso l'useEffect per handleResize, ora gestito in useMediaQuery
 
   // Effect to dynamically reposition the play button on mobile to keep it in the viewport
   useEffect(() => {

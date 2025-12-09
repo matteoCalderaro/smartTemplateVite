@@ -7,7 +7,7 @@
 
 // 2. Layout
 //@use 'layout/navbar';
-@use 'layout/new-navbar';
+//@use 'layout/new-navbar'; // Rimosso dopo lo spostamento
 @use 'layout/hero';
 @use 'layout/footer';
 @use 'layout/video';
@@ -21,6 +21,8 @@
 @use 'components/founder-message';
 @use 'components/form';
 @use 'components/scroll-button';
+@use 'components/menu-overlay';
+@use 'components/new-navbar'; // Aggiunto dopo lo spostamento
 
 // 4. Pages
 @use 'pages/thank-you';

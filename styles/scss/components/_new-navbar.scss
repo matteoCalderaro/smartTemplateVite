@@ -25,6 +25,21 @@
         font-weight: 500;
     }
 
+    // Stili per il bottone navbar-toggler e la sua icona
+    .navbar-toggler {
+        border: none; // Rimuove il bordo predefinito
+        &:focus,
+        &:focus-visible {
+            outline: none; // Rimuove l'outline al focus
+            box-shadow: none; // Rimuove l'ombra al focus se Bootstrap la aggiunge
+        }
+
+        .bi { // Selettore per l'icona all'interno del bottone
+            color: var(--color-white); // Rende l'icona bianca usando la variabile CSS
+            font-size: 1.5rem; // Dimensione adeguata per l'icona
+        }
+    }
+
 }
 
 .navbar-brand {

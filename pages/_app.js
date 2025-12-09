@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { useEffect, createRef } from 'react'; // Import useEffect and createRef
 
-import Navbar from '../components/Navbar'; // Import the ReadyNavbar component
 import NewNavbar from '../components/NewNavbar'; // Import the new Navbar component
 import ScrollToTopButton from '../components/ScrollToTopButton';
 import useSmoothScroll from '../hooks/useSmoothScroll'; // Importa il nuovo hook
@@ -31,7 +30,6 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      {/* <Navbar minimal={router.pathname === '/thank-you'} /> */} {/* Render the ReadyNavbar */}
       <NewNavbar minimal={router.pathname === '/thank-you'} />
       <ScrollToTopButton />
       <TransitionGroup component="div" className="transition-wrapper">

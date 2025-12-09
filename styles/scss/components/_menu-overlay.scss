@@ -1,0 +1,21 @@
+@use '../base/variables';
+
+.menu-overlay {
+    position: fixed;
+    top: variables.$navbar-height;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - variables.$navbar-height);
+    background-color: rgba(255, 255, 255, 0.95); // Colore di sfondo con trasparenza
+    z-index: 1000; // Assicura che sia sopra altri contenuti, ma sotto la navbar
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem; // Spaziatura interna
+
+    ul li.active a {
+      color: var(--bismart-blue); // Colore scuro per il link attivo
+      font-weight: bold;
+    }
+}
