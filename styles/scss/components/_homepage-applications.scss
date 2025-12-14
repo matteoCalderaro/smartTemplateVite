@@ -6,7 +6,12 @@
     //border-bottom: 1px solid white;
 
     &__radial-stage-gradient {
-        background: radial-gradient(ellipse at center, var(--bismart-blue-gradient-center) 0%, var(--bismart-blue) 100%);
+        background: radial-gradient(
+            ellipse at center,
+            var(--bismart-blue-gradient-center) 0%,   /* Centro attuale */
+            var(--bismart-blue-deep-hue) 50%,         /* Transizione di profondità a metà */
+            var(--bismart-blue) 95%                  /* Bordo esterno quasi nero */
+        );
         pointer-events: none; 
     }
 
