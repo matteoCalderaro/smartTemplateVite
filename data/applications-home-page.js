@@ -30,7 +30,7 @@ export const MOCK_APPS = [
     version: 'v2.0',
     status: 'active',
     iconName: 'Mic',
-    imageName: 'voice-to-insights.jpg',
+    imageName: 'voice-to-insights.webp',
     category: 'Analytics'
   },
   {
@@ -41,7 +41,7 @@ export const MOCK_APPS = [
     version: 'v1.5',
     status: 'active',
     iconName: 'MessageCircle',
-    imageName: 'waq.jpg',
+    imageName: 'waq.webp',
     category: 'Customer Service'
   },
   {
@@ -52,7 +52,7 @@ export const MOCK_APPS = [
     version: 'v3.0',
     status: 'beta',
     iconName: 'Tags',
-    imageName: 'smart-pricing.avif',
+    imageName: 'smart-pricing.webp',
     category: 'Sales'
   },
   {
@@ -63,7 +63,7 @@ export const MOCK_APPS = [
     version: 'v2.2',
     status: 'active',
     iconName: 'HeartHandshake',
-    imageName: 'stay-on.avif',
+    imageName: 'stay-on.webp',
     category: 'Retention'
   },
   {
@@ -74,7 +74,7 @@ export const MOCK_APPS = [
     version: 'v4.0',
     status: 'active',
     iconName: 'Smile',
-    imageName: 'sentiment.jpg',
+    imageName: 'sentiment.webp',
     category: 'Marketing'
   },
   {
@@ -85,7 +85,7 @@ export const MOCK_APPS = [
     version: 'v1.8',
     status: 'active',
     iconName: 'TrendingUp',
-    imageName: 'img-placeholder.webp',
+    imageName: 'sales-predict.webp',
     category: 'Forecast'
   },
   {
@@ -96,7 +96,7 @@ export const MOCK_APPS = [
     version: 'v1.2',
     status: 'active',
     iconName: 'Send',
-    imageName: 'wap.jpg',
+    imageName: 'wap.webp',
     category: 'Automation'
   }
 ];
