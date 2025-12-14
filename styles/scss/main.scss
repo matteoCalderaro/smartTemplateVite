@@ -22,7 +22,11 @@
 @use 'components/form';
 @use 'components/scroll-button';
 @use 'components/menu-overlay';
-@use 'components/new-navbar'; // Aggiunto dopo lo spostamento
+@use 'components/new-navbar'; 
+@use 'components/application-card'; 
+@use 'components/connector-line-svg'; 
+@use 'components/homepage-applications'; 
+
 
 // 4. Pages
 @use 'pages/thank-you';

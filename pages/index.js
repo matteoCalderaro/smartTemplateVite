@@ -5,6 +5,7 @@ import applications from '../data/applications'; // Import data
 
 // Import components
 import SuiteCarousel from '../components/SuiteCarousel';
+import HomePageApplications from '../components/HomePageApplications';
 
 
 import HeroSection from '../components/HeroSection';
@@ -29,7 +30,8 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
       <HeroSection content={heroContent} />
 
       <main id="main-content">
-        <Strengths content={strengthsContent} clickableCards={true} />
+        {/* <Strengths content={strengthsContent} clickableCards={true} /> */}
+        <HomePageApplications />
         <Form />
         <FounderMessage />
         <SuiteTitle />

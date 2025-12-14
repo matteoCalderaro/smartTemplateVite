@@ -1,0 +1,159 @@
+
+.homepage-applications {
+    background-Color: var(--bismart-blue);
+    z-Index: 10;
+    //border-top: 1px solid white;
+    //border-bottom: 1px solid white;
+
+    &__radial-stage-gradient {
+        background: radial-gradient(ellipse at center, var(--bismart-blue-gradient-center) 0%, var(--bismart-blue) 100%);
+        pointer-events: none; 
+    }
+
+    &__seamless-blend-overlay {
+        background: linear-gradient(to bottom, var(--bismart-blue), transparent, var(--bismart-blue));
+        pointer-events: none; 
+    }
+}
+
+.main-grid {
+    z-index: 20; 
+    display: grid;
+    grid-template-columns: 359px 1fr;
+    gap: 2.5rem;
+
+    .apps {
+        &__title {
+            font-size: 2.25rem;
+            font-weight: 600;
+        }
+    
+        &__description {
+            font-size: 1.125rem;
+        }
+    }
+
+    .image {
+    
+        .sticky-container {
+            position: sticky;
+            top: 7rem;
+    
+            .wrapper {
+    
+                .image-card {
+                    box-shadow: 0 20px 60px -15px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+                    background-color: var(--bismart-light-translucent-white-8) ;
+                
+                    .header {
+                        height: 2.75rem;
+                
+                        &__traffic-lights {
+                           & > * {
+                               width: 0.75rem !important;
+                               height: 0.75rem !important;
+                           }
+                            & > :nth-child(1) {
+                                background-color:rgba(255, 95, 86, 0.8) ;
+                            }
+                            
+                            & > :nth-child(2) {
+                                background-color: rgba(255, 189, 46, 0.8);
+                            }
+                            
+                            & > :nth-child(3) {
+                                background-color:rgba(39, 201, 63, 0.8) ;
+                            }
+                        }
+                
+                        &__url-bar {
+                            font-family: monospace;
+                            color: rgba(173, 216, 230, 0.7);
+                            opacity: 0.6;
+                            font-size: 0.75rem;
+                        }
+                
+                    }
+                
+                    .body{
+                        
+                        aspect-ratio: 16 / 10;
+                        .overlay {
+                            background: linear-gradient(to top, var(--bismart-blue), transparent, transparent);
+                            opacity: 0.8;
+                            pointer-events: none;
+                        }
+                    }
+                
+                    .footer {
+                
+                        z-index: 20;
+                
+                        .footer-wrapper {
+                            //background-color: var(--bismart-dark-translucent);
+                            background-color: var(--bismart-light-translucent-white-8);
+                            backdrop-filter: blur(16px);
+                            padding: 1rem;
+                    
+                            .info {
+                    
+                                &--icon {
+                                    background-color: var(--bismart-blue);
+                                    color: var(--bismart-gold-light);
+                                }
+                                &--labels {
+                                    h2 {
+                                        font-size: 1.3rem;
+                                    }
+                                    span {
+                                        color:rgba(173, 216, 230, 0.7);
+                                        font-size: 0.75rem;
+                                    }
+                                }
+                            }
+                        }
+                
+                
+                        button {
+                            --bs-btn-bg : var(--bismart-gold-light);
+                            --bs-btn-hover-bg : #cda659;
+                            --bs-btn-color: var(--bismart-blue);
+                        }
+                        
+                    }
+                        
+                }
+    
+            }
+        }
+    
+    }
+
+
+}
+
+
+
+
+
+
+
+
+// Questa animazione gestisce l'effetto di apparizione e ingresso della finestra dell'applicazione.
+.animate-floatIn {
+    animation: floatIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.94) translateY(40px);
+        filter: blur(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+}
+

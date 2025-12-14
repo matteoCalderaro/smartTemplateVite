@@ -1,0 +1,57 @@
+# Elenco applicazioni
+
+## Voice 2 Insights
+Trasforma le tue conversazioni in insight strategici per decisioni rapide!
+### Vantaggi
+- Accesso immediato ai contenuti nascosti nelle conversazioni
+- Automazione della reportistica e classificazione
+- Migliore gestione del customer feedback e dei processi di vendita
+- Supporto decisionale basato su insight reali
+
+## WAQ
+Offri assistenza clienti immediata 24/7 via WhatsApp, riducendo il carico del tuo team!
+### Vantaggi
+- Assistenza immediata clienti
+- FAQ automatizzate
+- Esperienza omnicanale fluida
+- Carico team ridotto
+
+## Smart Pricing
+Ottimizza i prezzi in tempo reale con l'AI, massimizzando margini e competitività!
+### Vantaggi
+- Prezzi dinamici ottimali
+- Aumento marginalità
+- Reattività al mercato
+- Strategie di vendita mirate
+
+## Stay On
+Prevedi l'abbandono dei clienti e attiva strategie di fidelizzazione mirate per aumentare la retention!
+### Vantaggi
+- Previsione abbandono clienti
+- Strategie di retention personalizzate
+- Insight predittivi immediati
+- Aumento loyalty e ricavi
+
+## Sentiment
+Monitora la reputazione del tuo brand analizzando il sentiment di clienti e utenti su recensioni e social!
+### Vantaggi
+- Monitoraggio in tempo reale della reputazione aziendale
+- Insight azionabili per marketing, customer care e sviluppo prodotto
+- Benchmarking con i competitor
+- Alert automatici su criticità emergenti
+
+## Sales Predict
+Anticipa i trend di vendita con previsioni accurate, ottimizzando pianificazione e strategie commerciali!
+### Vantaggi
+- Previsioni accurate vendite
+- Pianificazione strategica ottimizzata
+- Maggior efficienza commerciale
+- Gestione scorte migliorata
+
+## WAP
+Automatizza l'invio di report e documenti via WhatsApp, comunicando dati e informazioni in tempo reale!
+### Vantaggi
+- Automatizza gli invii, elimina gli errori
+- Scala facilmente, senza perdere controllo
+- Comunica in tempo reale, dove tutti leggono
+-Integra WAP con Qlik, CRM ed ERP in pochi click

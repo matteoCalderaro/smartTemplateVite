@@ -1,0 +1,16 @@
+// styles/components/_connector-line-svg.scss
+
+// --- Animazione Flusso Tratteggiato (per la linea di connessione) ---
+// Questa animazione controlla il movimento della linea tratteggiata che collega le card all'immagine principale.
+.animate-dashFlow {
+    animation: dash 1s linear infinite;
+}
+
+@keyframes dash {
+    from {
+        stroke-dashoffset: 20; // Punto di partenza per l'offset del trattino
+    }
+    to {
+        stroke-dashoffset: 0;  // Punto di arrivo per l'offset del trattino
+    }
+}

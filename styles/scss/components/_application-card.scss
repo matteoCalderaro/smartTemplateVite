@@ -1,0 +1,130 @@
+.application-card {
+    // --- Local Variables (Inactive State) ---
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --card-bg-hover: rgba(255, 255, 255, 0.12);
+    --card-border-hover: rgba(255, 255, 255, 0.2);
+
+    --icon-bg: rgba(255, 255, 255, 0.05);
+    --icon-color: #93c5fd; // text-blue-300
+    --icon-bg-hover: rgba(255, 255, 255, 0.1);
+    --icon-color-hover: white;
+
+    --title-color: #dbeafe; // text-blue-100
+    --title-color-hover: white;
+
+    --category-bg: rgba(37, 99, 235, 0.3);
+    --category-color: #93c5fd;
+    --category-border: rgba(29, 78, 216, 0.3);
+    --category-border-hover: #3b82f6;
+
+    --description-color: rgba(219, 234, 254, 0.6);
+    --description-color-hover: #d1d5db;
+
+    --quick-nav-color: #bfdbfe;
+    --quick-nav-color-hover: white;
+    --quick-nav-bg-hover: rgba(255, 255, 255, 0.1);
+
+    // --- Base Styles ---
+    transition: all 0.3s ease-in-out;
+    background-color: var(--card-bg);
+    --bs-border-color: var(--card-border);
+
+    &__icon {
+        background-color: var(--icon-bg);
+        color: var(--icon-color);
+        transition: all 0.3s ease-in-out;
+    }
+
+    &__title {
+        color: var(--title-color);
+        transition: color 0.3s ease-in-out;
+    }
+
+    &__category {
+        background-color: var(--category-bg);
+        color: var(--category-color);
+        border-color: var(--category-border);
+        transition: all 0.3s ease-in-out;
+    }
+
+    &__description {
+        color: var(--description-color);
+        font-size: 14px;
+        letter-spacing: 0.1px;
+        transition: color 0.3s ease-in-out;
+        height: 3.9rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+
+    &__quick-nav {
+        opacity: 0;
+        color: var(--quick-nav-color);
+        transition: all 0.3s ease-in-out;
+        &:hover {
+            color: var(--quick-nav-color-hover);
+            background-color: var(--quick-nav-bg-hover);
+        }
+    }
+
+    &:hover {
+        background-color: var(--card-bg-hover);
+        --bs-border-color: var(--card-border-hover);
+        
+        .application-card__icon {
+            color: var(--icon-color-hover);
+            background-color: var(--icon-bg-hover);
+        }
+        .application-card__title {
+            color: var(--title-color-hover);
+        }
+        .application-card__category {
+            border-color: var(--category-border-hover);
+        }
+        .application-card__description {
+            color: var(--description-color-hover);
+        }
+        .application-card__quick-nav {
+            opacity: 1;
+        }
+    }
+
+    &--active {
+        // --- Override Variables (Active State) ---
+        --card-bg: rgba(0, 4, 74, 0.6);
+        --card-border: var(--bismart-gold-light);
+        --icon-bg: var(--bismart-gold-light);
+        --icon-color: #000235;
+        --title-color: white;
+        --category-bg: rgba(224, 184, 106, 0.2);
+        --category-color: var(--bismart-gold-light);
+        --category-border: rgba(224, 184, 106, 0.3);
+        --description-color: #d1d5db;
+        --quick-nav-color: var(--bismart-gold-light);
+        --quick-nav-bg-hover: rgba(224, 184, 106, 0.2);
+
+        // --- Active Styles ---
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 30px -10px rgba(224, 184, 106, 0.2);
+        z-index: 10;
+
+        .application-card__quick-nav {
+            opacity: 1;
+        }
+
+        // Reset hover effect when active
+        &:hover {
+            background-color: var(--card-bg);
+            --bs-border-color: var(--card-border);
+            
+            .application-card__icon {
+                background-color: var(--icon-bg);
+                color: var(--icon-color);
+            }
+        }
+    }
+}
+
