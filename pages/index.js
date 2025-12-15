@@ -14,9 +14,11 @@ import Footer from '../components/Footer';
 import Strengths from '../components/Strengths';
 import FounderMessage from '../components/FounderMessage';
 import SuiteTitle from '../components/SuiteTitle';
+import useMediaQuery from '../hooks/useMediaQuery';
 
 export default function Home({ heroContent, strengthsContent, videoPaths }) {
   const router = useRouter();
+  const isMobile = useMediaQuery(991);
   return (
     <>
       <Head>
@@ -30,8 +32,7 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
       <HeroSection content={heroContent} />
 
       <main id="main-content">
-        {/* <Strengths content={strengthsContent} clickableCards={true} /> */}
-        <HomePageApplications />
+        {isMobile ? <Strengths content={strengthsContent} clickableCards={true} /> : <HomePageApplications /> }
         <Form />
         <FounderMessage />
         <SuiteTitle />
