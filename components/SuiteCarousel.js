@@ -1,18 +1,25 @@
 import React, { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
+import { MOCK_APPS, ICONS } from '../data/applications-home-page';
 
 const SuiteCarousel = () => {
+  const router = useRouter();
   const carouselContentRef = useRef(null);
   const carouselAnimationId = useRef(null);
+
+  const handleItemClick = (appPath) => {
+    // Stop the carousel animation immediately
+    if (carouselAnimationId.current) {
+      cancelAnimationFrame(carouselAnimationId.current);
+    }
+    // Navigate to the app's page
+    router.push(`/${appPath}`);
+  };
 
   useEffect(() => {
     const carouselContent = carouselContentRef.current;
 
     if (!carouselContent) return;
-
-    // Duplicate the content for a seamless loop
-    const originalContent = carouselContent.innerHTML;
-    // Clear the existing content before adding duplicated content to prevent multiple duplications on re-renders
-    carouselContent.innerHTML = originalContent + originalContent;
 
     let currentScroll = 0;
     const scrollSpeed = 0.5; // Adjust for desired speed
@@ -72,35 +79,32 @@ const SuiteCarousel = () => {
     <section id="suite-carousel">
       <div className="carousel">
         <div className="carousel__content" ref={carouselContentRef}>
-          <div className="carousel__item">
-            <i className="bi bi-mic-fill"></i>
-            <span>Voice to Insights</span>
-          </div>
-          <div className="carousel__item">
-            <i className="bi bi-whatsapp"></i>
-            <span>WAQ</span>
-          </div>
-          <div className="carousel__item">
-            <i className="bi bi-currency-euro"></i>
-            <span>SmartPricing</span>
-          </div>
-          <div className="carousel__item">
-            <i className="bi bi-person-check-fill"></i>
-            <span>StayOn</span>
-          </div>
-          <div className="carousel__item">
-            <i className="bi bi-chat-heart-fill"></i>
-            <span>Sentiment</span>
-          </div>
-          <div className="carousel__item">
-            <i className="bi bi-cloud-download"></i>
-            <span>Sales Predict</span>
-          </div>
-          <div className="carousel__item">
-            <i className="bi bi-broadcast"></i>
-            <span>WAP</span>
-          </div>
-          {/* Content will be duplicated by JavaScript for seamless loop */}
+          {MOCK_APPS.map((app) => {
+            const IconComponent = ICONS[app.iconName]; // Get the icon component from ICONS object
+            return (
+              <div
+                key={app.id}
+                className="carousel__item"
+                onClick={() => handleItemClick(app.path)}
+              >
+                {IconComponent && <IconComponent />} {/* Render the icon component if it exists */}
+                <span>{app.name}</span>
+              </div>
+            );
+          })}
+          {MOCK_APPS.map((app) => {
+            const IconComponent = ICONS[app.iconName];
+            return (
+              <div
+                key={`${app.id}-clone`} // Use a different key for the cloned items
+                className="carousel__item"
+                onClick={() => handleItemClick(app.path)}
+              >
+                {IconComponent && <IconComponent />}
+                <span>{app.name}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
