@@ -36,7 +36,7 @@ const SuiteCarousel = () => {
     // Start animation
     animateCarousel();
 
-    const parentElement = marqueeContent.parentElement;
+    const parentElement = carouselContent.parentElement;
     if (parentElement) {
       parentElement.addEventListener('mouseenter', () => {
         if (carouselAnimationId.current) {

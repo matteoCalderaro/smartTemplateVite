@@ -110,7 +110,7 @@ const IntegrationsSection = ({ enableKaraokeEffect = true, enableFadeInAnimation
                     className='logo-container__logo'
                     src="/media/logo_trasparente.png" 
                     alt="Origine Raggi"
-                    width={48}
+                    width={57}
                     height={48}
                   />
                 </span>
