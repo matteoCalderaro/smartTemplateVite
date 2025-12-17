@@ -107,6 +107,7 @@
         --quick-nav-bg-hover: rgba(224, 184, 106, 0.2);
 
         // --- Active Styles ---
+        border-width: 2px !important;
         backdrop-filter: blur(10px);
         box-shadow: 0 0 30px -10px rgba(224, 184, 106, 0.2);
         z-index: 10;

@@ -13,6 +13,7 @@ import Form from '../components/Form';
 import Footer from '../components/Footer';
 import Strengths from '../components/Strengths';
 import FounderMessage from '../components/FounderMessage';
+import IntegrationsSection from '../components/IntegrationsSection';
 import SuiteTitle from '../components/SuiteTitle';
 import useMediaQuery from '../hooks/useMediaQuery';
 
@@ -33,6 +34,7 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
 
       <main id="main-content">
         {isMobile ? <Strengths content={strengthsContent} clickableCards={true} /> : <HomePageApplications /> }
+        <IntegrationsSection />
         <Form />
         <FounderMessage />
         <SuiteTitle />

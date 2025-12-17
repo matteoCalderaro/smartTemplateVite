@@ -1,0 +1,159 @@
+.integrations-section {
+  // border-top: 1px solid gray;
+  // border-bottom: 1px solid gray;
+
+  background-color: var(--bismart-blue);
+  color: #fff;
+  padding-top: 5rem;
+  padding-bottom: 11rem;
+  overflow-x: hidden; // Prevents horizontal scrollbar during animations
+  
+  // --- Animation Styles ---
+
+  // Karaoke Effect
+  .karaoke-container .karaoke-word {
+    opacity: 0.3;
+    transition: opacity 0.4s ease-in-out, color 0.4s ease-in-out;
+  }
+
+  .karaoke-container .karaoke-word.visible {
+    opacity: 1;
+    color: #ffffff;
+  }
+
+  // Fade-in Animation
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  [data-stagger] {
+    opacity: 0; // Start hidden
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  // --- End Animation Styles ---
+
+
+  // Custom text colors
+  .text-lime-300 {
+    color: #bef264 !important;
+  }
+  .text-neutral-300 {
+    color: #d4d4d4 !important;
+  }
+  .text-bismart-gold-light {
+    color: var(--bismart-gold-light) !important;
+  }
+
+  // Custom background colors
+  .bg-lime-400-10 {
+    background-color: rgba(163, 230, 53, 0.1);
+  }
+  .bg-lime-400-20 {
+    background-color: rgba(163, 230, 53, 0.2);
+  }
+
+  .bg-white-5 {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  // Ring simulation with box-shadow
+  .ring-lime-300-20 {
+    box-shadow: 0 0 0 1px rgba(190, 242, 100, 0.2);
+  }
+  
+  .ring-white-10 {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .ring-2-lime-300-40 {
+    box-shadow: 0 0 0 2px rgba(190, 242, 100, 0.4);
+  }
+
+  // Custom borders
+  .border-lime-300-40 {
+    border-color: rgba(190, 242, 100, 1) !important;
+  }
+  .border-dashed {
+      border-style: dashed;
+  }
+  .border-top-2px {
+    border-top-width: 2px !important;
+    height: 2px !important;
+  }
+  .integrations-separator {
+    display: none; // Hidden by default
+    @media (min-width: 576px) { // Visible from small screens and up (d-sm-block equivalent)
+      display: block;
+    }
+    width: 96px; // Equivalent to w-24
+    height: 1px; // Changed from 2px
+    background-image: linear-gradient(to right, var(--bismart-gold-light) 50%, transparent 50%);
+    background-size: 8px 1px; // Changed from 8px 2px
+    background-repeat: repeat-x;
+  }
+
+  // Custom font sizes & spacing
+  .text-fs-11 {
+    font-size: 11px;
+  }
+  .fs-sm { font-size: 0.875rem; }
+  .fs-base { font-size: 1rem; }
+  .fs-18px { font-size: 18px !important; }
+
+  .tracking-tight {
+    letter-spacing: -0.025em;
+  }
+  
+  .h-px { height: 1px; }
+  .h-3_5 { height: 0.875rem; }
+  .w-3_5 { width: 0.875rem; }
+  .h-64 { height: 16rem; }
+  .w-24 { width: 6rem; }
+  
+  .max-w-2xl { max-width: 42rem; }
+  .max-w-4xl { max-width: 56rem; }
+  .max-w-7xl { max-width: 80rem; }
+  
+  // Custom wrappers
+  .icon-wrapper { 
+    width: 2.5rem; 
+    height: 2.5rem;
+    position: relative;
+
+    .integration-node-circle {
+      position: absolute;
+      bottom: -23px; // NODE_RADIUS (3) + 20px gap
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px; // NODE_RADIUS * 2
+      height: 6px; // NODE_RADIUS * 2
+      border-radius: 50%;
+      background-color: var(--bismart-gold-light);
+      z-index: 20;
+    }
+  }
+  .icon-wrapper-lg { width: 3rem; height: 3rem; }
+}
+
+.logo-container {
+  position: relative;
+  &__logo {
+    position: absolute;
+    top:0;
+    right: 0px;
+    transform: translateX(20%);
+    width: 55px;
+    height: 48px;
+  }
+}
