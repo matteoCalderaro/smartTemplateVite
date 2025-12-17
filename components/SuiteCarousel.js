@@ -1,26 +1,26 @@
 import React, { useEffect, useRef } from 'react';
 
 const SuiteCarousel = () => {
-  const marqueeContentRef = useRef(null);
-  const animationFrameId = useRef(null);
+  const carouselContentRef = useRef(null);
+  const carouselAnimationId = useRef(null);
 
   useEffect(() => {
-    const marqueeContent = marqueeContentRef.current;
+    const carouselContent = carouselContentRef.current;
 
-    if (!marqueeContent) return;
+    if (!carouselContent) return;
 
     // Duplicate the content for a seamless loop
-    const originalContent = marqueeContent.innerHTML;
+    const originalContent = carouselContent.innerHTML;
     // Clear the existing content before adding duplicated content to prevent multiple duplications on re-renders
-    marqueeContent.innerHTML = originalContent + originalContent;
+    carouselContent.innerHTML = originalContent + originalContent;
 
     let currentScroll = 0;
     const scrollSpeed = 0.5; // Adjust for desired speed
 
-    const animateMarquee = () => {
+    const animateCarousel = () => {
       // Calculate the width of a single set of items (original content)
       // This assumes original content is roughly half of the duplicated content's scrollWidth
-      const singleContentWidth = marqueeContent.scrollWidth / 2;
+      const singleContentWidth = carouselContent.scrollWidth / 2;
 
       currentScroll += scrollSpeed;
 
@@ -28,75 +28,75 @@ const SuiteCarousel = () => {
         currentScroll = 0; // Reset to start for a seamless loop
       }
 
-      marqueeContent.style.transform = `translateX(-${currentScroll}px)`;
+      carouselContent.style.transform = `translateX(-${currentScroll}px)`;
 
-      animationFrameId.current = requestAnimationFrame(animateMarquee);
+      carouselAnimationId.current = requestAnimationFrame(animateCarousel);
     };
 
     // Start animation
-    animateMarquee();
+    animateCarousel();
 
     const parentElement = marqueeContent.parentElement;
     if (parentElement) {
       parentElement.addEventListener('mouseenter', () => {
-        if (animationFrameId.current) {
-          cancelAnimationFrame(animationFrameId.current);
+        if (carouselAnimationId.current) {
+          cancelAnimationFrame(carouselAnimationId.current);
         }
       });
 
       parentElement.addEventListener('mouseleave', () => {
-        animateMarquee();
+        animateCarousel();
       });
     }
 
 
     return () => {
-      if (animationFrameId.current) {
-        cancelAnimationFrame(animationFrameId.current);
+      if (carouselAnimationId.current) {
+        cancelAnimationFrame(carouselAnimationId.current);
       }
       if (parentElement) {
         parentElement.removeEventListener('mouseenter', () => {
-          if (animationFrameId.current) {
-            cancelAnimationFrame(animationFrameId.current);
+          if (carouselAnimationId.current) {
+            cancelAnimationFrame(carouselAnimationId.current);
           }
         });
 
         parentElement.removeEventListener('mouseleave', () => {
-          animateMarquee();
+          animateCarousel();
         });
       }
     };
   }, []);
 
   return (
-    <section id="suite-marquee">
-      <div className="marquee">
-        <div className="marquee__content" ref={marqueeContentRef}>
-          <div className="marquee__item">
+    <section id="suite-carousel">
+      <div className="carousel">
+        <div className="carousel__content" ref={carouselContentRef}>
+          <div className="carousel__item">
             <i className="bi bi-mic-fill"></i>
             <span>Voice to Insights</span>
           </div>
-          <div className="marquee__item">
+          <div className="carousel__item">
             <i className="bi bi-whatsapp"></i>
             <span>WAQ</span>
           </div>
-          <div className="marquee__item">
+          <div className="carousel__item">
             <i className="bi bi-currency-euro"></i>
             <span>SmartPricing</span>
           </div>
-          <div className="marquee__item">
+          <div className="carousel__item">
             <i className="bi bi-person-check-fill"></i>
             <span>StayOn</span>
           </div>
-          <div className="marquee__item">
+          <div className="carousel__item">
             <i className="bi bi-chat-heart-fill"></i>
             <span>Sentiment</span>
           </div>
-          <div className="marquee__item">
+          <div className="carousel__item">
             <i className="bi bi-cloud-download"></i>
             <span>Sales Predict</span>
           </div>
-          <div className="marquee__item">
+          <div className="carousel__item">
             <i className="bi bi-broadcast"></i>
             <span>WAP</span>
           </div>

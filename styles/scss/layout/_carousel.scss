@@ -1,7 +1,7 @@
 @use '../base/variables';
 @use '../base/media-queries';
 
-#suite-marquee {
+#suite-carousel {
     background-color: var(--bismart-blue); // Base color
     background-image: linear-gradient(to right, 
         var(--bismart-blue) 0%, 
@@ -26,12 +26,12 @@
     padding: 1.5rem 0; // Vertical padding
 }
 
-.marquee {
+.carousel {
     display: flex;
     width: max-content;
 }
 
-.marquee__content {
+.carousel__content {
     display: flex;
     gap: 3rem; // Space between items
     align-items: center;
@@ -41,7 +41,7 @@
     transform: translateZ(0); // Force hardware acceleration
 }
 
-.marquee__item {
+.carousel__item {
     display: flex;
     flex-shrink: 0; // Prevent items from shrinking
     width: 220px; // Fixed width
