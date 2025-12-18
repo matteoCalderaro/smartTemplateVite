@@ -7,6 +7,9 @@ const SuiteCarousel = () => {
   const sectionRef = useRef(null);
   const carouselContentRef = useRef(null);
   const carouselAnimationId = useRef(null);
+  
+  // Ref to store the precise reset position for a seamless loop
+  const resetPositionRef = useRef(0);
 
   // Refs for drag-to-scroll and state tracking
   const isDraggingRef = useRef(false);
@@ -16,21 +19,26 @@ const SuiteCarousel = () => {
   const scrollStartRef = useRef(0);
   const currentScrollRef = useRef(0);
   
-  const scrollSpeed = 0.5;
+  const scrollSpeed = 1.0;
 
   const animateCarousel = () => {
     const carouselContent = carouselContentRef.current;
-    if (!carouselContent || isDraggingRef.current || isMouseOverRef.current) return;
-
-    const singleContentWidth = carouselContent.scrollWidth / 2;
-
-    if (singleContentWidth > 0) {
-        currentScrollRef.current += scrollSpeed;
-        if (currentScrollRef.current >= singleContentWidth) {
-            currentScrollRef.current = 0;
-        }
-        carouselContent.style.transform = `translateX(-${currentScrollRef.current}px)`;
+    if (!carouselContent || isDraggingRef.current || isMouseOverRef.current) {
+      carouselAnimationId.current = requestAnimationFrame(animateCarousel);
+      return;
     }
+    
+    // Only animate if we have a valid reset position
+    if (resetPositionRef.current > 0) {
+      currentScrollRef.current += scrollSpeed;
+      // When the scroll position exceeds the reset point, subtract the reset amount
+      // This creates a seamless loop even if we overshoot between frames.
+      if (currentScrollRef.current >= resetPositionRef.current) {
+        currentScrollRef.current -= resetPositionRef.current;
+      }
+      carouselContent.style.transform = `translateX(-${currentScrollRef.current}px)`;
+    }
+    
     carouselAnimationId.current = requestAnimationFrame(animateCarousel);
   };
 
@@ -54,6 +62,23 @@ const SuiteCarousel = () => {
 
     if (!sectionElement || !carouselContent) return;
 
+    // --- Measurement and Animation Start ---
+    const measureAndStartAnimation = () => {
+      // Ensure we have the cloned elements rendered
+      if (carouselContent.children.length > MOCK_APPS.length) {
+        const resetElement = carouselContent.children[MOCK_APPS.length];
+        if (resetElement) {
+          // Store the precise pixel offset of the first cloned element
+          resetPositionRef.current = resetElement.offsetLeft;
+        }
+      }
+      // Start the animation loop
+      animateCarousel();
+    };
+    
+    // Use a timeout to ensure the DOM is fully painted and stable before measuring
+    const initTimer = setTimeout(measureAndStartAnimation, 100);
+
     // --- Generic Handlers ---
     const dragStart = (pageX) => {
       isDraggingRef.current = true;
@@ -71,15 +96,17 @@ const SuiteCarousel = () => {
       if (Math.abs(walk) > 10) {
         hasDraggedRef.current = true;
       }
-      const singleContentWidth = carouselContent.scrollWidth / 2;
+      
       let newScroll = scrollStartRef.current - walk;
-      if (singleContentWidth > 0) {
-        if (newScroll >= singleContentWidth) {
-          newScroll -= singleContentWidth;
-          scrollStartRef.current -= singleContentWidth;
+
+      // Use the same precise reset logic for dragging
+      if (resetPositionRef.current > 0) {
+        if (newScroll >= resetPositionRef.current) {
+          newScroll -= resetPositionRef.current;
+          scrollStartRef.current -= resetPositionRef.current;
         } else if (newScroll < 0) {
-          newScroll += singleContentWidth;
-          scrollStartRef.current += singleContentWidth;
+          newScroll += resetPositionRef.current;
+          scrollStartRef.current += resetPositionRef.current;
         }
       }
       currentScrollRef.current = newScroll;
@@ -92,7 +119,6 @@ const SuiteCarousel = () => {
       sectionElement.style.cursor = 'grab';
       sectionElement.style.userSelect = 'auto';
 
-      // Clean up global listeners
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
       window.removeEventListener('touchmove', handleTouchMove);
@@ -103,42 +129,17 @@ const SuiteCarousel = () => {
       }
     };
     
-    // --- Mouse Event Specific Handlers ---
-    const handleMouseDown = (e) => {
-      e.preventDefault();
-      dragStart(e.pageX);
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
-    };
-    const handleMouseMove = (e) => {
-      e.preventDefault();
-      dragMove(e.pageX);
-    };
+    // --- Specific Event Handlers ---
+    const handleMouseDown = (e) => { e.preventDefault(); dragStart(e.pageX); window.addEventListener('mousemove', handleMouseMove); window.addEventListener('mouseup', handleMouseUp); };
+    const handleMouseMove = (e) => { e.preventDefault(); dragMove(e.pageX); };
     const handleMouseUp = dragEnd;
-
-    // --- Touch Event Specific Handlers ---
-    const handleTouchStart = (e) => {
-      dragStart(e.touches[0].pageX);
-      window.addEventListener('touchmove', handleTouchMove, { passive: false });
-      window.addEventListener('touchend', handleTouchEnd);
-    };
-    const handleTouchMove = (e) => {
-      e.preventDefault();
-      dragMove(e.touches[0].pageX);
-    };
+    const handleTouchStart = (e) => { dragStart(e.touches[0].pageX); window.addEventListener('touchmove', handleTouchMove, { passive: false }); window.addEventListener('touchend', handleTouchEnd); };
+    const handleTouchMove = (e) => { e.preventDefault(); dragMove(e.touches[0].pageX); };
     const handleTouchEnd = dragEnd;
 
     // --- Hover Handlers ---
-    const handleMouseEnter = () => {
-      isMouseOverRef.current = true;
-      stopAnimation();
-    };
-    const handleMouseLeave = () => {
-      isMouseOverRef.current = false;
-      if (!isDraggingRef.current) {
-        animateCarousel();
-      }
-    };
+    const handleMouseEnter = () => { isMouseOverRef.current = true; stopAnimation(); };
+    const handleMouseLeave = () => { isMouseOverRef.current = false; if (!isDraggingRef.current) { animateCarousel(); } };
 
     // Attach listeners
     sectionElement.addEventListener('mousedown', handleMouseDown);
@@ -146,15 +147,13 @@ const SuiteCarousel = () => {
     sectionElement.addEventListener('mouseenter', handleMouseEnter);
     sectionElement.addEventListener('mouseleave', handleMouseLeave);
     
-    animateCarousel();
-
     return () => {
+      clearTimeout(initTimer);
       stopAnimation();
       sectionElement.removeEventListener('mousedown', handleMouseDown);
       sectionElement.removeEventListener('touchstart', handleTouchStart);
       sectionElement.removeEventListener('mouseenter', handleMouseEnter);
       sectionElement.removeEventListener('mouseleave', handleMouseLeave);
-      // Clean up any stray global listeners
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('mouseup', handleMouseUp);
       window.removeEventListener('touchmove', handleTouchMove);
