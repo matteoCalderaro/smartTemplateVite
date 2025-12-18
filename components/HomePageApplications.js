@@ -75,7 +75,7 @@ const HomePageApplications = () => {
   };
 
   return (
-    <section className="homepage-applications position-relative w-100 pt-5 section-padding-bottom">
+    <section className="homepage-applications position-relative w-100 section-padding-bottom">
       
       <div className="homepage-applications__radial-stage-gradient position-absolute top-0 start-0 end-0 bottom-0" />
       

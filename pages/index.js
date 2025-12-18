@@ -33,12 +33,12 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
       <HeroSection content={heroContent} />
 
       <main id="main-content">
+      {/* <SuiteTitle /> */}
+        <SuiteCarousel />
         {isMobile ? <Strengths content={strengthsContent} clickableCards={true} /> : <HomePageApplications /> }
         <IntegrationsSection />
         <Form />
         <FounderMessage />
-        <SuiteTitle />
-        <SuiteCarousel />
       </main>
 
       <Footer />

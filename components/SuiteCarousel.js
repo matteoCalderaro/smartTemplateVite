@@ -19,7 +19,7 @@ const SuiteCarousel = () => {
   const scrollStartRef = useRef(0);
   const currentScrollRef = useRef(0);
   
-  const scrollSpeed = 1.0;
+  const scrollSpeed = 0.7;
 
   const animateCarousel = () => {
     const carouselContent = carouselContentRef.current;
@@ -162,6 +162,10 @@ const SuiteCarousel = () => {
   }, []);
 
   return (
+    <>
+    <div id='suite-title' className="fs-5 mt-5 mt-md-0 text-center">
+      <span className="color-text-gold-light custom-text">Scopri la suite BiSmart</span>
+    </div>
     <section 
       id="suite-carousel"
       ref={sectionRef}
@@ -203,6 +207,7 @@ const SuiteCarousel = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
