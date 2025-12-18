@@ -96,7 +96,7 @@ const IntegrationsSection = ({ enableKaraokeEffect = true, enableFadeInAnimation
           <div className="position-relative mx-auto mt-5 max-w-4xl" ref={containerRef}>
             <div className="d-flex align-items-center justify-content-center gap-4 gap-sm-5" data-stagger="2">
               {icons.map((icon, index) => (
-                <span key={icon.id} ref={iconRefs[index]} className="d-inline-flex align-items-center justify-content-center rounded-3 bg-white-5 ring-white-10 icon-wrapper">
+                <span key={icon.id} ref={iconRefs[index]} className="d-inline-flex align-items-center justify-content-center rounded-3 bg-white-5 ring-white-20 icon-wrapper">
                     {icon.jsx}
                     <div className="integration-node-circle" />
                 </span>
