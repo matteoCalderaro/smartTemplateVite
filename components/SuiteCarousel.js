@@ -18,6 +18,7 @@ const SuiteCarousel = () => {
   const startXRef = useRef(0);
   const scrollStartRef = useRef(0);
   const currentScrollRef = useRef(0);
+  const hoverTimeoutRef = useRef(null); // Ref for hover intent timeout
   
   const scrollSpeed = 0.7;
 
@@ -129,6 +130,7 @@ const SuiteCarousel = () => {
       }
     };
     
+
     // --- Specific Event Handlers ---
     const handleMouseDown = (e) => { e.preventDefault(); dragStart(e.pageX); window.addEventListener('mousemove', handleMouseMove); window.addEventListener('mouseup', handleMouseUp); };
     const handleMouseMove = (e) => { e.preventDefault(); dragMove(e.pageX); };
@@ -137,9 +139,29 @@ const SuiteCarousel = () => {
     const handleTouchMove = (e) => { e.preventDefault(); dragMove(e.touches[0].pageX); };
     const handleTouchEnd = dragEnd;
 
-    // --- Hover Handlers ---
-    const handleMouseEnter = () => { isMouseOverRef.current = true; stopAnimation(); };
-    const handleMouseLeave = () => { isMouseOverRef.current = false; if (!isDraggingRef.current) { animateCarousel(); } };
+    // --- Hover Handlers with Intent Logic ---
+    const handleMouseEnter = () => { 
+      // Clear any pending timeout to avoid multiple stop commands
+      clearTimeout(hoverTimeoutRef.current);
+      // Set a new timeout.
+      hoverTimeoutRef.current = setTimeout(() => {
+        // ONLY set the mouse over flag and stop the animation if the timeout completes.
+        isMouseOverRef.current = true; 
+        stopAnimation();
+      }, 300); // 300ms delay
+    };
+    const handleMouseLeave = () => { 
+      // Clear the timeout, preventing the animation from stopping if the hover was brief.
+      clearTimeout(hoverTimeoutRef.current);
+      isMouseOverRef.current = false; 
+
+      // ONLY restart the animation if it was truly stopped (its ID is null) 
+      // and we are not in the middle of a drag.
+      // If the animation was just "idling" due to isMouseOverRef, it will resume on its own.
+      if (carouselAnimationId.current === null && !isDraggingRef.current) {
+        animateCarousel(); 
+      }
+    };
 
     // Attach listeners
     sectionElement.addEventListener('mousedown', handleMouseDown);
@@ -149,6 +171,7 @@ const SuiteCarousel = () => {
     
     return () => {
       clearTimeout(initTimer);
+      clearTimeout(hoverTimeoutRef.current); // Also clear hover timeout on unmount
       stopAnimation();
       sectionElement.removeEventListener('mousedown', handleMouseDown);
       sectionElement.removeEventListener('touchstart', handleTouchStart);
