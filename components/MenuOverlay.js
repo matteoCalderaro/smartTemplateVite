@@ -25,6 +25,17 @@ const MenuOverlay = ({ closeMenu, isMenuOpen }) => { // Riceve isMenuOpen
             </li>
           ))}
       </ul>
+      <div className="mt-4">
+        <button 
+          className="btn btn-primary w-100"
+          onClick={() => {
+            closeMenu();
+            router.push('/demo');
+          }}
+        >
+          Richiedi Demo
+        </button>
+      </div>
     </div>
   );
 };

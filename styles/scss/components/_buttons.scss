@@ -17,7 +17,10 @@
     text-transform: uppercase;
     font-weight: bold;
     letter-spacing: 1px;
-    background-color: var(--bismart-blue);
+    //background-color: var(--bismart-blue);
+    background-color: transparent !important;
+    border-color: var(--bismart-gold-light) !important;
+    border-width: 2px !important;
     color: var(--color-white);
 
     &:hover {

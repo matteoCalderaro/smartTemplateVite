@@ -27,7 +27,9 @@
 @use 'components/connector-line-svg'; 
 @use 'components/homepage-applications'; 
 @use 'components/integrations-section'; 
+@use 'components/call-to-action-section'; 
 
 
 // 4. Pages
 @use 'pages/thank-you';
+@use 'pages/demo-page';

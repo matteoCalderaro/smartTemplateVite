@@ -94,8 +94,9 @@ const NewNavbar = ({ minimal }) => {
                       </NavDropdown.Item>
                     ))}
                 </NavDropdown>
-                <Nav.Link href="#info" className="color-text-gold-light" style={{ pointerEvents: 'none' }}>Informazioni</Nav.Link>
-                <Link href="/" className="btn-login d-none">Accedi</Link>
+                <Nav.Link href="/demo" className="color-text-gold-light">Demo</Nav.Link>
+                {/* <Link href="/" className="btn-login d-none">Accedi</Link> */}
+                {/* <Link href="/demo" className="btn-login">Demo</Link> */}
               </>
             )}
           </Nav>

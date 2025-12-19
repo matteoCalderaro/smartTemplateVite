@@ -9,13 +9,13 @@ import HomePageApplications from '../components/HomePageApplications';
 
 
 import HeroSection from '../components/HeroSection';
-import Form from '../components/Form';
 import Footer from '../components/Footer';
 import Strengths from '../components/Strengths';
 import FounderMessage from '../components/FounderMessage';
 import IntegrationsSection from '../components/IntegrationsSection';
 import SuiteTitle from '../components/SuiteTitle';
 import useMediaQuery from '../hooks/useMediaQuery';
+import CallToActionSection from '../components/CallToActionSection';
 
 export default function Home({ heroContent, strengthsContent, videoPaths }) {
   const router = useRouter();
@@ -37,8 +37,8 @@ export default function Home({ heroContent, strengthsContent, videoPaths }) {
         <SuiteCarousel />
         {isMobile ? <Strengths content={strengthsContent} clickableCards={true} /> : <HomePageApplications /> }
         <IntegrationsSection />
-        <Form />
         <FounderMessage />
+        <CallToActionSection />
       </main>
 
       <Footer />

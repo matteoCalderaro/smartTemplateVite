@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import applications from '../data/applications';
+import CallToActionSection from '../components/CallToActionSection';
 
 // Import components used in index.js for consistent layout
 import SuiteCarousel from '../components/SuiteCarousel';
@@ -33,9 +34,10 @@ export default function ApplicationPage({ heroContent, strengthsContent, videoPa
       <main id="main-content">
         <VideoPlayer videos={videoPaths} />
         <Strengths content={strengthsContent} />
-        <Form />
-        <FounderMessage />
-        <SuiteTitle />
+        {/* <Form /> */}
+        {/* <FounderMessage /> */}
+        {/* <SuiteTitle /> */}
+        <CallToActionSection />
         <SuiteCarousel />
       </main>
 

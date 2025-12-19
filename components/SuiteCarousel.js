@@ -186,7 +186,7 @@ const SuiteCarousel = () => {
 
   return (
     <>
-    <div id='suite-title' className="fs-5 mt-5 mt-md-0 text-center">
+    <div id='suite-title' className="fs-5 mt-5 pt-4 mt-md-0 text-center">
       <span className="color-text-gold-light custom-text">Scopri la suite BiSmart</span>
     </div>
     <section 

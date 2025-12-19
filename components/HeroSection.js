@@ -64,7 +64,7 @@ const HeroSection = ({ content }) => {
               ))}
             </div>
             <div className="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3">
-              <a href="#form" className="hero-cta-button fw-semibold rounded-4" data-scroll-to>
+              <a href="/demo" className="hero-cta-button fw-semibold rounded-4">
                 <span className="hero-cta-button__content">{content.buttonText}</span>
               </a>
             </div>

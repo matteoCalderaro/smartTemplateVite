@@ -66,12 +66,13 @@ const Form = () => {
     <section id="form" className="section-padding-bottom">
       <div className="container">
         <div className="">
-          <div className="card rounded-5">
+          <div className="">
             <div className="form__wrapper p-4">
-              <h2 className="fw-bolder mb-4 color-text-primary">Prenota la tua demo gratuita!</h2>
+              {/* <h2 className="fw-bolder mb-4 color-text-gold-light">Prenota la tua demo gratuita!</h2>
+              <p className="fs-5 text-white">Siamo pronti a mostrarti il valore della nostra suite. Compila il form qui sotto e ti ricontatteremo al più presto.</p> */}
               <form id="form-contatti" onSubmit={handleSubmit(onSubmit)} noValidate>
                 <div id="data">
-                  <h5 className="mb-3 color-text-primary">Dove possiamo contattarti?</h5>
+                  <h5 className="mb-3 text-white">Dove possiamo contattarti?</h5>
                   <div className="row">
                     <div className="col-12 col-md-6">
                       <div className="fv-row">
@@ -169,7 +170,7 @@ const Form = () => {
                       <label htmlFor="notesId">Note (opzionale)</label>
                     </div>
                   </div>
-                  <h5 className="mb-3 color-text-primary">Consenso privacy</h5>
+                  <h5 className="mb-3 text-white">Consenso privacy</h5>
                   <div className="fv-row form-check form-check-privacy">
                     <input
                       className={`form-check-input ${errors.privacy ? 'is-invalid' : ''}`}
