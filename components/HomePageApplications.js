@@ -16,6 +16,8 @@ const HomePageApplications = () => {
   const imageContainerRef = useRef(null);
   const containerRef = useRef(null);
   const router = useRouter();
+  const { basePath } = useRouter();
+
 
   useEffect(() => {
     setIsMounted(true);
@@ -138,7 +140,7 @@ const HomePageApplications = () => {
 
                     <div className="body position-relative">
                        <Image
-                          src={`/media/app-images/${displayedApp.imageName}`}
+                          src={`${basePath}/media/app-images/${displayedApp.imageName}`}
                           alt={displayedApp.name}
                           fill
                           sizes="(max-width: 991px) 100vw, 66vw"
